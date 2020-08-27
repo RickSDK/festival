@@ -1,0 +1,6 @@
+<div *ngIf="user">
+    <img *ngIf="user.avatarFlg" src="https://appdigity.com/fest/images/user{{user.id}}.jpg" [style.height.px]="size"
+        style="width: 100%; object-fit: cover;" [ngClass]="ngClassImage()">
+    <img *ngIf="!user.avatarFlg" src="assets/graphics/avatars/user{{user.avatar}}.png" [style.height.px]="size"
+        style="width: 100%; object-fit: cover;">
+</div>

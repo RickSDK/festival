@@ -1,0 +1,88 @@
+<app-page-shell [userId]="userId" [navTitle]="'User Detail'" [icon]="'fa-film'" [rButton]="'home'">
+    <hr>
+    <app-loading-bar *ngIf="loadingFlg" [errorMessage]="errorMessage"></app-loading-bar>
+    <div class="container-fluid" *ngIf="displayUser && !loadingFlg">
+        <div class="row">
+            <div class="col-sm-4">
+                <app-user-image [user]="displayUser" [size]="400" [imageCard]="true"></app-user-image>
+                <app-button *ngIf="userIsEditableFlg" (click)="editPicPopup.show()" [name]="'Edit'" [class]="'narrow'"
+                    [icon]="'pencil'"></app-button>
+                <app-button *ngIf="0 && showRefreshButton" (click)="refreshThePicPressed()" [name]="'Refresh'"
+                    [class]="'narrow'" [icon]="'refresh'"></app-button>
+                <div *ngIf="showRefreshMessage">You may need to refresh your browser before you see the changes.</div>
+            </div>
+            <div class="col-sm-8">
+                <app-data-table (click)="editUser(displayUser, false)" [tableObj]="tableObj"></app-data-table>
+                <app-button *ngIf="userIsEditableFlg" (click)="editProfilePopup.show(displayUser)" [name]="'Edit'"
+                    [class]="'narrow'" [icon]="'pencil'"></app-button>
+                <app-button *ngIf="userIsEditableFlg" (click)="logout()" [name]="'Logout'" [class]="'narrow'"
+                    [icon]="'sign-out'"></app-button>
+
+                <div *ngIf="userIsEditableFlg && !displayUser.bio">
+                    <app-button (click)="editProfilePopup.show(displayUser)" [name]="'Add Bio'" [class]="'large'"
+                        [icon]="'pencil'"></app-button>
+                </div>
+
+                <table class="drTable" *ngIf="displayUser.bio">
+                    <tr style="background-color: #000060; color: white;">
+                        <td>
+                            <i class="fa fa-film iconLittle" *ngIf="displayUser.filmFlg" title="Film Maker"></i>
+                            <i class="fa fa-truck iconLittle" *ngIf="displayUser.crewFlg" title="Crew"></i>
+                            <i class="fa fa-star-o iconLittle" *ngIf="displayUser.actorFlg" title="Actor"></i>
+                            <i class="fa fa-comments iconLittle" *ngIf="displayUser.criticFlg" title="Critic"></i>
+                            <i class="fa fa-briefcase iconLittle" *ngIf="displayUser.staffFlg" title="Staff"></i>
+                            Bio
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align: left; padding: 5px;">
+                            <p *ngFor="let line of displayUser.bioLines">{{line}}</p>
+                        </td>
+                    </tr>
+                </table>
+                <table class="drTable" *ngIf="userRoles && userId==1">
+                    <tr>
+                        <td style="background-color: #000060; color: white;"><i class="fa fa-trophy"></i> Badges</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <app-badge-snapshot *ngFor="let badgeId of displayUser.badges" [badgeId]="badgeId"></app-badge-snapshot>
+                        </td>
+                    </tr>
+                </table>
+
+                <div>
+                    <a href="{{displayUser.imdb}}" *ngIf="displayUser.imdb">
+                        <img src="assets/graphics/icons/imdb.jpg" height="44" style="padding: 3px;">
+                    </a>
+                    <a href="{{displayUser.facebook}}" *ngIf="displayUser.facebook">
+                        <img src="assets/graphics/icons/facebook.jpg" height="44" style="padding: 3px;">
+                    </a>
+                    <a href="{{displayUser.twitter}}" *ngIf="displayUser.twitter">
+                        <img src="assets/graphics/icons/twitter.jpg" height="44" style="padding: 3px;">
+                    </a>
+                    <a href="{{displayUser.instagram}}" *ngIf="displayUser.instagram">
+                        <img src="assets/graphics/icons/instagram.jpg" height="44" style="padding: 3px;">
+                    </a>
+                </div>
+
+                <app-film-snapshot *ngFor="let film of displayUser.films" [film]="film"></app-film-snapshot>
+
+                <table class="drTable" *ngIf="userRoles && userId==1">
+                    <tr>
+                        <td colspan="2" style="background-color: #000060; color: white;">Admin</td>
+                    </tr>
+                    <tr *ngFor="let item of userRoles">
+                        <td style="cursor: pointer;" align="right">&nbsp; <i class="fa fa-{{item.icon}}"></i>
+                            {{item.name}}</td>
+                        <td style="cursor: pointer;" align="left">&nbsp; <i class="fa fa-check"
+                                *ngIf="item.checkFlg"></i> </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</app-page-shell>
+
+<app-user-edit-pic-popup #editPicPopup (messageEvent)="refreshPic($event)"></app-user-edit-pic-popup>
+<app-user-edit-profile-popup #editProfilePopup (messageEvent)="refreshProfile($event)"></app-user-edit-profile-popup>

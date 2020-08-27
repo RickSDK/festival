@@ -1,0 +1,40 @@
+<div style="text-align: center; padding: 5px;" [ngStyle]="ngStyleButton(3)">
+    <div class="btn-group">
+        <button [routerLink]="['']" type="button"
+            class="btn-default roundButton segmentButton"
+            [ngStyle]="ngStyleSegment(buttonIdx,0)">
+            <i class="fa fa-home"></i> 
+            <div class="menu-title">Home</div>
+        </button>
+        <button [routerLink]="['/films']" type="button"
+            class="btn-default roundButton segmentButton"
+            [ngStyle]="ngStyleSegment(buttonIdx,1)">
+            <i class="fa fa-film"></i> 
+            <div class="menu-title">Films</div>
+        </button>
+        <button [routerLink]="['/people']" type="button"
+            class="btn-default roundButton segmentButton"
+            [ngStyle]="ngStyleSegment(buttonIdx,2)">
+            <i class="fa fa-user"></i> 
+            <div class="menu-title">People</div>
+        </button>
+        <button [routerLink]="['/awards']" type="button"
+            class="btn-default roundButton segmentButton"
+            [ngStyle]="ngStyleSegment(buttonIdx,3)">
+            <i class="fa fa-trophy"></i> 
+            <div class="menu-title">Awards</div>
+        </button>
+        <button [routerLink]="['/submit']" type="button"
+            class="btn-default roundButton segmentButton"
+            [ngStyle]="ngStyleSegment(buttonIdx,4)">
+            <i class="fa fa-upload"></i> 
+            <div class="menu-title">Submit Film</div>
+        </button>
+        <button [routerLink]="['/tickets']" type="button"
+            class="btn-default roundButton segmentButton"
+            [ngStyle]="ngStyleSegment(buttonIdx,5)">
+            <i class="fa fa-ticket"></i> 
+            <div class="menu-title">Tickets</div>
+        </button>
+    </div>
+</div>

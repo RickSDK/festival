@@ -1,0 +1,40 @@
+<app-page-shell [userId]="userId" [navTitle]="'Submit Film'" [icon]="'fa-upload'">
+
+    <img src="assets/graphics/film8.jpg" class="image">
+    <app-button-bar [buttonIdx]="4"></app-button-bar>
+
+    <div class="blackBox">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <img src="assets/graphics/crew2.jpg" class="image">
+                </div>
+                <div class="col-sm-6">
+                    <div class="borderClass">
+                        <div class="titleCLass">Rules for submitting films</div>
+                        <div class="listClass">
+                            <li>Anyone is eligible to submit</li>
+                            <li>Film must be between 4 and 30 minutes</li>
+                            <li>$40 submission fee</li>
+                            <li>Submissions begin: Oct 1, 2020</li>
+                            <li>Early Submission ends: Mar 1, 2021</li>
+                            <li>Deadline: July 1, 2021</li>
+                            <li>Late Deadline: July 15, 2021</li>
+                        </div>
+                    </div>
+
+                    <app-button *ngIf="user.id" (click)="addFilmPopup.show(true)" [name]="'Submit!'" [class]="'large'"
+                        [icon]="'upload'"></app-button>
+                    <app-button *ngIf="!user.id" (click)="infoPopup.show('Log in to submit!')" [name]="'Submit!'"
+                        [class]="'large'" [icon]="'upload'"></app-button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</app-page-shell>
+
+<app-info-popup #infoPopup (messageEvent)="okButtonPressed($event)"></app-info-popup>
+<app-add-film-popup #addFilmPopup></app-add-film-popup>

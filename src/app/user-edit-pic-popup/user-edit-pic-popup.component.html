@@ -1,0 +1,56 @@
+<div class="modal fade" id="editPicPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" [ngStyle]="ngStyleButton(2)">
+            <div class="modal-header">
+                <b *ngIf="user"><i class="fa fa-{{user.icon}}"></i> {{user.username}} - Edit Picture</b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" *ngIf="user">
+                <div>Change your profile icon:</div>
+                <div style="text-align: center;">
+                    <div class="btn-group">
+                        <button (click)="changeAvatar(0)" type="button" class="btn-default roundButton segmentButton"
+                            [ngStyle]="ngStyleSegment(buttonIdx,0)">
+                            <img src="assets/graphics/avatars/user0.png" width="40" height="40">
+                        </button>
+                        <button (click)="changeAvatar(1)" type="button" class="btn-default roundButton segmentButton"
+                            [ngStyle]="ngStyleSegment(buttonIdx,1)">
+                            <img src="assets/graphics/avatars/user1.png" width="40" height="40">
+                        </button>
+                        <button (click)="changeAvatar(2)" type="button" class="btn-default roundButton segmentButton"
+                            [ngStyle]="ngStyleSegment(buttonIdx,2)">
+                            <img src="assets/graphics/avatars/user2.png" width="40" height="40">
+                        </button>
+                        <button (click)="changeAvatar(3)" type="button" class="btn-default roundButton segmentButton"
+                            [ngStyle]="ngStyleSegment(buttonIdx,3)">
+                            <img src="assets/graphics/avatars/user3.png" width="40" height="40">
+                        </button>
+                        <button (click)="changeAvatar(4)" type="button" class="btn-default roundButton segmentButton"
+                            [ngStyle]="ngStyleSegment(buttonIdx,4)">
+                            <img src="assets/graphics/avatars/user4.png" width="40" height="40">
+                        </button>
+                        <button (click)="changeAvatar(5)" type="button" class="btn-default roundButton segmentButton"
+                            [ngStyle]="ngStyleSegment(buttonIdx,5)">
+                            <img src="assets/graphics/avatars/user5.png" width="40" height="40">
+                        </button>
+                    </div>
+                    <app-loading-bar (click)="loadingFlg=false" *ngIf="loadingFlg" [errorMessage]="errorMessage">
+                    </app-loading-bar>
+                    <app-button *ngIf="!loadingFlg" (click)="saveButtonPressed()" [disabled]="!changesMadeFlg2" [name]="'Save'" [class]="'large'"
+                        [icon]="'floppy-o'"></app-button>
+                </div>
+
+                <hr>
+                <div>Or upload your own image:</div>
+                <app-form-wrapper [changesMadeFlg]="changesMadeFlg" [formFields]="formFields"
+                    (messageEvent)="updateImageButtonClicked($event)">
+                </app-form-wrapper>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

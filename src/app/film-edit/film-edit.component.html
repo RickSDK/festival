@@ -1,0 +1,44 @@
+<div class="modal fade" id="filmEditPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" [ngStyle]="ngStyleButton(2)">
+            <div class="modal-header">
+                <b><i class="fa fa-pencil"></i> Edit Film</b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div *ngIf="imageFlg">
+                    <!--poster-->
+                    <app-form-wrapper [loadingFlg]="loadingFlg" [errorMessage]="errorMessage" [formFields]="formFields1" (messageEvent)="updateImageButtonClicked($event)"></app-form-wrapper>
+                </div>
+
+                <div *ngIf="!imageFlg" style="text-align: center;">
+                    <!--edit basics-->
+                    <app-form-wrapper [loadingFlg]="loadingFlg" [errorMessage]="errorMessage" [formFields]="formFields2" (messageEvent)="updateDetailsButtonClicked($event)"></app-form-wrapper>
+                    <hr>
+                    <app-button *ngIf="!deleteFlg" (click)="deleteFlg=true" [name]="'Delete Film'" [icon]="'trash'"
+                        [butStyle]="5">
+                    </app-button>
+                    <div class="borderClass" style="background-color: yellow; text-align: center;"
+                        *ngIf="deleteFlg && !loadingFlg">
+                        <div *ngIf="errorMessage">{{errorMessage}}</div>
+                        <div *ngIf="!errorMessage">
+
+                            <div>Do you wish to permanently delete this film from the database? This move cannot be undone.</div>
+                            <app-button (click)="deleteFlg=false" [name]="'Cancel'" [icon]="'times'" [butStyle]="1">
+                            </app-button>
+                            <app-button (click)="deleteFilm()" [name]="'Yes!'" [icon]="'check'" [butStyle]="5">
+                            </app-button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

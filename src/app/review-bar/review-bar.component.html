@@ -1,0 +1,26 @@
+<div *ngIf="film" style="background-color: #444; color: white; font-size: 12px;">
+    <div *ngIf="!film.numReviews">
+        No Reviews
+    </div>
+    <table *ngIf="film.numReviews" width="90%" align="center">
+        <tr>
+            <td align="left" [title]="film.starTitle" style="color: yellow;">
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star" *ngIf="film.stars>3"></i>
+                <i class="fa fa-star" *ngIf="film.stars>5"></i>
+                <i class="fa fa-star" *ngIf="film.stars>7"></i>
+                <i class="fa fa-star" *ngIf="film.stars>9"></i>
+                <i class="fa fa-star-half" *ngIf="film.stars%2==1"></i>    
+            </td>
+            <td [title]="film.reviewsTitle">
+                <div *ngIf="wideFlg">{{film.reviewsTitle}}</div>
+                <div *ngIf="!wideFlg">{{film.numReviews}}</div>
+            </td>
+            <td align="right" title="{{film.likePercent}}% approval" style="color: #00ff00;">
+                <i class="fa fa-thumbs-up" *ngIf="film.likePercent>=50"></i>
+                <i class="fa fa-thumbs-down" *ngIf="film.likePercent<50"></i>
+                {{film.likePercent}}%    
+            </td>
+        </tr>
+    </table>
+</div>

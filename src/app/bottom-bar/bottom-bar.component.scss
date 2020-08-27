@@ -1,0 +1,12 @@
+.bottomDiv {
+    position: fixed;
+    width: 100%;
+    max-width: 800px;
+    bottom: 0;
+ }
+ .wordLink {
+    cursor: pointer;
+}
+.wordLink:hover {
+    font-weight: 800;
+}

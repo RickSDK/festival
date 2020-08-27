@@ -1,0 +1,42 @@
+<app-page-shell [userId]="userId" [lButton]="'info'" [navTitle]="'Main Menu'" [icon]="'fa-bars'" (messageEvent)="buttonClicked ($event)">
+
+    <img src="assets/graphics/film1.jpg" class="image">
+    <app-button-bar [buttonIdx]="0"></app-button-bar>
+    <div class="blackBox">
+        <img src="assets/graphics/logo.png" style="width: 100%; max-width: 600px;" title="Snohomish Film Festival">
+        <div style="font-weight: 700; font-size: 16px;">Featuring Short Films</div>
+        <div>
+            Coming September 2021, Snohomish Film Festival is your chance to see local, award-winning films, along with the
+            cast and crews that created them!
+        </div>
+    </div>
+
+
+    <div class="blackBox pictureBG" style="background-image: url('assets/graphics/film2.jpg');">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="borderClass">
+                        <div class="titleCLass">Submit Your Projects!</div>
+                        Now accepting film projects of any kind to be entered into our database. This is your chance to have your film seen by others and available for reviews.
+                        <div style="text-align: center; padding: 10px;">
+                            <app-button [routerLink]="['/films']" [name]="'More Info'"></app-button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="borderClass">
+                        <div class="titleCLass">Event Details</div>
+                        This event will kick off September 2021, giving local film makers a chance to show off your work!
+                        <div style="text-align: center; padding: 10px;">
+                            <app-button [routerLink]="['/tickets']" [name]="'More Info'"></app-button>
+                        </div>
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</app-page-shell>
+
+<app-login #loginModal (messageEvent)="refreshUser($event)"></app-login>

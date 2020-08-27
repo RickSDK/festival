@@ -1,0 +1,43 @@
+<app-page-shell [userId]="userId" [navTitle]="'Join the Festival!'" [icon]="'fa-emerald'" [rButton]="'home'">
+
+    <img src="assets/graphics/film4.jpg" class="image">
+
+    <div class="blackBox">
+        <div *ngIf="!userId" style="font-size: 24px; font-weight: 700;"><i class="fa fa-diamond"></i> Join Today!</div>
+        <div *ngIf="userId" style="font-size: 24px; font-weight: 700;"><i class="fa fa-diamond"></i> Snohomish Film Festival</div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="borderClass">
+                        <div class="titleCLass">Snohomish Film Festival</div>
+                        <p>
+                            Our goal is to become the largest Film Festival in Washington State north of Seattle.
+                        </p>
+                        <p>
+                            Interested in adding your film to our database, writing film reviews or helping out with the festival? Sign up below!
+                        </p>
+                    </div>
+                    <app-button *ngIf="!user.id" (click)="loginModal.show()" [name]="'Log In'" [class]="'large'"></app-button>
+                </div>
+                <div class="col-sm-6">
+                    <div class="borderClass">
+                        <div class="titleCLass">Member Benefits</div>
+                        <div><i class="fa fa-check"></i> It's Free!</div>
+                        <div><i class="fa fa-user"></i> Add your personal profile to the database.</div>
+                        <div><i class="fa fa-comments"></i> Comment on other's films.</div>
+                        <div><i class="fa fa-film"></i> Submit your films, current and old.</div>
+                        <div><i class="fa fa-thumbs-up"></i> Become an official online film critic.</div>
+                        <div><i class="fa fa-certificate"></i> Earn Reputation points and badges when other's "like" your reviews.</div>
+                        <div><i class="fa fa-briefcase"></i> Meet others in the business.</div>
+                        <div><i class="fa fa-diamond"></i> Help grow the festival!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</app-page-shell>
+
+<app-login #loginModal (messageEvent)="refreshUser($event)"></app-login>
+<app-info-popup #infoModal (messageEvent)="okBUttonPressed($event)"></app-info-popup>

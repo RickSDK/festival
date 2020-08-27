@@ -1,0 +1,20 @@
+<div class="modal fade" id="badgePromoPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document" style="max-width: 320px;">
+        <div class="modal-content" [ngStyle]="ngStyleButton(2)">
+            <div class="modal-header">
+            </div>
+            <div class="modal-body" style="text-align: center; font-size: 20px;">
+
+                <p>Congratulations!</p>
+                <p>You have earned a new badge</p>
+                <img src="assets/graphics/trophy.png" style="width: 100%; max-width: 200px;">
+                <div>Visit your profile for more information</div>
+
+                <app-button [name]="'Ok'" (click)="okButtonPressed()" [class]="'width90'"></app-button>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

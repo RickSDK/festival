@@ -1,0 +1,51 @@
+<div *ngIf="!reviewDeletedFlg">
+    <div class="container-fluid" style="background-color: #444; color: white;">
+        <div class="row">
+            <div class="col-sm-4" style="font-size: 20px;" [title]="review.starTitle">
+                <i class="fa fa-star" style="color: yellow;"></i>
+                <i class="fa fa-star" style="color: yellow;" *ngIf="review.stars>=4"></i>
+                <i class="fa fa-star" style="color: yellow;" *ngIf="review.stars>=6"></i>
+                <i class="fa fa-star" style="color: yellow;" *ngIf="review.stars>=8"></i>
+                <i class="fa fa-star" style="color: yellow;" *ngIf="review.stars>=10"></i>
+                <i class="fa fa-star-o" style="color: #ccc;" *ngIf="review.stars < 4"></i>
+                <i class="fa fa-star-o" style="color: #ccc;" *ngIf="review.stars < 6"></i>
+                <i class="fa fa-star-o" style="color: #ccc;" *ngIf="review.stars < 8"></i>
+                <i class="fa fa-star-o" style="color: #ccc;" *ngIf="review.stars < 10"></i>
+            </div>
+            <div class="col-sm-4" style="font-size: 20px;">
+                <i class="fa fa-thumbs-up" style="color: #00ff00;" *ngIf="review.stars >= 6"
+                    title="Liked this film"></i>
+                <i class="fa fa-thumbs-down" style="color: orange;" *ngIf="review.stars < 6"
+                    title="disliked this film"></i>
+            </div>
+            <div class="col-sm-4">
+                <i (click)="upvoteReview()" class="fa fa-arrow-circle-up iconLink" title="Up-Vote"></i> {{review.likes}}
+                &nbsp;
+                <i (click)="downvoteReview()" class="fa fa-arrow-circle-down iconLink" title="Down-Vote"></i>
+                {{review.dislikes}}
+            </div>
+        </div>
+
+    </div>
+    <div class="reviewBox">
+
+        <div style="font-size: 12px"><b>{{review.name}}'s Review:</b></div>
+        <p *ngFor="let line of review.reviewLines1">{{line}}</p>
+    </div>
+    <div style="background-color: #ccc; font-size: 12px; cursor: pointer;">
+        <span [routerLink]="['/user']" [queryParams]="{id: review.user_id}">{{review.name}} - {{review.created}}</span>
+        <app-button *ngIf="review.isMineFlg" [class]="'narrow'" [butStyle]="5" style="float: right;"
+            (click)="showDeleteFlg = true" [name]="'Delete'" [icon]="'trash'"></app-button>
+        <app-button *ngIf="review.isMineFlg" [class]="'narrow'" [butStyle]="4" style="float: right;"
+            (click)="editReviewClicked()" [name]="'Edit'" [icon]="'pencil'"></app-button>
+    </div>
+    <div *ngIf="showDeleteFlg" style="background-color: yellow;">
+        <div>Are you sure you want to permanently delete this review?</div>
+        <app-button (click)="showDeleteFlg = false" [name]="'Cancel'" [icon]="'times'"></app-button>
+        <app-button [butStyle]="5" (click)="deleteThisReview()" [name]="'Yes Delete!'" [icon]="'trash'"></app-button>
+    </div>
+    <app-loading-bar *ngIf="loadingFlg" [errorMessage]="errorMessage"></app-loading-bar>
+</div>
+<div *ngIf="reviewDeletedFlg">
+    Review Deleted!
+</div>

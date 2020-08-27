@@ -1,0 +1,60 @@
+<div class="modal fade" id="addFilmPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" [ngStyle]="ngStyleButton(2)">
+            <div class="modal-header">
+                <b><i class="fa fa-film"></i> Add Film</b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div *ngIf="filmType==0">
+                    <table width="100%">
+                        <tr>
+                            <td align="center" width="50%">
+                                <button [disabled]="true" (click)="filmType=2" type="button" class="btn-default roundButton large"
+                                    [ngStyle]="ngStyleSegment(buttonIdx,1)">
+                                    <i class="fa fa-arrow-right"></i> Submit Your Film
+                                </button>
+                                <div style="font-size: 12px; padding: 10px;">Submit your film to the 2021 Snohomish Film
+                                    Festival.</div>
+                                <div style="color: yellow;">Submissions begin Oct 1, 2020</div>
+                            </td>
+                            <td align="center" width="50%">
+                                <button (click)="filmType=1" type="button" class="btn-default roundButton segmentButton"
+                                    [ngStyle]="ngStyleSegment(buttonIdx,1)">
+                                    <i class="fa fa-plus"></i> Database
+                                </button>
+                                <div style="font-size: 12px; padding: 10px;">Add an older film to our database to allow
+                                    users to comment and write reviews. Note: This option is for films that are not going to be part of the 2021 Film Festival. 
+                                    Once you submit a film to the database, it is immediately viewable to the public.</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div *ngIf="filmType==1 || filmType==2">
+                    <p *ngIf="filmType==1">Use this form to add an existing project of yours to our active database.
+                        This
+                        will allow users and film critics to leave comments and write reviews.</p>
+                    <p *ngIf="filmType==1">Note: Your film must be publically viewable on a site like youtube. You also
+                        need to include a
+                        promo poster or screen shot.</p>
+                    <p *ngIf="filmType==2">Submitting your film costs $40. You will be notified by August 1st if your
+                        film
+                        has been selected for showing at the film festival.</p>
+                    <app-form-wrapper *ngIf="filmType==1" [loadingFlg]="loadingFlg" [formFields]="formFields" (messageEvent)="submitButtonClicked($event)"></app-form-wrapper>
+                    <div *ngIf="filmType==2" style="color: yellow;">Submissions start Jan 1, 2021!</div>
+                </div>
+                
+                <div *ngIf="filmType==3" style="text-align: center;">
+                    <div>Film Submitted Successfully!</div>
+                    <app-button (click)="okButtonPressed()" [name]="'Ok'" [class]="'large'"></app-button>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<span>
+    <div *ngIf="filmMatchesType(film)" class="personClass" [routerLink]="['/film']"
+        [queryParams]="{id: film.id}">
+        <div class="filmGenre">
+            <img *ngIf="film.videoCode==1" src="assets/graphics/youTube.png" height="15" style="float: left;">
+            <img *ngIf="film.videoCode==2" src="assets/graphics/vimeo.png" height="15" style="float: left;">
+            <i [ngClass]="ngClassGenre(film.genre)"></i> {{film.genre}}
+        </div>
+        <img src="https://www.appdigity.com/fest/posters/poster{{film.id}}.jpg" class="imageCover">
+        <app-review-bar [film]="film"></app-review-bar>
+        <div style="height: 50px;"><b>{{film.name}}</b></div>
+        <div class="filmGenre">{{film.director}}</div>
+    </div>
+</span>

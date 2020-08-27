@@ -1,0 +1,50 @@
+<app-page-shell [userId]="userId" [navTitle]="'People'" [icon]="'fa-user'">
+
+    <img src="assets/graphics/film5.jpg" class="image">
+    <app-button-bar [buttonIdx]="2"></app-button-bar>
+
+    <div style="text-align: center; padding: 5px; font-size: 30px;">
+        <div class="btn-group">
+            <button (click)="segmentClicked(0)" type="button" class="btn-default roundButton segmentButton"
+                [ngStyle]="ngStyleSegment(buttonIdx,0)">
+                <i class="fa fa-film"></i>
+                <div style="font-size: 12px;">Film Makers</div>
+            </button>
+            <button (click)="segmentClicked(1)" type="button" class="btn-default roundButton segmentButton"
+                [ngStyle]="ngStyleSegment(buttonIdx,1)">
+                <i class="fa fa-truck"></i>
+                <div style="font-size: 12px;">Crew</div>
+            </button>
+            <button (click)="segmentClicked(2)" type="button" class="btn-default roundButton segmentButton"
+                [ngStyle]="ngStyleSegment(buttonIdx,2)">
+                <i class="fa fa-star-o"></i>
+                <div style="font-size: 12px;">Actors</div>
+            </button>
+            <button (click)="segmentClicked(3)" type="button" class="btn-default roundButton segmentButton"
+                [ngStyle]="ngStyleSegment(buttonIdx,3)">
+                <i class="fa fa-comments"></i>
+                <div style="font-size: 12px;">Critics</div>
+            </button>
+            <button (click)="segmentClicked(4)" type="button" class="btn-default roundButton segmentButton"
+                [ngStyle]="ngStyleSegment(buttonIdx,4)">
+                <i class="fa fa-briefcase"></i>
+                <div style="font-size: 12px;">Staff</div>
+            </button>
+        </div>
+    </div>
+    <div class="blackBox">
+        <div style="font-size: 24px; font-weight: 700;"><i class="fa fa-{{roles[buttonIdx].icon}}"></i>
+            {{roles[buttonIdx].name}}</div>
+        <div>
+            {{roles[buttonIdx].desc}}
+        </div>
+
+        <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
+        <span *ngFor="let user of users">
+            <app-user-snapshot *ngIf="personMatchesType(user, buttonIdx)" [user]="user"></app-user-snapshot>
+        </span>
+    </div>
+</app-page-shell>
+
+<app-info-popup #infoModal></app-info-popup>
+<app-spinner #spinnerPopup></app-spinner>

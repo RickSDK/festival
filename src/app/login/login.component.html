@@ -1,0 +1,102 @@
+<div class="modal fade" id="loginPopup" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document" style="max-width: 320px;">
+        <div class="modal-content" [ngStyle]="ngStyleButton(2)">
+            <div class="modal-header">
+                <b><i class="fa fa-sign-in"></i> Version 0.5</b>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="text-align: center; font-size: 20px;">
+
+                <div *ngIf="apiMessage">{{apiMessage}}</div>
+                <div *ngIf="userId">
+                    <div style="font-size: 12px;"><b>User Logged in</b></div>
+                    <div style="font-size: 12px;">Email: {{user.email}}</div>
+                    <div style="font-size: 12px;">Id: {{user.id}}</div>
+                    <app-button (click)="logout()" [name]="'Logout'" class="large" [butStyle]="1">
+                    </app-button>
+                </div>
+                <div *ngIf="!userId">
+                    <div *ngIf="apiExecutedFlg">
+                        <div *ngIf="loadingFlg"><i class="fa fa-spinner fa-spin"></i> Loading...</div>
+                        <app-button (click)="okButtonPressed()" [name]="'OK'" class="large" [butStyle]="1">
+                        </app-button>
+                    </div>
+                    <div *ngIf="!apiExecutedFlg && !createAccountFlg && !showCreateAccountFlg">
+                        <div *ngIf="showLoginFlg">
+                            <input type="text" id="emailField" placeholder="Email" (click)="$event.target.value=''">
+                            <input type="password" id="passwordField" placeholder="Password"
+                                (click)="$event.target.value=''">
+                            <app-button (click)="loginPressed()" [name]="'Login'" class="large" [icon]="'sign-in'"
+                                [butStyle]="1">
+                            </app-button>
+                        </div>
+                        <app-button *ngIf="!showLoginFlg" (click)="showLoginFlg=true" name="Existing Member" icon="user"
+                            [butStyle]="3">
+                        </app-button>
+                        <hr>
+
+                        <app-button (click)="facebookPressed()" name="Login with Facebook" icon="facebook" [butStyle]="3">
+                        </app-button> 
+
+                        <hr>
+
+                        <app-button (click)="createAccountPressed()" name="Create Account" icon="plus" [butStyle]="3">
+                        </app-button>
+                    </div>
+                    <div *ngIf="showCreateAccountFlg">
+                        <input type="text" id="emailField3" placeholder="Email" (click)="$event.target.value=''">
+                        <input type="text" id="firstName" placeholder="First Name" (click)="$event.target.value=''">
+                        <input type="text" id="lastName" placeholder="Last Name" (click)="$event.target.value=''">
+                        <input type="password" id="passwordField2" placeholder="Password"
+                            (click)="$event.target.value=''">
+                        <input type="password" id="passwordField3" placeholder="re-type Password"
+                            (click)="$event.target.value=''">
+
+                        <hr>
+                        <div>Avatar</div>
+                        <div class="btn-group">
+                            <button (click)="buttonIdx=0" type="button" class="btn-default roundButton segmentButton"
+                                [ngStyle]="ngStyleSegment(buttonIdx,0)">
+                                <img src="assets/graphics/avatars/user0.png" width="40" height="40">
+                            </button>
+                            <button (click)="buttonIdx=1" type="button" class="btn-default roundButton segmentButton"
+                                [ngStyle]="ngStyleSegment(buttonIdx,1)">
+                                <img src="assets/graphics/avatars/user1.png" width="40" height="40">
+                            </button>
+                            <button (click)="buttonIdx=2" type="button" class="btn-default roundButton segmentButton"
+                                [ngStyle]="ngStyleSegment(buttonIdx,2)">
+                                <img src="assets/graphics/avatars/user2.png" width="40" height="40">
+                            </button>
+                            <button (click)="buttonIdx=3" type="button" class="btn-default roundButton segmentButton"
+                                [ngStyle]="ngStyleSegment(buttonIdx,3)">
+                                <img src="assets/graphics/avatars/user3.png" width="40" height="40">
+                            </button>
+                        </div>
+
+
+
+                        <hr>
+                        <div class="borderClass" style="font-size: 24px;">
+                            <div style="font-size: 12px;">Check any that apply to yourself:</div>
+                            <div><i [ngClass]="ngClassBox(makerFlg)" style="cursor: pointer;"
+                                    (click)="makerClicked()"></i> Film Maker</div>
+                            <div><i [ngClass]="ngClassBox(crewFlg)" style="cursor: pointer;"
+                                    (click)="crewClicked()"></i> Film Crew</div>
+                            <div><i [ngClass]="ngClassBox(actorFlg)" style="cursor: pointer;"
+                                    (click)="actorClicked()"></i> Actor</div>
+
+                        </div>
+                        <div *ngIf="errorMessage" style="color: red;">{{errorMessage}}</div>
+                        <app-button (click)="createPressed()" [name]="'Create'" class="large" [icon]="'sign-in'"
+                            [butStyle]="1">
+                        </app-button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<div class="bottomDiv">
+    <div id="clickHereDiv1" [ngStyle]="ngStyleButton(4)" style="padding: 3px; display: none;">
+        <app-button (click)="completeLogin()" [name]="'Click Here to complete login'"></app-button>
+    </div>
+    <div id="clickHereDiv2" [ngStyle]="ngStyleButton(4)" style="padding: 3px; display: block;">
+        <app-button [routerLink]="['/join']" *ngIf="!userId && icon=='fa-user'" [name]="'Add Your Profile!'"
+            [icon]="'plus'"></app-button>
+        <span *ngIf="user && userId">
+            <app-button [routerLink]="['/user']" [queryParams]="{id: userId}" [name]="user.username" [icon]="user.icon">
+            </app-button>
+            &nbsp;<span class="wordLink" title="Reputation Points: {{user.points}}"><i class="fa fa-star"></i>
+                {{user.points}}</span>
+            <span style="color: #00ff00;" *ngIf="pointDiff!=0">&nbsp;({{pointSign}}{{pointDiff}})</span>
+            &nbsp;<span class="wordLink" title="Badges" style="color: yellow;"><i class="fa fa-trophy"></i>
+                {{user.badgeCount}}</span>
+            <span style="color: #00ff00;" *ngIf="badgeFlg">&nbsp;(+1)</span>
+            &nbsp;<span class="wordLink" title="Messages" style="color: cyan;"><i class="fa fa-envelope"></i>
+                {{user.emailCount}}</span>
+        </span>
+        <span (click)="loginModal.show()" *ngIf="!userId" class="wordLink">
+            Log in
+        </span>
+        <app-button [routerLink]="['/join']" [name]="'Tour'" [class]="'narrow'" [icon]="'search'"></app-button>
+    </div>
+</div>
+
+<app-badge-promo-popup #badgePromoPopup></app-badge-promo-popup>
+<app-login #loginModal (messageEvent)="refreshLocalUser($event)"></app-login>

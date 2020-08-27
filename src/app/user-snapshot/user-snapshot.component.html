@@ -1,0 +1,11 @@
+<div class="personClass" [routerLink]="['/user']" [queryParams]="{id: user.id}">
+    <div class="personName" title="{{user.userTitle}}"><b><i class="fa fa-{{user.icon}}"></i> {{user.firstName}}
+            {{user.lastName}}</b></div>
+    <app-user-image [user]="user" [size]="160"></app-user-image>
+    <div style="font-size: 14px;">
+        <span class="hoverText" title="Reputation Points: {{user.points}}" style="color: #007;"><i class="fa fa-star"></i>{{user.points}}</span>
+        <span class="hoverText" title="Badges: {{user.badgeCount}}" *ngIf="user.badgeCount>0" style="color: #700;">&nbsp; <i class="fa fa-trophy"></i>{{user.badgeCount}}</span>
+        <span class="hoverText" title="Films: {{user.filmCount}}" *ngIf="user.filmCount>0" style="color: #070;">&nbsp; <i class="fa fa-film"></i>{{user.filmCount}}</span>
+        <span class="hoverText" title="Reviews: {{user.reviewCount}}" *ngIf="user.reviewCount>0" style="color: #070;">&nbsp; <i class="fa fa-comments"></i>{{user.reviewCount}}</span>
+    </div>
+</div>

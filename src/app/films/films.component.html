@@ -1,0 +1,24 @@
+<app-page-shell [userId]="userId" [navTitle]="'Films'" [icon]="'fa-film'" [rButton]="'plus'"
+    (messageEvent)="plusButtonClicked ($event)">
+
+    <img src="assets/graphics/film7.jpg" class="image">
+    <app-button-bar [buttonIdx]="1"></app-button-bar>
+
+    <div class="blackBox">
+        <div style="font-size: 24px; font-weight: 700;"><i class="fa fa-film"></i> -Films-
+            <app-button style="float: right;" (click)="plusButtonClicked('add')" [name]="'Add Your Film'" [icon]="'plus'" [class]="'narrow'">
+            </app-button>
+        </div>
+        <div>
+            Browse through our database of submitted films. Feel free to "Like", comment and review these films, or
+            submit your own project!
+        </div>
+        <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
+        <app-film-snapshot *ngFor="let film of films" [film]="film"></app-film-snapshot>
+
+    </div>
+
+</app-page-shell>
+
+<app-info-popup #infoPopup></app-info-popup>
+<app-add-film-popup #addFilmPopup (messageEvent)="flmAdded($event)"></app-add-film-popup>

@@ -1,0 +1,25 @@
+<div class="page-outer">
+    <div class="page-middle" [ngStyle]="ngStyleButton(2)">
+        <div class="navigation-bar" [ngStyle]="ngStyleButton(3)">
+            <i *ngIf="!lButton" class="fa fa-arrow-left icon-left" [ngStyle]="ngStyleIcon(1)"
+                (click)="backButtonClicked()"></i>
+            <i *ngIf="lButton=='info'" (click)="leftButtonPressed()" class="fa fa-info-circle icon-left"
+                [ngStyle]="ngStyleIcon(1)"></i>
+            <span class="navTitleBar">
+                <div><i class="fa fa-diamond" style="color: #00ff00;"></i> Snohomish Film Festival</div>
+                <div class="navTitle"><i *ngIf="icon" class="fa {{icon}}"></i> {{navTitle}}</div>
+            </span>
+            <i *ngIf="rButton=='plus'" (click)="rightButtonPressed()" class="fa fa-plus icon-right"
+                [ngStyle]="ngStyleIcon(1)"></i>
+            <i *ngIf="rButton=='home'" [routerLink]="['/']" class="fa fa-home"
+                style="font-size: 28px; float: right; cursor: pointer;" [ngStyle]="ngStyleIcon(1)"></i>
+            <a routerLink="/options" *ngIf="navTitle == 'Main Menu'"><i class="fa fa-paint-brush"
+                    style="font-size: 28px; float: right;" [ngStyle]="ngStyleIcon(1)"></i></a>
+        </div>
+        <app-user-bar [icon]="icon" [userId]="userId"></app-user-bar>
+        <div class="page-inner" [ngStyle]="ngStyleButton(2)">
+            <ng-content></ng-content>
+            <!--<app-bottom-bar [icon]="icon" [userId]="userId"></app-bottom-bar>-->
+        </div>
+    </div>
+</div>
