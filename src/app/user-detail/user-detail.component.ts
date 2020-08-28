@@ -39,16 +39,6 @@ export class UserDetailComponent extends BaseHttpComponent implements OnInit {
   ngOnInit(): void {
     this.user = this.getUserObject();
     this.userId = this.user.id;
-    this.userIsEditableFlg = (this.uId == this.userId);
-    this.userRoles[0].checkFlg = this.user.ownerFlg;
-    this.userRoles[1].checkFlg = this.user.boardFlg;
-    this.userRoles[2].checkFlg = this.user.superAdminFlg;
-    this.userRoles[3].checkFlg = this.user.adminFlg;
-    this.userRoles[4].checkFlg = this.user.veteranFlg;
-    this.userRoles[5].checkFlg = this.user.guildMemberFlg;
-    this.userRoles[6].checkFlg = this.user.staffFlg;
-    this.userRoles[7].checkFlg = this.user.criticFlg;
-
   }
   refreshPic(msg:string) {
     console.log('refreshPic');
@@ -76,15 +66,36 @@ export class UserDetailComponent extends BaseHttpComponent implements OnInit {
     };
     this.executeApi('festApi.php', params, true);
   }
+  upgradeToAdmin(name:string) {
+    var params = {
+      row_id: this.uId,
+      userId: this.user.id,
+      code: this.user.code,
+      action: name
+    };
+    console.log(params);
+    this.executeApi('festApi.php', params, true);
+  }
   postSuccessApi(file: string, data: string) {
-    console.log('getUser:', data);
+    console.log(file, data);
 
     var lines = data.split('<b>');
     lines.forEach(line => {
       var user = new User(line);
+      console.log('user', user);
       if (user.id)
         this.displayUser = user;
     });
+
+    this.userIsEditableFlg = (this.uId == this.userId);
+    this.userRoles[0].checkFlg = this.displayUser.ownerFlg;
+    this.userRoles[1].checkFlg = this.displayUser.boardFlg;
+    this.userRoles[2].checkFlg = this.displayUser.superAdminFlg;
+    this.userRoles[3].checkFlg = this.displayUser.adminFlg;
+    this.userRoles[4].checkFlg = this.displayUser.veteranFlg;
+    this.userRoles[5].checkFlg = this.displayUser.guildMemberFlg;
+    this.userRoles[6].checkFlg = this.displayUser.staffFlg;
+    this.userRoles[7].checkFlg = this.displayUser.criticFlg;
 
     var tableObj = { name: this.displayUser.username, data: [] };
     tableObj.data.push({ title: 'Reputation Points', value: this.displayUser.points })

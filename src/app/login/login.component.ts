@@ -30,12 +30,15 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
   public crewFlg = false;
   public actorFlg = false;
   public showLoginFlg = false;
+  public criticFlg = false;
 
   constructor() {
     super();
   }
 
   ngOnInit(): void {
+    this.user = this.getUserObject();
+    this.userId = this.user.id;
   }
   show() {
     this.apiMessage = '';
@@ -48,6 +51,7 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
     this.errorMessage = '';
     this.user = this.getUserObject();
     this.userId = this.user.id;
+    console.log('xxx', this.user);
     $('#loginPopup').modal();
     setTimeout(() => {
       this.checkFbLogin();
@@ -180,6 +184,9 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
   }
   actorClicked() {
     this.actorFlg = !this.actorFlg;
+  }
+  criticClicked() {
+    this.criticFlg = !this.criticFlg;
   }
   logout() {
     localStorage.email = '';

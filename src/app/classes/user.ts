@@ -37,6 +37,7 @@ export class User {
     public facebook: string;
     public twitter: string;
     public instagram: string;
+    public lastUpd: string;
     public bioLines = [];
 
     constructor(line: string, code: string = '') {
@@ -66,7 +67,7 @@ export class User {
             this.badgeCount = Number(components[x++]);
             this.reviewCount = Number(components[x++]);
             this.username = components[x++];
-            x++;
+            this.lastUpd = components[x++];
 
             // full film
             var filmLine = components[x++] || '';

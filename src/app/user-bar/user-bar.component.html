@@ -10,11 +10,11 @@
             </app-button>
             &nbsp;<span class="wordLink" title="Reputation Points: {{user.points}}"><i class="fa fa-star"></i>
                 {{user.points}}</span>
-            <span style="color: #00ff00;" *ngIf="pointDiff!=0">&nbsp;({{pointSign}}{{pointDiff}})</span>
-            &nbsp;<span class="wordLink" title="Badges" style="color: yellow;"><i class="fa fa-trophy"></i>
+            <span style="color: #007700;" *ngIf="pointDiff!=0">&nbsp;({{pointSign}}{{pointDiff}})</span>
+            &nbsp;<span class="wordLink" title="Badges" style="color: #700;"><i class="fa fa-trophy"></i>
                 {{user.badgeCount}}</span>
-            <span style="color: #00ff00;" *ngIf="badgeFlg">&nbsp;(+1)</span>
-            &nbsp;<span class="wordLink" title="Messages" style="color: cyan;"><i class="fa fa-envelope"></i>
+            <span style="color: #007700;" *ngIf="badgeFlg">&nbsp;(+1)</span>
+            &nbsp;<span class="wordLink" title="Messages" style="color: #077;"><i class="fa fa-envelope"></i>
                 {{user.emailCount}}</span>
         </span>
         <span (click)="loginModal.show()" *ngIf="!userId" class="wordLink">

@@ -55,5 +55,12 @@
 .navTitle {
     font-size: 12px;
 }
-
+.mainTitle {
+    font-size: 20px;
+}
+@media screen and (max-width: 400px) {
+    .mainTitle {
+        font-size: 14px;
+    }
+ }
 

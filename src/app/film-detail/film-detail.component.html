@@ -17,7 +17,7 @@
                 <app-data-table *ngIf="castObj.data" [tableObj]="castObj"></app-data-table>
                 <app-data-table *ngIf="crewObj.data" [tableObj]="crewObj"></app-data-table>
                 <div class="detailCard">
-                    <div class="titleCLass">Synopsis</div>
+                    <div class="titleCLass" [ngStyle]="ngStyleButton(3)">Synopsis</div>
                     <div style="padding: 5px;">
                         <div><b>{{film.tagline}}</b></div>
                         <div style="color: #777;">{{film.synopsis}}</div>
@@ -35,7 +35,7 @@
 
 
                 <a *ngIf="film.trailorUrl" target="_blank" href="{{film.trailorUrl}}">
-                    <button class="roundButton">
+                    <button class="btn btn-secondary roundButton">
                         <img *ngIf="film.trailerCode==1" src="assets/graphics/youTube.png" height="25">
                         <img *ngIf="film.trailerCode==2" src="assets/graphics/vimeo.png" height="25">
                         Watch Trailer</button>
@@ -45,7 +45,7 @@
 
 
                 <a target="_blank" href="{{film.url}}">
-                    <button class="roundButton">
+                    <button class="btn btn-secondary roundButton">
                         <img *ngIf="film.videoCode==1" src="assets/graphics/youTube.png" height="25">
                         <img *ngIf="film.videoCode==2" src="assets/graphics/vimeo.png" height="25">
                         Watch it!</button>
@@ -54,6 +54,7 @@
             </div>
         </div>
     </div>
+    <hr>
     <iframe *ngIf="film && film.trailerEmbed" width="100%" height="400"
         [src]="sanitizer.bypassSecurityTrustResourceUrl(film.trailerEmbed)" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -97,24 +98,16 @@
         (messageEvent)="submitReviewButtonClicked($event)"></app-form-wrapper>
 
     <app-review-bar *ngIf="!writeReviewFlg" [film]="film" [wideFlg]="true"></app-review-bar>
-    <table class="drTable" *ngIf="tableObj && !writeReviewFlg">
-        <tr style="background-color: #000060; color: white;">
-            <td style="font-size: 20px; font-weight: 800;">User Reviews </td>
-            <td width="120">
-                <app-button [class]="'narrow'" style="float: right;" (click)="reviewButtonClicked()"
+    <div [ngStyle]="ngStyleButton(3)" style="font-size: 20px; font-weight: 800; height: 44px;">
+        User Reviews
+        <app-button [class]="'narrow'" (click)="reviewButtonClicked()"
                     [name]="'Write Review'" [icon]="'pencil'"></app-button>
-            </td>
-        </tr>
-        <tr *ngIf="!filmReviews">
-            <td colspan="2" style="background-color: white; color: black;">No Reviews yet - Be the first!</td>
-        </tr>
+    </div>
+    <div *ngIf="!filmReviews || filmReviews.length==0">No Reviews yet - Be the first!</div>
+    <div *ngIf="!writeReviewFlg">
+        <app-review-detail *ngFor="let review of filmReviews" [review]="review" [user]="user" (messageEvent)="reviewButtonClicked()"></app-review-detail>
+    </div>
 
-        <tr *ngFor="let review of filmReviews">
-            <td colspan="2">
-                <app-review-detail [review]="review" [user]="user" (messageEvent)="reviewButtonClicked()"></app-review-detail>
-            </td>
-        </tr>
-    </table>
 </app-page-shell>
 
 <app-info-popup #infoPopup></app-info-popup>

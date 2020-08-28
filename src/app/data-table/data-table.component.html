@@ -1,7 +1,7 @@
 
 <table class="drTable" *ngIf="tableObj">
     <tr>
-        <td colspan="2" style="background-color: #000060; color: white;">{{tableObj.name}}</td>
+        <td colspan="2" [ngStyle]="ngStyleButton(3)">{{tableObj.name}}</td>
     </tr>
     <tr *ngFor="let item of tableObj.data">
         <td width="50%" align="right" style="white-space: nowrap;"><b>{{item.title}}</b>&nbsp;</td>

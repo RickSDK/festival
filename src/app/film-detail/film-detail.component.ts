@@ -55,7 +55,6 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     this.executeApi('festApi.php', params, true);
   }
   postSuccessApi(file: string, data: string) {
-    console.log(data);
     if (file === 'festReviews.php') {
       //console.log('xxx', data);
       this.showAlertPopup('Success');
@@ -65,11 +64,11 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     var lines = data.split('<b>');
     if (lines.length > 2) {
       this.film = new Film(lines[1]);
+      console.log('film', this.film);
       var filmReviews = lines[2].split('<r>');
       this.filmReviews = [];
       filmReviews.forEach(line => {
-        var filmReview = new Review(line);
-        filmReview.isMineFlg = filmReview.user_id == this.user.id;
+        var filmReview = new Review(line, this.user.id);
         if (filmReview.id) {
           this.filmReviews.push(filmReview);
           if (filmReview.isMineFlg)
@@ -111,6 +110,7 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     this.refreshImage();
   }
   reviewButtonClicked() {
+    console.log('hey! reviewButtonClicked');
     if (!this.user.id) {
       this.showAlertPopup('Log in, it\'s free!');
       return;

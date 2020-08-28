@@ -12,6 +12,7 @@ import { JoinComponent } from './join/join.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { FestivalProgramComponent } from './festival-program/festival-program.component';
+import { GuildComponent } from './guild/guild.component';
 
 const routes: Routes = [
   { path: '', component: MainMenuComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'user', component: UserDetailComponent },
   { path: 'film', component: FilmDetailComponent },
   { path: 'program', component: FestivalProgramComponent },
+  { path: 'guild', component: GuildComponent },
 ];
 
 @NgModule({

@@ -12,12 +12,17 @@ export class Review {
     public reviewLike: string;
     public reviewDislike: string;
     public created: string;
+    public createdDay: string;
     public reviewLines1: any;
     public reviewLines2: any;
     public starTitle: string;
     public isMineFlg: boolean;
+    public isUpVoted: boolean;
+    public isDownVoted: boolean;
+    public bestFlg: boolean;
+    
 
-    constructor(line: string) {
+    constructor(line: string, id:number) {
         var components = line.split("|");
         if (components.length > 12) {
             var x = 0;
@@ -36,7 +41,15 @@ export class Review {
             this.reviewLines1 = this.reviewLike.split('\n\n');
             this.reviewLines2 = this.reviewDislike.split('\n\n');
             this.created = components[x++];
-            this.isMineFlg = false;
+            this.isMineFlg = this.user_id == id;
+            if(this.isMineFlg) {
+                this.isUpVoted = true;
+                this.isDownVoted = true;
+            }
+            this.bestFlg = false;
+            
+            var dt = new Date(this.created);
+            this.createdDay = dt.toLocaleDateString();
 
             this.starTitle = '1 Star';
             if (this.stars > 2)

@@ -42,6 +42,7 @@ import { UserSnapshotComponent } from './user-snapshot/user-snapshot.component';
 import { CastCrewPopupComponent } from './cast-crew-popup/cast-crew-popup.component';
 import { UserBarComponent } from './user-bar/user-bar.component';
 import { FestivalProgramComponent } from './festival-program/festival-program.component';
+import { GuildComponent } from './guild/guild.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { FestivalProgramComponent } from './festival-program/festival-program.co
     UserSnapshotComponent,
     CastCrewPopupComponent,
     UserBarComponent,
-    FestivalProgramComponent
+    FestivalProgramComponent,
+    GuildComponent
   ],
   imports: [
     BrowserModule,

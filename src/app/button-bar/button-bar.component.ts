@@ -12,6 +12,7 @@ export class ButtonBarComponent extends BaseComponent implements OnInit {
   constructor() { super(); }
 
   ngOnInit(): void {
+    this.user = this.getUserObject();
   }
 
 

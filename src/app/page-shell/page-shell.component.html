@@ -6,7 +6,7 @@
             <i *ngIf="lButton=='info'" (click)="leftButtonPressed()" class="fa fa-info-circle icon-left"
                 [ngStyle]="ngStyleIcon(1)"></i>
             <span class="navTitleBar">
-                <div><i class="fa fa-diamond" style="color: #00ff00;"></i> Snohomish Film Festival</div>
+                <div class="mainTitle"><i class="fa fa-diamond" style="color: #00ff00;"></i> Snohomish Film Festival</div>
                 <div class="navTitle"><i *ngIf="icon" class="fa {{icon}}"></i> {{navTitle}}</div>
             </span>
             <i *ngIf="rButton=='plus'" (click)="rightButtonPressed()" class="fa fa-plus icon-right"

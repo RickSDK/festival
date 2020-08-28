@@ -36,5 +36,11 @@
             <i class="fa fa-ticket"></i> 
             <div class="menu-title">Tickets</div>
         </button>
+        <button *ngIf="user.guildMemberFlg" [routerLink]="['/guild']" type="button"
+            class="btn-default roundButton segmentButton"
+            [ngStyle]="ngStyleSegment(buttonIdx,6)">
+            <i class="fa fa-shield"></i> 
+            <div class="menu-title">Guild</div>
+        </button>
     </div>
 </div>

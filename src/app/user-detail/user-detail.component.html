@@ -24,7 +24,7 @@
                 </div>
 
                 <table class="drTable" *ngIf="displayUser.bio">
-                    <tr style="background-color: #000060; color: white;">
+                    <tr [ngStyle]="ngStyleButton(3)">
                         <td>
                             <i class="fa fa-film iconLittle" *ngIf="displayUser.filmFlg" title="Film Maker"></i>
                             <i class="fa fa-truck iconLittle" *ngIf="displayUser.crewFlg" title="Crew"></i>
@@ -40,16 +40,23 @@
                         </td>
                     </tr>
                 </table>
-                <table class="drTable" *ngIf="userRoles && userId==1">
+                <table class="drTable">
                     <tr>
-                        <td style="background-color: #000060; color: white;"><i class="fa fa-trophy"></i> Badges</td>
+                        <td [ngStyle]="ngStyleButton(3)"><i class="fa fa-trophy"></i> Badges</td>
                     </tr>
                     <tr>
                         <td>
                             <app-badge-snapshot *ngFor="let badgeId of displayUser.badges" [badgeId]="badgeId"></app-badge-snapshot>
+                            <div *ngIf="displayUser.guildMemberFlg" class="borderClass" style="text-align: center;">
+                                <div style="background-color: #007; color: white; padding: 5px;"><b><i class="fa fa-shield"></i> Guild Member</b></div>
+                                <img src="assets/graphics/trophy.png" height="100">
+                                <div style="font-size: 12px; color: gray;">Official Guild Member</div>
+                            </div>
                         </td>
                     </tr>
                 </table>
+
+
 
                 <div>
                     <a href="{{displayUser.imdb}}" *ngIf="displayUser.imdb">
@@ -67,10 +74,12 @@
                 </div>
 
                 <app-film-snapshot *ngFor="let film of displayUser.films" [film]="film"></app-film-snapshot>
+                <app-button *ngIf="userId==1 && !displayUser.adminFlg" [name]="'Upgrade to Admin'" [icon]="'lock'" (click)="upgradeToAdmin('upgradeToAdmin')"></app-button>
+                <app-button *ngIf="userId==1 && !displayUser.guildMemberFlg" [name]="'Upgrade to Guild'" [icon]="'shield'" (click)="upgradeToAdmin('upgradeToGuild')"></app-button>
 
                 <table class="drTable" *ngIf="userRoles && userId==1">
                     <tr>
-                        <td colspan="2" style="background-color: #000060; color: white;">Admin</td>
+                        <td colspan="2" style="background-color: #000060; color: white;">Rick's View</td>
                     </tr>
                     <tr *ngFor="let item of userRoles">
                         <td style="cursor: pointer;" align="right">&nbsp; <i class="fa fa-{{item.icon}}"></i>

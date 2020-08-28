@@ -4,7 +4,7 @@
     </div>
     <table *ngIf="film.numReviews" width="90%" align="center">
         <tr>
-            <td align="left" [title]="film.starTitle" style="color: yellow;">
+            <td align="left" [title]="film.starTitle" style="color: cyan;">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star" *ngIf="film.stars>3"></i>
                 <i class="fa fa-star" *ngIf="film.stars>5"></i>
@@ -13,8 +13,9 @@
                 <i class="fa fa-star-half" *ngIf="film.stars%2==1"></i>    
             </td>
             <td [title]="film.reviewsTitle">
-                <div *ngIf="wideFlg">{{film.reviewsTitle}}</div>
-                <div *ngIf="!wideFlg">{{film.numReviews}}</div>
+                <div *ngIf="wideFlg" style="white-space: nowrap; overflow: hidden;"><b>{{film.name}}</b></div>
+                <div *ngIf="wideFlg" style="font-size: 12px;">({{film.reviewsTitle}})</div>
+                <div *ngIf="!wideFlg" style="font-size: 12px;">({{film.numReviews}})</div>
             </td>
             <td align="right" title="{{film.likePercent}}% approval" style="color: #00ff00;">
                 <i class="fa fa-thumbs-up" *ngIf="film.likePercent>=50"></i>

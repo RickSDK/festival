@@ -50,12 +50,13 @@ export class UserBarComponent extends BaseHttpComponent implements OnInit {
 
     var params = {
       userId: userId,
+      lastUpd: localStorage.lastUpd,
     };
     this.executeApi('festStats.php', params, true);
   }
   postSuccessApi(api: string, data: string) {
     console.log(api, data);
-    if(api == 'festLogin.php') {
+    if (api == 'festLogin.php') {
       var c = data.split('|');
       console.log('xxx', c, data);
       localStorage.userId = Number(c[3]);
@@ -73,33 +74,51 @@ export class UserBarComponent extends BaseHttpComponent implements OnInit {
       console.log(this.user);
       showPopup('clickHereDiv2');
       this.getStats(this.user.id);
-    } else {
-      var c = data.split('|');
-      let points = Number(c[1]);
-      let badgeCount = Number(c[2]);
-      let emailCount = Number(c[3]);
-      
-      if (points != this.user.points || badgeCount != this.user.badgeCount || emailCount != this.user.emailCount)
-        this.updateUserWithNewStuff(points, badgeCount, emailCount);
+    }
+    if (api == 'festStats.php') {
+      if (data.length > 20)
+        this.updateUserWithNewStuff(data);
+
     }
 
   }
-  updateUserWithNewStuff(points: number, badgeCount: number, emailCount: number) {
-    var userBadgeCount = this.user.badgeCount || 0;
-    this.pointDiff = points - this.user.points;
+  updateUserWithNewStuff(data: string) {
+    var components = data.split('<b>');
+    var newUser = new User(components[1]);
+    console.log('updating to this: newUser', newUser)
+    console.log('this.user', this.user)
+
+    this.pointDiff = newUser.points - this.user.points;
     this.pointSign = (this.pointDiff < 0) ? '' : '+';
-    this.badgeFlg = badgeCount > userBadgeCount;
+    this.badgeFlg = newUser.badgeCount > this.user.badgeCount;
+    if (newUser.guildMemberFlg && !this.user.guildMemberFlg)
+      this.badgeFlg = true;
+      
     if (this.badgeFlg) {
       var tada = new Audio('assets/sounds/tada.mp3');
       tada.play();
       this.badgePromoPopupComponent.show('test');
-
     }
 
-    this.user.points = points;
-    this.user.badgeCount = badgeCount;
-    this.user.emailCount = emailCount;
+    this.user.points = newUser.points;
+    this.user.badgeCount = newUser.badgeCount;
+    this.user.emailCount = newUser.emailCount;
+
+    this.user.actorFlg = newUser.actorFlg;
+    this.user.adminFlg = newUser.adminFlg;
+    this.user.boardFlg = newUser.boardFlg;
+    this.user.crewFlg = newUser.crewFlg;
+    this.user.criticFlg = newUser.criticFlg;
+    this.user.filmCount = newUser.filmCount;
+    this.user.filmFlg = newUser.filmFlg;
+    this.user.guildMemberFlg = newUser.guildMemberFlg;
+    this.user.ownerFlg = newUser.ownerFlg;
+    this.user.staffFlg = newUser.staffFlg;
+    this.user.superAdminFlg = newUser.superAdminFlg;
+    this.user.veteranFlg = newUser.veteranFlg;
+
     localStorage.userObj = JSON.stringify(this.user);
+    localStorage.lastUpd = newUser.lastUpd;
 
   }
 }
