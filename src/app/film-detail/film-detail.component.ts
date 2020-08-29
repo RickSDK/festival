@@ -50,13 +50,14 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     this.starCount = 0;
     var params = {
       row_id: this.filmId,
+      userId: this.userId,
       action: 'getFilm'
     };
     this.executeApi('festApi.php', params, true);
   }
   postSuccessApi(file: string, data: string) {
+    //console.log('xxx', file, data);
     if (file === 'festReviews.php') {
-      //console.log('xxx', data);
       this.showAlertPopup('Success');
       this.getData();
       return;
@@ -64,12 +65,19 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     var lines = data.split('<b>');
     if (lines.length > 2) {
       this.film = new Film(lines[1]);
+      var filmReviewHash = {};
+      this.film.likeList.forEach(record => {
+        filmReviewHash[record.review_id] = record.likeFlg;
+      });
       console.log('film', this.film);
       var filmReviews = lines[2].split('<r>');
       this.filmReviews = [];
       filmReviews.forEach(line => {
         var filmReview = new Review(line, this.user.id);
         if (filmReview.id) {
+          filmReview.bestFlg = (this.film.bestReview == filmReview.id);
+          filmReview.isUpVoted = filmReviewHash[filmReview.id] === 'Y';
+          filmReview.isDownVoted = filmReviewHash[filmReview.id] === 'N';
           this.filmReviews.push(filmReview);
           if (filmReview.isMineFlg)
             this.myReview = filmReview;

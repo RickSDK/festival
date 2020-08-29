@@ -11,18 +11,39 @@
                     <div class="borderClass">
                         <div class="titleCLass">Guild Info</div>
                         <p>
-                            Thank you for helping make this a great festival!.
+                            Welcome to the Snohomish Film Festival Guild!
                         </p>
                         <p>
-                            More information coming soon!
+                            Here are some things you can do to get started: {{userId}}
                         </p>
+                        <ol>
+                            <li [routerLink]="['/user']" [queryParams]="{id: userId}">Update your <b><u>profile</u></b>
+                                with a picture and short bio.</li>
+                            <li>Join our <a
+                                    href="https://join.slack.com/t/snohomishfilmfestival/shared_invite/zt-gq94t19j-yiUhOXmv55cjxYHlB~br5A"
+                                    target=_new>Slack</a> discussion board.</li>
+                            <li>Email <a href="mailto:rickmedved@hotmail.com">rickmedved@hotmail.com</a> for any questions.</li>
+
+                        </ol>
                     </div>
                 </div>
                 <div class="col-sm-6">
+                    <div class="borderClass">
+                        <div class="titleCLass">Review Process</div>
+                        <p>
+                            People can begin submitting films on Oct 1, 2020. Our goal is to make SFF the best film
+                            festival experience for people who submit films. We will achieve that by:
+                        </p>
+                        <ol>
+                            <li>Great venue with lots of films shown and awards given out.</li>
+                            <li>Real-time web page updates as film moves through the process.</li>
+                            <li>Guaranteed feedback with every film submitted.</li>
+                            <li>Free entry into our film database.</li>
+                        </ol>
+                    </div>
                 </div>
-             </div>
+            </div>
         </div>
 
     </div>
 </app-page-shell>
-

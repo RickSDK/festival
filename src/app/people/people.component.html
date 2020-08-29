@@ -30,6 +30,16 @@
                 <i class="fa fa-briefcase"></i>
                 <div style="font-size: 12px;">Staff</div>
             </button>
+            <button (click)="segmentClicked(5)" type="button" class="btn-default roundButton segmentButton"
+                [ngStyle]="ngStyleSegment(buttonIdx,5)">
+                <i class="fa fa-shield"></i>
+                <div style="font-size: 12px;">Guild</div>
+            </button>
+            <button *ngIf="userId==1" (click)="segmentClicked(6)" type="button" class="btn-default roundButton segmentButton"
+                [ngStyle]="ngStyleSegment(buttonIdx,6)">
+                <i class="fa fa-user"></i>
+                <div style="font-size: 12px;">All</div>
+            </button>
         </div>
     </div>
     <div class="blackBox">

@@ -92,7 +92,7 @@ export class User {
                     films.push(film);
                 });
             }
-
+            
             this.films = films;
             this.code = code;
             var iconObj = getIconOfUser(this);
@@ -113,6 +113,9 @@ function getIconOfUser(user: User) {
 
     if (user.staffFlg)
         return { icon: 'briefcase', name: 'Staff Member' };
+
+    if (user.guildMemberFlg)
+        return { icon: 'shield', name: 'Guild Member' };
 
     if (user.filmFlg)
         return { icon: 'film', name: 'Film Maker' };

@@ -30,6 +30,9 @@ export class Film {
     public lengthMinutes: number;
     public castList: any;
     public crewList: any;
+    public bestReview: number;
+    public likeString: string;
+    public likeList: any;
 
     constructor(line: string) {
         var components = line.split("|");
@@ -60,6 +63,19 @@ export class Film {
             this.trailerEmbed = components[x++];
             this.tagline = components[x++];
             var castCrew = components[x++];
+            this.bestReview = Number(components[x++]);
+            this.likeString = components[x++];
+            var likeList = [];
+            if(this.likeString && this.likeString.length>0) {
+                var list = this.likeString.split(':');
+                list.forEach(record => {
+                    var c = record.split('a');
+                    likeList.push({review_id: c[0], likeFlg: c[1]})
+                });
+            }
+            this.likeList = likeList;
+
+
             if (castCrew && castCrew.length > 0) {
                 var castList = [];
                 var crewList = [];

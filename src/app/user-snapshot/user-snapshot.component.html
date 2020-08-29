@@ -1,6 +1,5 @@
 <div class="personClass" [routerLink]="['/user']" [queryParams]="{id: user.id}">
-    <div class="personName" title="{{user.userTitle}}"><b><i class="fa fa-{{user.icon}}"></i> {{user.firstName}}
-            {{user.lastName}}</b></div>
+    <div class="personName" title="{{user.userTitle}}"><b><i class="fa fa-{{user.icon}}"></i> {{user.username}}</b></div>
     <app-user-image [user]="user" [size]="160"></app-user-image>
     <div style="font-size: 14px;">
         <span class="hoverText" title="Reputation Points: {{user.points}}" style="color: #007;"><i class="fa fa-star"></i>{{user.points}}</span>

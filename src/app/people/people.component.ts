@@ -15,6 +15,8 @@ export class PeopleComponent extends BaseHttpComponent implements OnInit {
     { id: 2, name: 'Actors', icon: 'star-o', desc: 'Actors & Talent' },
     { id: 3, name: 'Critics', icon: 'comments', desc: 'Online Movie Critics' },
     { id: 4, name: 'Staff', icon: 'briefcase', desc: 'Snohomish Film Festival Staff' },
+    { id: 5, name: 'Guild', icon: 'shield', desc: 'Snohomish Film Festival Guild' },
+    { id: 6, name: 'All', icon: 'user', desc: 'Everyone' },
   ]
   constructor() { super(); }
 
@@ -39,6 +41,9 @@ export class PeopleComponent extends BaseHttpComponent implements OnInit {
     console.log('postSuccessApi', this.users);
   }
   personMatchesType(person: User, type: number) {
+    if (type == 6)
+      return true;
+
     if (person.filmFlg && type == 0)
       return true;
     if (person.crewFlg && type == 1)
@@ -49,6 +54,9 @@ export class PeopleComponent extends BaseHttpComponent implements OnInit {
       return true;
     if (person.staffFlg && type == 4)
       return true;
+    if (person.guildMemberFlg && type == 5)
+      return true;
+      
     return false;
   }
 }

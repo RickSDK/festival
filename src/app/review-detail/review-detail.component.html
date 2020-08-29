@@ -44,7 +44,7 @@
             [name]="'Delete'" [icon]="'trash'"></app-button>
         <app-button *ngIf="review.isMineFlg" [class]="'narrow'" [butStyle]="4" (click)="editReviewClicked()"
             [name]="'Edit'" [icon]="'pencil'"></app-button>
-        <app-button *ngIf="!review.isMineFlg && !review.bestFlg" [disabled]="votingFlg" [class]="'narrow'" [butStyle]="4" (click)="voteBestClicked()"
+        <app-button *ngIf="!review.isMineFlg && !review.bestFlg && user.adminFlg" [disabled]="votingFlg" [class]="'narrow'" [butStyle]="4" (click)="voteBestClicked()"
             [name]="'Vote Best'" [icon]="'check'"></app-button>
         <span *ngIf="review.bestFlg" style="font-size: 20px; color: #0A0;"><i class="fa fa-check"></i>Best!</span>
 

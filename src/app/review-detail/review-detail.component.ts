@@ -18,7 +18,8 @@ export class ReviewDetailComponent extends BaseHttpComponent implements OnInit {
   constructor() { super(); }
 
   ngOnInit(): void {
-    console.log(this.review)
+    //console.log('review', this.review)
+    //console.log('user', this.user)
   }
   upvoteReview() {
     if(!this.review.isUpVoted && !this.votingFlg) {
@@ -28,6 +29,7 @@ export class ReviewDetailComponent extends BaseHttpComponent implements OnInit {
         this.review.isDownVoted = false;
         this.review.dislikes--;
       }
+      this.likeButtonClicked('Y');
     }
   }
   downvoteReview() {
@@ -38,7 +40,21 @@ export class ReviewDetailComponent extends BaseHttpComponent implements OnInit {
         this.review.isUpVoted = false;
         this.review.likes--;
       }
+      this.likeButtonClicked('N');
     }
+  }
+  likeButtonClicked(likeFlg:string) {
+    this.votingFlg = true;
+    var params = {
+      review_id: this.review.id,
+      likeFlg: likeFlg,
+      filmId: this.review.film_id,
+      userId: this.user.id,
+      code: this.user.code,
+      action: 'likeButtonClicked'
+    };
+    console.log(params);
+    this.executeApi('reviewVotes.php', params, true);
   }
   editReviewClicked() {
     this.messageEvent.emit('edit');
@@ -47,7 +63,7 @@ export class ReviewDetailComponent extends BaseHttpComponent implements OnInit {
     this.votingFlg = true;
     this.review.likes += 10;
     var params = {
-      row_id: this.review.id,
+      review_id: this.review.id,
       filmId: this.review.film_id,
       userId: this.user.id,
       code: this.user.code,
@@ -56,7 +72,6 @@ export class ReviewDetailComponent extends BaseHttpComponent implements OnInit {
     console.log(params);
     this.review.bestFlg = true;
     this.executeApi('reviewVotes.php', params, true);
-
   }
   ngStyleDisabled(flag: boolean) {
     if (flag || this.votingFlg)
