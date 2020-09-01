@@ -11,7 +11,9 @@
             </span>
             <i *ngIf="rButton=='plus'" (click)="rightButtonPressed()" class="fa fa-plus icon-right"
                 [ngStyle]="ngStyleIcon(1)"></i>
-            <i *ngIf="rButton=='home'" [routerLink]="['/']" class="fa fa-home"
+                <i *ngIf="rButton=='home'" [routerLink]="['/']" class="fa fa-home"
+                style="font-size: 28px; float: right; cursor: pointer;" [ngStyle]="ngStyleIcon(1)"></i>
+                <i *ngIf="rButton==''" [routerLink]="['/']" class="fa fa-home"
                 style="font-size: 28px; float: right; cursor: pointer;" [ngStyle]="ngStyleIcon(1)"></i>
             <a routerLink="/options" *ngIf="navTitle == 'Main Menu'"><i class="fa fa-paint-brush"
                     style="font-size: 28px; float: right;" [ngStyle]="ngStyleIcon(1)"></i></a>

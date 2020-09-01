@@ -20,9 +20,9 @@ export class UserEditProfilePopupComponent extends BaseHttpComponent implements 
   public facebookObj = { name: 'Faebook Link', type: 'text', value: '', placeholder: 'http://', max: 100, disabledFlg: false };
   public twitterObj = { name: 'Twitter Link', type: 'text', value: '', placeholder: 'http://', max: 100, disabledFlg: false };
   public instagramObj = { name: 'Instagram Link', type: 'text', value: '', placeholder: 'http://', max: 100, disabledFlg: false };
-  public makerFlg = false;
-  public crewFlg = false;
-  public actorFlg = false;
+ // public makerFlg = false;
+  //public crewFlg = false;
+  //public actorFlg = false;
   public deleteFlg = false;
   public loadingFlg2:boolean = false;
 
@@ -43,9 +43,6 @@ export class UserEditProfilePopupComponent extends BaseHttpComponent implements 
   show(user:User) {
     var localUser = user;
     this.user = this.getUserObject();
-    this.makerFlg = this.user.filmFlg;
-    this.crewFlg = this.user.crewFlg;
-    this.actorFlg = this.user.actorFlg;
     this.firstNameObj.value = this.user.firstName;
     this.lastNameObj.value = this.user.lastName;
     this.emailObj.value = localUser.email;
@@ -59,13 +56,13 @@ export class UserEditProfilePopupComponent extends BaseHttpComponent implements 
     this.loadingFlg2 = false;
     $('#editProfilePopup').modal();
   }
-  ngClassBox(checked: boolean) {
+/*  ngClassBox(checked: boolean) {
     if (checked)
       return 'fa fa-check-square-o';
     else
       return 'fa fa-square-o';
-  }
-  makerClicked() {
+  }*/
+/*  makerClicked() {
     this.makerFlg = !this.makerFlg;
     this.changesMadeFlg = true;
   }
@@ -76,7 +73,7 @@ export class UserEditProfilePopupComponent extends BaseHttpComponent implements 
   actorClicked() {
     this.actorFlg = !this.actorFlg;
     this.changesMadeFlg = true;
-  }
+  }*/
   updateDetailsButtonClicked(msg: string) {
     this.changesMadeFlg = false;
     this.loadingFlg = true;
@@ -92,17 +89,11 @@ export class UserEditProfilePopupComponent extends BaseHttpComponent implements 
       facebook: this.facebookObj.value,
       twitter: this.twitterObj.value,
       instagram: this.instagramObj.value,
-      filmFlg: (this.makerFlg) ? 'Y' : '',
-      crewFlg: (this.crewFlg) ? 'Y' : '',
-      actorFlg: (this.actorFlg) ? 'Y' : '',
     };
     console.log(params);
     this.user.firstName = this.firstNameObj.value;
     this.user.lastName = this.lastNameObj.value;
     this.user.email = this.emailObj.value;
-    this.user.filmFlg = params.filmFlg;
-    this.user.crewFlg = params.crewFlg;
-    this.user.actorFlg = params.actorFlg;
     localStorage.userObj = JSON.stringify(this.user);
     this.executeApi('festApi.php', params, true);
   }

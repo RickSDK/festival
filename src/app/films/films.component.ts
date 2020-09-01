@@ -19,16 +19,6 @@ export class FilmsComponent extends BaseHttpComponent implements OnInit {
     this.userId = this.user.id;
     this.getData();
   }
-  ngClassGenre(genre: string) {
-    if (genre == 'Drama')
-      return 'fa fa-film';
-    if (genre == 'Documentary')
-      return 'fa fa-video-camera';
-    if (genre == 'Music Video')
-      return 'fa fa-music';
-
-    return 'fa fa-film';
-  }
   getData() {
     this.loadingFlg = true;
     var params = {
@@ -57,6 +47,8 @@ export class FilmsComponent extends BaseHttpComponent implements OnInit {
     return true;
   }
   plusButtonClicked(str: string) {
+    this.user = this.getUserObject();
+    this.userId = this.user.id;
     if (this.userId > 0)
       this.addFilmPopupComponent.show();
     else

@@ -7,6 +7,7 @@
         <i class="fa fa-info-circle" *ngIf="inputFieldObj.hint" style="font-size: 24px; float: right; cursor: pointer;"
             (click)="showHintFlg = !showHintFlg"></i>
     </div>
+    <div *ngIf="showHintFlg" class="hintClass">{{inputFieldObj.hint}}</div>
     <input id="id" *ngIf="inputFieldObj.type == 'text' || inputFieldObj.type == 'number' || inputFieldObj.type == 'date' || inputFieldObj.type == 'email'" id="{{inputFieldObj.id}}" 
         [disabled]="disabledFlg || inputFieldObj.disabledFlg"
         [attr.type]="inputFieldObj.type" [value]="inputFieldObj.value" (input)="checkStringLength($event.target)"
@@ -44,7 +45,6 @@
 
     <div *ngIf="inputFieldObj.max > 0" style="font-size: 10px; float: right;"><span
             *ngIf="inputFieldObj.value">{{inputFieldObj.value.length}}/</span>{{inputFieldObj.max}}</div>
-    <div *ngIf="showHintFlg">{{inputFieldObj.hint}}</div>
     <div *ngIf="!showHintFlg && !inputFieldObj.warningFlg && inputFieldObj.max > 0">&nbsp;</div>
     <div *ngIf="inputFieldObj.warningFlg" style="font-size: 12px; color: red;">Field is Required!</div>
     <div *ngIf="inputFieldObj.errorMessage && !inputFieldObj.warningFlg" style="background-color: yellow; color: red;">

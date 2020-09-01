@@ -26,9 +26,9 @@ export class BaseComponent extends BaseColorsComponent implements OnInit {
   }
   ngClassSegment(num: number, buttonIdx: number) {
     if (num == buttonIdx)
-      return 'btn btn-warning segmentButton roundButton';
+      return 'btn btn-primary segmentButton roundButton';
     else
-      return 'btn btn-success segmentButton roundButton';
+      return 'btn btn-secondary segmentButton roundButton';
   }
   segmentClicked(num: number) {
     this.buttonIdx = num;

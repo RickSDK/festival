@@ -8,9 +8,10 @@
                     style="width: 100%; max-width: 400px; max-height: 600px;">
                 <app-button *ngIf="filmIsEditableFlg" (click)="editFilm(film, true)" [name]="'Edit'" [class]="'narrow'"
                     [icon]="'pencil'"></app-button>
-                <app-button *ngIf="filmIsEditableFlg && showRefreshButton" (click)="refreshImagePressed()" [name]="'Refresh'" [class]="'narrow'"
-                    [icon]="'refresh'"></app-button>
-                <div *ngIf="showRefreshMessage">You may need to refresh your browser to see the new image as it may be cached in your browser's memory.</div>
+                <app-button *ngIf="filmIsEditableFlg && showRefreshButton" (click)="refreshImagePressed()"
+                    [name]="'Refresh'" [class]="'narrow'" [icon]="'refresh'"></app-button>
+                <div *ngIf="showRefreshMessage">You may need to refresh your browser to see the new image as it may be
+                    cached in your browser's memory.</div>
             </div>
             <div class="col-sm-6">
                 <app-data-table [tableObj]="tableObj"></app-data-table>
@@ -25,30 +26,42 @@
                 </div>
 
                 <div *ngIf="filmIsEditableFlg">
-                    <app-button (click)="editFilm(film, false)" [name]="'Edit'" [class]="'narrow'"
-                    [icon]="'pencil'"></app-button>
+                    <app-button (click)="editFilm(film, false)" [name]="'Edit'" [class]="'narrow'" [icon]="'pencil'">
+                    </app-button>
                     <app-button (click)="castCrewPopup.show(film)" [name]="'Add Cast/Crew'" [class]="'narrow'"
-                    [icon]="'user'"></app-button>
-                    <app-button [name]="'Upload Script'" [class]="'narrow'"
-                    [icon]="'file-pdf-o'"></app-button>
+                        [icon]="'user'"></app-button>
+                    <app-button [name]="'Upload Script'" [class]="'narrow'" [icon]="'file-pdf-o'"></app-button>
                 </div>
 
 
                 <a *ngIf="film.trailorUrl" target="_blank" href="{{film.trailorUrl}}">
                     <button class="btn btn-secondary roundButton">
+                        <i class="fa fa-play" *ngIf="film.trailerCode==0"></i>
                         <img *ngIf="film.trailerCode==1" src="assets/graphics/youTube.png" height="25">
                         <img *ngIf="film.trailerCode==2" src="assets/graphics/vimeo.png" height="25">
+                        <img *ngIf="film.trailerCode==3" src="assets/graphics/amazon.png" height="25">
                         Watch Trailer</button>
                 </a>
-                <app-button *ngIf="film.trailorUrl && !film.trailerEmbed" (click)="editEmbedClicked()"
-                    [icon]="'angle-double-right'"></app-button>
+                <app-button *ngIf="0 && filmIsEditableFlg && film.trailorUrl && !film.trailerEmbed"
+                    (click)="editEmbedClicked()" [icon]="'angle-double-right'"></app-button>
 
 
                 <a target="_blank" href="{{film.url}}">
                     <button class="btn btn-secondary roundButton">
+                        <i class="fa fa-play" *ngIf="film.videoCode==0"></i>
                         <img *ngIf="film.videoCode==1" src="assets/graphics/youTube.png" height="25">
                         <img *ngIf="film.videoCode==2" src="assets/graphics/vimeo.png" height="25">
-                        Watch it!</button>
+                        <img *ngIf="film.videoCode==3" src="assets/graphics/amazon.png" height="25">
+                       Watch it!</button>
+                </a>
+
+                <a *ngIf="film.behindScenes" target="_blank" href="{{film.behindScenes}}">
+                    <button class="btn btn-secondary roundButton">
+                        <i class="fa fa-play" *ngIf="film.videoCode==0"></i>
+                        <img *ngIf="film.videoCode==1" src="assets/graphics/youTube.png" height="25">
+                        <img *ngIf="film.videoCode==2" src="assets/graphics/vimeo.png" height="25">
+                        <img *ngIf="film.videoCode==3" src="assets/graphics/amazon.png" height="25">
+                       Behind the scenes footage</button>
                 </a>
 
             </div>
@@ -63,7 +76,7 @@
         (messageEvent)="submitEmbedButtonClicked($event)"></app-form-wrapper>
 
     <div *ngIf="writeReviewFlg" style="text-align: center; padding: 5px;" [ngStyle]="ngStyleButton(3)">
-        <div><b>Film Review</b></div>
+        <div><b>{{user.username}}'s Film Review</b></div>
         <hr>
         <div>Overall, how well did you like this {{film.genre}}?</div>
         <div class="btn-group">
@@ -97,17 +110,20 @@
     <app-form-wrapper *ngIf="starCount>0" [loadingFlg]="loadingFlg" [formFields]="reviewFields"
         (messageEvent)="submitReviewButtonClicked($event)"></app-form-wrapper>
 
-    <app-review-bar *ngIf="!writeReviewFlg" [film]="film" [wideFlg]="true"></app-review-bar>
-    <div [ngStyle]="ngStyleButton(3)" style="font-size: 20px; font-weight: 800; height: 44px;">
-        User Reviews
-        <app-button [class]="'narrow'" (click)="reviewButtonClicked()"
-                    [name]="'Write Review'" [icon]="'pencil'"></app-button>
-    </div>
-    <div *ngIf="!filmReviews || filmReviews.length==0">No Reviews yet - Be the first!</div>
     <div *ngIf="!writeReviewFlg">
-        <app-review-detail *ngFor="let review of filmReviews" [review]="review" [user]="user" (messageEvent)="reviewButtonClicked()"></app-review-detail>
+        <app-review-bar [film]="film" [wideFlg]="true"></app-review-bar>
+        <div *ngIf="!writeReviewFlg" [ngStyle]="ngStyleButton(3)"
+            style="font-size: 20px; font-weight: 800; height: 44px;">
+            User Reviews
+            <app-button [class]="'narrow'" (click)="reviewButtonClicked()" [name]="'Write Review'" [icon]="'pencil'">
+            </app-button>
+        </div>
+        <div *ngIf="!filmReviews || filmReviews.length==0">No Reviews yet - Be the first!</div>
+        <div *ngIf="!writeReviewFlg">
+            <app-review-detail *ngFor="let review of filmReviews" [review]="review" [user]="user"
+                (messageEvent)="reviewButtonClicked()"></app-review-detail>
+        </div>
     </div>
-
 </app-page-shell>
 
 <app-info-popup #infoPopup></app-info-popup>

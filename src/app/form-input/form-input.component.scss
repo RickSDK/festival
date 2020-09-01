@@ -4,6 +4,15 @@ input {
 textarea {
     width: 100%;
 }
+.hintClass {
+  background-color: #ffcc00;
+  color: black;
+  border: 1px solid black;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px; 
+	box-shadow: 1px 1px 1px #777; 
+}
  /* The switch - the box around the slider */
  .switch {
     position: relative;

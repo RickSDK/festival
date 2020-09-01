@@ -144,6 +144,10 @@ input {
    border-top-left-radius: 0;
    border-bottom-left-radius: 0;
 }
+.segmentButton:hover {
+   background-color: white;
+   color: black;
+}
 .roundButton {
    border: 1px solid black !important;
    box-shadow: 1px 1px 3px #444;

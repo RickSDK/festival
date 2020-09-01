@@ -9,18 +9,6 @@
             </div>
             <div class="modal-body">
 
-                <div class="blackBox" style="font-size: 20px;">
-                    <div style="font-size: 12px;">Which of these applies to yourself:</div>
-                    <div><i [ngClass]="ngClassBox(makerFlg)" style="cursor: pointer;" (click)="makerClicked()"></i>
-                        Film
-                        Maker</div>
-                    <div><i [ngClass]="ngClassBox(crewFlg)" style="cursor: pointer;" (click)="crewClicked()"></i>
-                        Film Crew
-                    </div>
-                    <div><i [ngClass]="ngClassBox(actorFlg)" style="cursor: pointer;" (click)="actorClicked()"></i>
-                        Actor
-                    </div>
-                </div>
                 <app-form-wrapper [loadingFlg]="loadingFlg" [errorMessage]="errorMessage"
                     [changesMadeFlg]="changesMadeFlg" [formFields]="formFields"
                     (messageEvent)="updateDetailsButtonClicked($event)">

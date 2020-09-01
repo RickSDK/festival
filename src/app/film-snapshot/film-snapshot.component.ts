@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Film } from '../classes/film';
 
+declare var ngClassGenre: any;
+
 @Component({
   selector: 'app-film-snapshot',
   templateUrl: './film-snapshot.component.html',
@@ -17,13 +19,6 @@ export class FilmSnapshotComponent implements OnInit {
     return true;
   }
   ngClassGenre(genre: string) {
-    if (genre == 'Drama')
-      return 'fa fa-film';
-    if (genre == 'Documentary')
-      return 'fa fa-video-camera';
-    if (genre == 'Music Video')
-      return 'fa fa-music';
-
-    return 'fa fa-film';
+    return ngClassGenre(genre);
   }
 }

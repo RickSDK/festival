@@ -33,6 +33,8 @@ export class Film {
     public bestReview: number;
     public likeString: string;
     public likeList: any;
+    public releaseDateText: string;
+    public behindScenes: string;
 
     constructor(line: string) {
         var components = line.split("|");
@@ -65,12 +67,15 @@ export class Film {
             var castCrew = components[x++];
             this.bestReview = Number(components[x++]);
             this.likeString = components[x++];
+            this.releaseDateText = components[x++];
+            this.behindScenes = components[x++];
+            
             var likeList = [];
-            if(this.likeString && this.likeString.length>0) {
+            if (this.likeString && this.likeString.length > 0) {
                 var list = this.likeString.split(':');
                 list.forEach(record => {
                     var c = record.split('a');
-                    likeList.push({review_id: c[0], likeFlg: c[1]})
+                    likeList.push({ review_id: c[0], likeFlg: c[1] })
                 });
             }
             this.likeList = likeList;
@@ -117,7 +122,7 @@ export class Film {
                 this.videoCode = codeOfString(this.url);
             if (this.trailorUrl)
                 this.trailerCode = codeOfString(this.trailorUrl);
-            this.localDate = dateComponentFromDateStamp(this.releaseDate, false, true);
+            this.localDate = this.releaseDateText || dateComponentFromDateStamp(this.releaseDate, false, true);
             let parts = this.releaseDate.split(' ');
             if (parts.length > 1)
                 this.releaseDate = parts[0];
@@ -131,6 +136,8 @@ function codeOfString(str: string) {
         return 1;
     if (str.includes('vimeo'))
         return 2;
+    if (str.includes('amazon'))
+        return 3;
 
     return 0;
 }

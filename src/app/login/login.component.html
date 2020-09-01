@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document" style="max-width: 320px;">
         <div class="modal-content" [ngStyle]="ngStyleButton(2)">
             <div class="modal-header">
-                <b><i class="fa fa-sign-in"></i> Version 0.6</b>
+                <b><i class="fa fa-sign-in"></i> Version 0.7</b>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -74,23 +74,8 @@
                                 <img src="assets/graphics/avatars/user3.png" width="40" height="40">
                             </button>
                         </div>
-
-
-
                         <hr>
-                        <div class="borderClass" style="font-size: 24px;">
-                            <div style="font-size: 12px;">Check any that apply to yourself:</div>
-                            <div><i [ngClass]="ngClassBox(makerFlg)" style="cursor: pointer;"
-                                    (click)="makerClicked()"></i> Film Maker</div>
-                            <div><i [ngClass]="ngClassBox(crewFlg)" style="cursor: pointer;"
-                                    (click)="crewClicked()"></i> Film Crew</div>
-                            <div><i [ngClass]="ngClassBox(actorFlg)" style="cursor: pointer;"
-                                    (click)="actorClicked()"></i> Actor</div>
-                            <div><i [ngClass]="ngClassBox(criticFlg)" style="cursor: pointer;"
-                                    (click)="criticClicked()"></i> Film Critic</div>
-                            <div style="font-size: 12px;">Or leave all blank if none apply</div>
-                        </div>
-                        <div *ngIf="errorMessage" style="color: red;">{{errorMessage}}</div>
+                        <div *ngIf="errorMessage" style="color: yellow;">{{errorMessage}}</div>
                         <app-button (click)="createPressed()" [name]="'Create'" class="large" [icon]="'sign-in'"
                             [butStyle]="1">
                         </app-button>

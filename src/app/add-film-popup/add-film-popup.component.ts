@@ -10,14 +10,14 @@ declare var $: any;
 })
 export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
-  public genres = ['Action',
+  public showStartDateFlg: boolean = false;
+  public genres = [
     'Comedy',
     'Documentary',
     'Sci-Fi',
     'Drama',
     'Horror',
     'Music Video',
-    'Musical',
     'Other'];
   public ratings = ['G', 'PG', 'PG-13', 'R', 'NC-17', 'X', 'N/A']
 
@@ -27,6 +27,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
   public lengthObj = { name: 'Film Length (In minutes)', type: 'number', value: '0', requiredFlg: true, disabledFlg: false, hint: 'How many minutes long is your film, including credits?' };
   public urlObj = { name: 'Film URL', type: 'text', value: '', placeholder: 'http', requiredFlg: true, disabledFlg: false, max: 200, hint: 'Link to your project in youTube or other publically viewable site.' };
   public trailorObj = { name: 'Trailor URL', type: 'text', value: '', placeholder: 'http', max: 200, disabledFlg: false, hint: 'Link to your official trailor in youTube or other publically viewable site.' };
+  public behindScenesObj = { name: 'Benhind Scenes URL', type: 'text', value: '', placeholder: 'http', max: 200, disabledFlg: false, hint: 'Link to an behind-the-scenes video in youTube or other publically viewable site.' };
   public posterObj = { name: 'Poster /  Screen Shot', type: 'picture', value: '', requiredFlg: true, disabledFlg: false, hint: 'An image that you would like to represent this film.' };
   public genreObj = { name: 'Genre', type: 'dropdown', value: '', options: this.genres, requiredFlg: true, disabledFlg: false };
   public ratingObj = { name: 'Rating', type: 'dropdown', value: '', options: this.ratings, requiredFlg: true, disabledFlg: false };
@@ -37,12 +38,13 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
   public releaseObj = { name: 'Release Date', type: 'date', value: '', requiredFlg: true, disabledFlg: false };
   public filmType: number = 0;
   public formFields = [
-    this.nameObj, 
+    this.nameObj,
     this.directorObj,
     this.producerObj,
     this.lengthObj,
     this.urlObj,
     this.trailorObj,
+    this.behindScenesObj,
     this.posterObj,
     this.genreObj,
     this.ratingObj,
@@ -61,14 +63,16 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
     this.filmType = 0;
     this.user = this.getUserObject();
     this.formFields.forEach(field => {
-      field.disabledFlg=false;
+      field.disabledFlg = false;
     });
-    if(this.user.id)
+    if (this.user.id)
       $('#addFilmPopup').modal();
   }
-  submitButtonClicked(str:string) {
+  submitButtonClicked(str: string) {
+    var dt = new Date(this.releaseObj.value);
+    var releaseDateText = dt.toLocaleDateString();
     this.loadingFlg = true;
-      var params = {
+    var params = {
       userId: this.user.id,
       code: this.user.code,
       action: 'addFilm',
@@ -78,6 +82,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
       lengthMinutes: this.lengthObj.value,
       url: this.urlObj.value,
       trailor: this.trailorObj.value,
+      behindScenes: this.behindScenesObj.value,
       poster: this.posterObj.value,
       genre: this.genreObj.value,
       rating: this.ratingObj.value,
@@ -86,6 +91,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
       cast: this.castObj.value,
       crew: this.crewObj.value,
       releaseDate: this.releaseObj.value,
+      releaseDateText: releaseDateText,
     };
     console.log(params);
 
