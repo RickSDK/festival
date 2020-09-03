@@ -20,7 +20,7 @@
         <span (click)="loginModal.show()" *ngIf="!userId" class="wordLink">
             Log in
         </span>
-        <app-button [routerLink]="['/join']" [name]="'Tour'" [class]="'narrow'" [icon]="'search'"></app-button>
+        <app-button *ngIf="!userId" [routerLink]="['/join']" [name]="'Tour'" [class]="'narrow'" [icon]="'search'"></app-button>
     </div>
 </div>
 

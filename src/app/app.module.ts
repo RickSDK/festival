@@ -43,6 +43,7 @@ import { CastCrewPopupComponent } from './cast-crew-popup/cast-crew-popup.compon
 import { UserBarComponent } from './user-bar/user-bar.component';
 import { FestivalProgramComponent } from './festival-program/festival-program.component';
 import { GuildComponent } from './guild/guild.component';
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -85,7 +86,8 @@ import { GuildComponent } from './guild/guild.component';
     CastCrewPopupComponent,
     UserBarComponent,
     FestivalProgramComponent,
-    GuildComponent
+    GuildComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,

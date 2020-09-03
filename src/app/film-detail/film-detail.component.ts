@@ -104,6 +104,8 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     this.tableObj = tableObj;
 
     this.editEmbededLinkFlg = false;
+
+    //this.film.trailerEmbed = 'https://www.youtube.com/embed/tjb8E5uyRmg';
     console.log('postSuccessApi', this.film);
   }
   refreshImage() {

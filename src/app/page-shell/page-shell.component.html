@@ -21,7 +21,8 @@
         <app-user-bar [icon]="icon" [userId]="userId"></app-user-bar>
         <div class="page-inner" [ngStyle]="ngStyleButton(2)">
             <ng-content></ng-content>
-            <!--<app-bottom-bar [icon]="icon" [userId]="userId"></app-bottom-bar>-->
+        
         </div>
+        <app-bottom-bar></app-bottom-bar>
     </div>
 </div>

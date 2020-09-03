@@ -1,0 +1,54 @@
+<app-page-shell [userId]="userId" [navTitle]="'Awards'" [icon]="'fa-trophy'">
+
+    <img src="assets/graphics/film3.jpg" class="image">
+    <app-button-bar [buttonIdx]="9"></app-button-bar>
+
+    <div class="blackBox">
+        <div style="font-size: 24px; font-weight: 700;"> -Contact-</div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="borderClass">
+                        <div class="titleCLass"><i class="fa fa-user"></i> Help Wanted</div>
+                        We are looking for people to help run the festival and judge movies. Contact us if you are interested in helping out!
+                    </div>
+                    <div class="borderClass">
+                        <div class="titleCLass"><i class="fa fa-user"></i> Festival Contacts</div>
+
+                        <div><b>Rick Medved</b></div>
+                        <div style="color: gray;">Director</div>
+                        <div><a href="mailto:rick@snohomishfilmfestival.com">rick@snohomishfilmfestival.com</a></div>
+                        <hr>
+                        <div><b>Bethanne Stevens</b></div>
+                        <div style="color: gray;">Assistant Director</div>
+                        <div><a href="mailto:bethanne@snohomishfilmfestival.com">bethanne@snohomishfilmfestival.com</a></div>
+                        <hr>
+                        <div><b>Kevin Hallagan</b></div>
+                        <div style="color: gray;">Program & Events Manager</div>
+                        <div><a href="mailto:kevin@snohomishfilmfestival.com">kevin@snohomishfilmfestival.com</a></div>
+                        <hr>
+                        <div><b>Antonio Dileo</b></div>
+                        <div style="color: gray;">Stage & Script Manager</div>
+                        <div><a href="mailto:antonio@snohomishfilmfestival.com">antonio@snohomishfilmfestival.com</a></div>
+                        <hr>
+                        <div><b>Lisa Skvarla</b></div>
+                        <div style="color: gray;">Marketing Manager</div>
+                        <div><a href="mailto:lisa@snohomishfilmfestival.com">lisa@snohomishfilmfestival.com</a></div>
+                        
+                    </div>
+
+                    
+                </div>
+                <div class="col-sm-6">
+                    <div *ngIf="successFlg" style="font-size: 24px; color: green;">Thank you! Comments have been sent. Expect a reply shortly.</div>
+                    <div *ngIf="!successFlg" class="borderClass">
+                        <div class="titleCLass"><i class="fa fa-comments"></i> Send us comments</div>
+                        <app-form-wrapper [loadingFlg]="loadingFlg" [formFields]="formFields" (messageEvent)="submitButtonClicked($event)"></app-form-wrapper>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</app-page-shell>

@@ -12,18 +12,43 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="borderClass">
-                        <div class="titleCLass">Rules for submitting films</div>
+                        <div class="titleCLass">Rules for Submitting Films</div>
                         <div class="listClass">
-                            <li>Anyone is eligible to submit</li>
-                            <li>Film must be between 4 and 30 minutes</li>
-                            <li>$40 submission fee</li>
-                            <li>Submissions begin: Oct 1, 2020</li>
-                            <li>Early Submission ends: Mar 1, 2021</li>
-                            <li>Deadline: July 1, 2021</li>
-                            <li>Late Deadline: July 15, 2021</li>
+                            <li>Shorts only. Film must be between 4 and 30 minutes</li>
+                            <li>Anyone is eligible to submit.</li>
+                            <li>Any type of film can be submitted.</li>
+                            <li>Guaranteed feedback from multiple industry insiders.</li>
+                            <li>Submissions start October 1, 2020.</li>
+                            <li>Festival Lineup announced July 15, 2021.</li>
                         </div>
                     </div>
 
+                    <table class="drTable" border="0">
+                        <tr>
+                            <td colspan="4" class="titleCLass">Submitting Schedule</td>
+                        </tr>
+                        <tr>
+                            <th>Type</th>
+                            <th>End Date</th>
+                            <th>Cost</th>
+                        </tr>
+                        <tr>
+                            <td>Early Bird</td>
+                            <td>Feb 1, 2021</td>
+                            <td>$15</td>
+                        </tr>
+                        <tr>
+                            <td>Regular</td>
+                            <td>June 1, 2021</td>
+                            <td>$30</td>
+                        </tr>
+                        <tr>
+                            <td>Late</td>
+                            <td>July 1, 2021</td>
+                            <td>$45</td>
+                        </tr>
+                    </table>
+ 
                     <app-button *ngIf="user.id" (click)="addFilmPopup.show(true)" [name]="'Submit!'" [class]="'large'"
                         [icon]="'upload'"></app-button>
                     <app-button *ngIf="!user.id" (click)="infoPopup.show('Log in to submit!')" [name]="'Submit!'"

@@ -35,6 +35,7 @@ export class Film {
     public likeList: any;
     public releaseDateText: string;
     public behindScenes: string;
+    public urlEmbed: string;
 
     constructor(line: string) {
         var components = line.split("|");
@@ -69,7 +70,7 @@ export class Film {
             this.likeString = components[x++];
             this.releaseDateText = components[x++];
             this.behindScenes = components[x++];
-            
+
             var likeList = [];
             if (this.likeString && this.likeString.length > 0) {
                 var list = this.likeString.split(':');
@@ -126,6 +127,12 @@ export class Film {
             let parts = this.releaseDate.split(' ');
             if (parts.length > 1)
                 this.releaseDate = parts[0];
+
+            if (this.videoCode == 1) {
+                var c = this.url.split('&');
+                this.urlEmbed = c[0].replace('watch?v=', 'embed/');
+            }
+
         }
     }
 }

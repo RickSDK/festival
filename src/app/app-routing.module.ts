@@ -13,6 +13,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { FestivalProgramComponent } from './festival-program/festival-program.component';
 import { GuildComponent } from './guild/guild.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   { path: '', component: MainMenuComponent },
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'film', component: FilmDetailComponent },
   { path: 'program', component: FestivalProgramComponent },
   { path: 'guild', component: GuildComponent },
+  { path: 'contact', component: ContactComponent },
 ];
 
 @NgModule({

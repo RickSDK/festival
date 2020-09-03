@@ -52,7 +52,7 @@
                         <img *ngIf="film.videoCode==1" src="assets/graphics/youTube.png" height="25">
                         <img *ngIf="film.videoCode==2" src="assets/graphics/vimeo.png" height="25">
                         <img *ngIf="film.videoCode==3" src="assets/graphics/amazon.png" height="25">
-                       Watch it!</button>
+                        Watch it!</button>
                 </a>
 
                 <a *ngIf="film.behindScenes" target="_blank" href="{{film.behindScenes}}">
@@ -61,7 +61,7 @@
                         <img *ngIf="film.videoCode==1" src="assets/graphics/youTube.png" height="25">
                         <img *ngIf="film.videoCode==2" src="assets/graphics/vimeo.png" height="25">
                         <img *ngIf="film.videoCode==3" src="assets/graphics/amazon.png" height="25">
-                       Behind the scenes footage</button>
+                        Behind the scenes footage</button>
                 </a>
 
             </div>
@@ -70,6 +70,10 @@
     <hr>
     <iframe *ngIf="film && film.trailerEmbed" width="100%" height="400"
         [src]="sanitizer.bypassSecurityTrustResourceUrl(film.trailerEmbed)" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+    <iframe *ngIf="film && film.urlEmbed" width="100%" height="400"
+        [src]="sanitizer.bypassSecurityTrustResourceUrl(film.urlEmbed)" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     <app-form-wrapper *ngIf="editEmbededLinkFlg" [loadingFlg]="loadingFlg" [formFields]="formFields"

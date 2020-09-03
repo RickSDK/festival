@@ -1,28 +1,15 @@
-<div class="bottomDiv">
-    <div [ngStyle]="ngStyleButton(3)" style="padding: 3px;">
-        <app-button [routerLink]="['/join']" *ngIf="!userId && icon=='fa-user'" [name]="'Add Your Profile!'"
-            [icon]="'plus'"></app-button>
-        <app-button *ngIf="!userId && icon!='fa-emerald'" [routerLink]="['/join']" [name]="'Join'"></app-button>
-        <span *ngIf="user && userId">
-            <app-button [routerLink]="['/user']" [queryParams]="{id: userId}" [name]="user.username" [icon]="user.icon"></app-button>
-            &nbsp;<span class="wordLink" title="Reputation Points: {{user.points}}"><i class="fa fa-star"></i>
-                {{user.points}}</span>
-            <span style="color: #00ff00;" *ngIf="pointDiff!=0">&nbsp;({{pointSign}}{{pointDiff}})</span>
-            &nbsp;<span class="wordLink" title="Badges" style="color: yellow;"><i class="fa fa-trophy"></i>
-                {{user.badgeCount}}</span>
-            <span style="color: #00ff00;" *ngIf="badgeFlg">&nbsp;(+1)</span>
-            &nbsp;<span class="wordLink" title="Messages" style="color: cyan;"><i class="fa fa-envelope"></i>
-                {{user.emailCount}}</span>
-        </span>
-        <span (click)="loginModal.show()" *ngIf="!userId" class="wordLink">
-            Log in
-        </span>
-        <app-button [routerLink]="['/join']" [name]="'Tour'" [class]="'narrow'" [icon]="'search'"></app-button>
-    </div>
-    <div style="background-color: black; color: gray; white-space: nowrap; overflow: hidden;">
-        &copy; 2020 Snohomish Film Festival | Contact | Info | Policy
+<div style="background-color: black; color: gray; white-space: nowrap; overflow: hidden;">
+    &copy; 2020 Snohomish Film Festival | 
+    <span [routerLink]="['/contact']" class="wordLink">Contact</span>
+</div>
+<div>Sponsors</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <a href="https://www.stolthetaquavit.com/" target=_new><img src="assets/graphics/sponsors/stolthet538.jpg" class="image"></a>
+        </div>
+        <div class="col-sm-6">
+            <a href="http://www.superpowersgame.com/superpowers/#/" target=_new><img src="assets/graphics/sponsors/superpowers538.jpg" class="image"></a>
+        </div>
     </div>
 </div>
-
-<app-badge-promo-popup #badgePromoPopup></app-badge-promo-popup>
-<app-login #loginModal (messageEvent)="refreshLocalUser($event)"></app-login>
