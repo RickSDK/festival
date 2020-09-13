@@ -14,10 +14,11 @@
                     <table width="100%">
                         <tr>
                             <td align="center" valign="top" width="50%">
-                                <button (click)="showStartDateFlg = true" type="button" class="btn-default roundButton large"
-                                    [ngStyle]="ngStyleSegment(buttonIdx,1)">
-                                    <i class="fa fa-arrow-right"></i> Film Festival
-                                </button>
+                                <a href="https://filmfreeway.com/festivals/56426?utm_campaign=Snohomish+Film+Festival&utm_medium=External&utm_source=Submission+Button"
+                                    target="_blank" title="Click to submit on FilmFreeway"><img
+                                        src="https://storage.googleapis.com/filmfreeway-assets/submission_buttons/v2/sm_submission_btn@2x-sky-gradient.png"
+                                        title="Click to submit on FilmFreeway" width="263" height="49"></a>
+
                                 <div style="font-size: 12px; padding: 10px;">Submit your film to the 2021 Snohomish Film
                                     Festival.</div>
                                 <div style="color: yellow;" *ngIf="showStartDateFlg">Submissions begin Oct 1, 2020</div>
@@ -27,7 +28,8 @@
                                     [ngStyle]="ngStyleSegment(buttonIdx,1)">
                                     <i class="fa fa-arrow-right"></i> Database
                                 </button>
-                                <div style="font-size: 12px; padding: 10px;">Add an older film to our database, which will be immediately viewable to the public.</div>
+                                <div style="font-size: 12px; padding: 10px;">Add an older film to our database, which
+                                    will be immediately viewable to the public.</div>
                             </td>
                         </tr>
                     </table>
@@ -36,14 +38,16 @@
                     <p *ngIf="filmType==1">Use this form to add an existing project of yours to our active database.
                         This
                         will allow users and film critics to leave comments and write reviews.</p>
-                    <p *ngIf="filmType==1">Note: Your film must be publically viewable on a site like youtube or amazon.</p>
+                    <p *ngIf="filmType==1">Note: Your film must be publically viewable on a site like youtube or amazon.
+                    </p>
                     <p *ngIf="filmType==2">Submitting your film costs $40. You will be notified by August 1st if your
                         film
                         has been selected for showing at the film festival.</p>
-                    <app-form-wrapper *ngIf="filmType==1" [loadingFlg]="loadingFlg" [formFields]="formFields" (messageEvent)="submitButtonClicked($event)"></app-form-wrapper>
+                    <app-form-wrapper *ngIf="filmType==1" [loadingFlg]="loadingFlg" [formFields]="formFields"
+                        (messageEvent)="submitButtonClicked($event)"></app-form-wrapper>
                     <div *ngIf="filmType==2" style="color: yellow;">Submissions start Jan 1, 2021!</div>
                 </div>
-                
+
                 <div *ngIf="filmType==3" style="text-align: center;">
                     <div>Film Submitted Successfully!</div>
                     <app-button (click)="okButtonPressed()" [name]="'Ok'" [class]="'large'"></app-button>
