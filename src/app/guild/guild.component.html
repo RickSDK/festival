@@ -14,36 +14,81 @@
                         <p>
                             Welcome to the Snohomish Film Festival Guild!
                         </p>
+                        <div style="text-align: center; font-size: 20px;">
+                            <a [routerLink]="['/people']" [queryParams]="{buttonIdx: 5}">
+                                Guild Members
+                            </a>
+                        </div>
+                        <hr>
                         <p>
-                            Here are some things you can do to get started: {{userId}}
+                            Here are some things you can do to get started:
                         </p>
                         <ol>
                             <li [routerLink]="['/user']" [queryParams]="{id: userId}">Update your <b><u>profile</u></b>
-                                with a picture and short bio.</li>
-                            <li>Join our <a
-                                    href="https://join.slack.com/t/snohomishfilmfestival/shared_invite/zt-gq94t19j-yiUhOXmv55cjxYHlB~br5A"
-                                    target=_new>Slack</a> discussion board.</li>
-                            <li>Email <a href="mailto:rickmedved@hotmail.com">rickmedved@hotmail.com</a> for any questions.</li>
+                                with a picture.</li>
+                            <li [routerLink]="['/user']" [queryParams]="{id: userId}">Update your <b><u>profile</u></b>
+                                with a short bio.</li>
+                            <li>Email <a href="mailto:rickmedved@hotmail.com">rickmedved@hotmail.com</a> for any
+                                questions.</li>
 
                         </ol>
+                        <hr>
+                        <div>Tuesday
+                            <a
+                                href="https://us04web.zoom.us/j/79059264380?pwd=SG9VZ0hLMTBhMEZwVS9WQkVyektVUT09">Zoom</a>
+                            meeting</div>
+                        <div>7pm</div>
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div class="borderClass">
                         <div class="titleCLass">Review Process</div>
-                        <p>
-                            People can begin submitting films on Oct 1, 2020. Our goal is to make SFF the best film
-                            festival experience for people who submit films. We will achieve that by:
-                        </p>
-                        <ol>
-                            <li>Great venue with lots of films shown and awards given out.</li>
-                            <li>Real-time web page updates as film moves through the process.</li>
-                            <li>Guaranteed feedback with every film submitted.</li>
-                            <li>Free entry into our film database.</li>
-                        </ol>
+                        <p>Starting October 1st, you can visit <a
+                                href="https://filmfreeway.com/SnohomishFilmFestival">Film Freeway</a> to conduct
+                            reviews.</p>
                         <hr>
-                        Visit <a href="https://filmfreeway.com/SnohomishFilmFestival">Film Freeway</a> to conduct reviews. Email Rick if you do not have review access by October 1st.
-                    </div>
+                        <div><b>Tier 1:</b> Tier 1 Guild Members will watch as many films as
+                            they
+                            have time to watch and rate them in 5 categories, plus give feedback. The judging forms
+                            look
+                            like this:</div>
+                        <div style="border: 1px solid black; padding: 10px; margin: 10px;">
+                            <div><b><u>Judging Form</u></b></div>
+                            <ol>
+                                <li>Acting, rate from 1-10</li>
+                                <li>Directing, rate from 1-10</li>
+                                <li>Writing/Story, rate from 1-10</li>
+                                <li>Sound / Music, rate from 1-10</li>
+                                <li>Stunts / Effects / Artistic Appeal, rate from 1-10</li>
+                            </ol>
+                            <ul>
+                                <li>Comments to other judges</li>
+                                <li>Comments to the film maker</li>
+                            </ul>
+                        </div>
+
+
+                        <p>
+                            The scores from all the scorecards will be tabulated and the top 40 films move on to tier 2.
+                        </p>
+                        <p>
+                            <b>Tier 2:</b> The submission process closes June 30th. Starting July 1st the Tier 2
+                            team, which has not
+                            seen any of the films, will watch the 40 films and decide which 30 make it into the
+                            festival, plus pick the top 3 films for each award category.
+                        </p>
+                        <p>
+                            July 15th, all films selected into the festival will be announced. We will also announce the
+                            top 3 films for each award category (with winners to be announced as part of the festival
+                            Awards Ceremony)
+                        </p>
+                        <p>
+                            <b>Tier 3:</b> Starting July 15th, Tier 3 judges will start watching movies to decide the winners of each category.
+                            For each award category (Best Director, Best Sound, Best editing, etc) a
+                            3-judge
+                            panel will watch the 3 top movies selected for the award and vote on the winner. Note: Tier 3 judges are also Tier 1 guild members and may or may not have already seen the movies.
+                        </p>
+                   </div>
                 </div>
             </div>
         </div>

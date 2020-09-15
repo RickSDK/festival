@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseHttpComponent } from '../base-http/base-http.component';
 import { User } from '../classes/user';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-people',
@@ -18,16 +19,23 @@ export class PeopleComponent extends BaseHttpComponent implements OnInit {
     { id: 5, name: 'Guild', icon: 'shield', desc: 'Snohomish Film Festival Guild' },
     { id: 6, name: 'All', icon: 'user', desc: 'Everyone' },
   ]
-  constructor() { super(); }
+  constructor(private route: ActivatedRoute) {
+    super();
+    this.route.queryParams
+      .subscribe(params => {
+        if (params.buttonIdx > 0)
+          this.buttonIdx = params.buttonIdx;
+      });
+  }
 
   ngOnInit(): void {
     this.user = this.getUserObject();
     this.userId = this.user.id;
     this.loadingFlg = true;
+    this.buttonIdx = 5;
     this.getAPIData(this.user, 'getPeople', false);
   }
   postSuccessApi(file: string, data: string) {
-    console.log('xxx', data);
     var lines = data.split('<b>');
     var users = [];
     lines.forEach(line => {
@@ -38,7 +46,6 @@ export class PeopleComponent extends BaseHttpComponent implements OnInit {
     });
     this.users = users;
     console.log(this.users);
-    console.log('postSuccessApi', this.users);
   }
   personMatchesType(person: User, type: number) {
     if (type == 6)
@@ -56,7 +63,7 @@ export class PeopleComponent extends BaseHttpComponent implements OnInit {
       return true;
     if (person.guildMemberFlg && type == 5)
       return true;
-      
+
     return false;
   }
 }
