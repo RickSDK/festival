@@ -10,8 +10,8 @@
             </app-button>
         </div>
         <div>
-            Browse through our database of submitted films. Feel free to "Like", comment and review these films, or
-            submit your own project!
+            Browse through our database of local films. Feel free to "Like", comment and review these films, or
+            add your own!
         </div>
         <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
         <app-film-snapshot *ngFor="let film of films" [film]="film"></app-film-snapshot>

@@ -9,7 +9,6 @@ import { User } from '../classes/user';
   styleUrls: ['./bottom-bar.component.scss']
 })
 export class BottomBarComponent extends BaseHttpComponent implements OnInit {
-//  @ViewChild(UserProfileComponent) userProfileComponent: UserProfileComponent;
   @ViewChild(BadgePromoPopupComponent) badgePromoPopupComponent: BadgePromoPopupComponent;
   @Input('icon') icon: string = '';
   @Input('userId') userId: number = 0;
@@ -40,14 +39,16 @@ export class BottomBarComponent extends BaseHttpComponent implements OnInit {
     this.executeApi('festStats.php', params, true);
   }
   postSuccessApi(api: string, data: string) {
+    console.log('festStats', data)
     var c = data.split('|');
     let points = Number(c[1]);
     let badgeCount = Number(c[2]);
     let emailCount = Number(c[3]);
-    if (points != this.user.points || badgeCount != this.user.badgeCount || emailCount != this.user.emailCount)
-      this.updateUserWithNewStuff(points, badgeCount, emailCount);
+//    if (points != this.user.points || badgeCount != this.user.badgeCount || emailCount != this.user.emailCount)
+  //    this.updateUserWithNewStuff(points, badgeCount, emailCount);
   }
   updateUserWithNewStuff(points: number, badgeCount: number, emailCount: number) {
+    console.log('bottom-bar');
     var userBadgeCount = this.user.badgeCount || 0;
     this.pointDiff = points - this.user.points;
     this.pointSign = (this.pointDiff < 0) ? '' : '+';
@@ -56,11 +57,10 @@ export class BottomBarComponent extends BaseHttpComponent implements OnInit {
       var tada = new Audio('assets/sounds/tada.mp3');
       tada.play();
       this.badgePromoPopupComponent.show('test');
-
     }
 
     this.user.points = points;
-    this.user.badgeCount = badgeCount;
+    this.user.badgeCount = userBadgeCount;
     this.user.emailCount = emailCount;
     localStorage.userObj = JSON.stringify(this.user);
 

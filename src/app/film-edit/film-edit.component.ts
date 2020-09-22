@@ -68,6 +68,7 @@ export class FilmEditComponent extends BaseHttpComponent implements OnInit {
   constructor(private router: Router) { super(); }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
   }
   show(film: Film, imageFlg: boolean) {
     console.log(film);

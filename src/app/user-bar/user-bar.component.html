@@ -3,6 +3,7 @@
         <app-button (click)="completeLogin()" [name]="'Click Here to complete login'"></app-button>
     </div>
     <div id="clickHereDiv2" [ngStyle]="ngStyleButton(4)" style="padding: 3px; display: block;">
+        [user-bar]
         <app-button [routerLink]="['/join']" *ngIf="!userId && icon=='fa-user'" [name]="'Add Your Profile!'"
             [icon]="'plus'"></app-button>
         <span *ngIf="user && userId">

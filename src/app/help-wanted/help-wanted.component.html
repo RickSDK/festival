@@ -1,0 +1,36 @@
+<app-page-shell [userId]="userId" [navTitle]="'Awards'" [icon]="'fa-trophy'">
+
+    <img src="assets/graphics/film3.jpg" class="image">
+    <app-button-bar [buttonIdx]="9"></app-button-bar>
+
+    <div class="blackBox">
+        <div style="font-size: 24px; font-weight: 700;"> -Help Wanted-</div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="borderClass">
+                        <div class="titleCLass"><i class="fa fa-user"></i> Help Wanted</div>
+                        <p>Are you a member of the local film community or even just a film enthusiast?</p>
+                        <p>We are looking for volunteers who are interested in watching local independent films, rating them and providing feedback. No experience necessary and the work can be done from home.</p>
+                        <p>Snohomish Film Festival accepts movies from anyone, no matter who you are, or what political beliefs you have. We expect Guild Members to judge films based on their artistic value, stories, acting, sound and cinematography, not based on politics.</p>
+                        <p>If this sounds like you, we would love to hear from you!</p>
+                    </div>
+                    <app-button *ngIf="1 || !user.id" (click)="loginModal.show()" [name]="'Sign up!'" [class]="'large'"></app-button>
+
+                </div>
+                <div class="col-sm-6">
+                    <div *ngIf="successFlg" style="font-size: 24px; color: green;">Thank you! Request has been sent. Click the signup button to create a profile!</div>
+                    <div *ngIf="!successFlg" class="borderClass">
+                        <div class="titleCLass"><i class="fa fa-comments"></i> Request Guild Member Status</div>
+                        <app-form-wrapper [loadingFlg]="loadingFlg" [formFields]="formFields" (messageEvent)="submitButtonClicked($event)"></app-form-wrapper>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</app-page-shell>
+
+<app-login #loginModal (messageEvent)="refreshUser($event)"></app-login>
+<app-info-popup #infoModal (messageEvent)="okBUttonPressed($event)"></app-info-popup>

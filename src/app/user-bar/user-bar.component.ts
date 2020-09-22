@@ -34,8 +34,6 @@ export class UserBarComponent extends BaseHttpComponent implements OnInit {
   }
   completeLogin() {
     dismisPopup('clickHereDiv1');
-    console.log('xxx', localStorage.facebookName);
-    console.log('xxx', localStorage.facebookId);
     var params = {
       action: 'facebookLogin',
       name: localStorage.facebookName,
@@ -83,6 +81,7 @@ export class UserBarComponent extends BaseHttpComponent implements OnInit {
 
   }
   updateUserWithNewStuff(data: string) {
+    console.log('user-bar!!!');
     var components = data.split('<b>');
     var newUser = new User(components[1]);
     console.log('updating to this: newUser', newUser)
@@ -93,10 +92,10 @@ export class UserBarComponent extends BaseHttpComponent implements OnInit {
     this.badgeFlg = newUser.badgeCount > this.user.badgeCount;
     if (newUser.guildMemberFlg && !this.user.guildMemberFlg)
       this.badgeFlg = true;
-      
+
     if (this.badgeFlg) {
       var tada = new Audio('assets/sounds/tada.mp3');
-      tada.play();
+      //tada.play();
       this.badgePromoPopupComponent.show('test');
     }
 

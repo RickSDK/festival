@@ -1,0 +1,36 @@
+<app-page-shell [userId]="userId" [navTitle]="'Awards'" [icon]="'fa-trophy'">
+
+    <img src="assets/graphics/film6.jpg" class="image">
+    <app-button-bar [buttonIdx]="99"></app-button-bar>
+
+    <div class="blackBox">
+
+        <div class="borderClass">
+            <div class="titleCLass"><i class="fa fa-info-circle"></i> About Us</div>
+            <p> Snohomish Film Festival is Washington state's newest event and forum for filmmakers from around the Puget
+                Sound and beyond, to tell their stories through the medium of film. It aims to promote local talent as
+                well as inspire, build and encourage current and future filmmakers, writers, and artists to showcase
+                their work and receive regognition for their achievements. Snohomish Film Festival aims to build and
+                foster community connections and help build a stronger film community in Washington State.
+            </p>
+            <p> This will be an in-person film festival Saturday September 18, 2021 at Everett Performaing Arts Center 
+                from 3pm - 8pm. We hope to see all of you there.
+            </p>
+            <p>
+                Short films of any kind can be submitted starting October 1st, 2020. We accept films of any genre and guarantee to
+                give the film makers written feedback from a number of local film insiders.
+            </p>
+            <p>
+                This festival will feature 30 films, a script reading room, film maker Q&A sessions plus a live awards show handing out 18 awards!
+                Get your film or script submitted to be part of the fun.
+            </p>
+            <div style="text-align: center;">
+                <app-button [routerLink]="['/tickets']" [name]="'Venue'"></app-button>
+                <app-button [routerLink]="['/help-wanted']" [name]="'Help Wanted'"></app-button>
+                <app-button [routerLink]="['/contact']" [name]="'Contact Us'"></app-button>
+            </div>
+
+        </div>
+    </div>
+
+</app-page-shell>

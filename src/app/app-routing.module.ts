@@ -14,6 +14,8 @@ import { FilmDetailComponent } from './film-detail/film-detail.component';
 import { FestivalProgramComponent } from './festival-program/festival-program.component';
 import { GuildComponent } from './guild/guild.component';
 import { ContactComponent } from './contact/contact.component';
+import { HelpWantedComponent } from './help-wanted/help-wanted.component';
+import { AboutComponent } from './about/about.component';
 
 const routes: Routes = [
   { path: '', component: MainMenuComponent },
@@ -29,6 +31,8 @@ const routes: Routes = [
   { path: 'program', component: FestivalProgramComponent },
   { path: 'guild', component: GuildComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'help-wanted', component: HelpWantedComponent },
+  { path: 'about', component: AboutComponent },
 ];
 
 @NgModule({

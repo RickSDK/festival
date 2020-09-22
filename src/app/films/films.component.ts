@@ -15,6 +15,7 @@ export class FilmsComponent extends BaseHttpComponent implements OnInit {
   constructor() { super(); }
 
   ngOnInit(): void {
+    window.scrollTo(0,0);
     this.user = this.getUserObject();
     this.userId = this.user.id;
     this.getData();

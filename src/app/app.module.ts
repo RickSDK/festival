@@ -44,6 +44,8 @@ import { UserBarComponent } from './user-bar/user-bar.component';
 import { FestivalProgramComponent } from './festival-program/festival-program.component';
 import { GuildComponent } from './guild/guild.component';
 import { ContactComponent } from './contact/contact.component';
+import { HelpWantedComponent } from './help-wanted/help-wanted.component';
+import { AboutComponent } from './about/about.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +89,9 @@ import { ContactComponent } from './contact/contact.component';
     UserBarComponent,
     FestivalProgramComponent,
     GuildComponent,
-    ContactComponent
+    ContactComponent,
+    HelpWantedComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
