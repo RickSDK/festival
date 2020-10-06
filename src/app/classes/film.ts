@@ -36,6 +36,7 @@ export class Film {
     public releaseDateText: string;
     public behindScenes: string;
     public urlEmbed: string;
+    public festivalYear: number;
 
     constructor(line: string) {
         var components = line.split("|");
@@ -51,7 +52,7 @@ export class Film {
             this.numReviews = Number(components[x++]);
             this.likePercent = Number(components[x++]);
             this.lengthMinutes = Number(components[x++]);
-            x++;
+            this.festivalYear = Number(components[x++]);
             x++;
             x++;
             this.url = components[x++];

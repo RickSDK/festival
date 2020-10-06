@@ -14,12 +14,11 @@
                     <div class="borderClass">
                         <div class="titleCLass">Rules for Submitting Films</div>
                         <div class="listClass">
-                            <li>Shorts only. Film must be between 4 and 30 minutes</li>
+                            <li>Shorts only. Film must be between 4 and 30 minutes.</li>
                             <li>Anyone is eligible to submit.</li>
                             <li>Any type of film can be submitted.</li>
                             <li>Guaranteed feedback from multiple industry insiders.</li>
-                            <li>Submissions start October 1, 2020.</li>
-                            <li>Festival Lineup announced July 15, 2021.</li>
+                            <li>Festival lineup announced July 15, 2021.</li>
                         </div>
                     </div>
 
@@ -34,21 +33,21 @@
                         </tr>
                         <tr>
                             <td>Early Bird</td>
-                            <td>Feb 1, 2021</td>
+                            <td>Jan 31, 2021</td>
                             <td>$15</td>
                         </tr>
                         <tr>
                             <td>Regular</td>
-                            <td>June 1, 2021</td>
+                            <td>May 31, 2021</td>
                             <td>$30</td>
                         </tr>
                         <tr>
                             <td>Late</td>
-                            <td>July 1, 2021</td>
+                            <td>June 30, 2021</td>
                             <td>$45</td>
                         </tr>
                     </table>
- 
+                    <hr>
                     <app-button *ngIf="user.id" (click)="addFilmPopup.show(true)" [name]="'Submit!'" [class]="'large'"
                         [icon]="'upload'"></app-button>
                     <app-button *ngIf="!user.id" (click)="infoPopup.show('Log in to submit!')" [name]="'Submit!'"

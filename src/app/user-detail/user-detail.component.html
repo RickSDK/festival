@@ -79,6 +79,7 @@
                     <app-button *ngIf="userId==1 && !displayUser.adminFlg" [name]="'Upgrade to Admin'" [icon]="'lock'" (click)="upgradeToAdmin('upgradeToAdmin')"></app-button>
                     <app-button *ngIf="userId==1 && !displayUser.guildMemberFlg" [name]="'Upgrade to Guild'" [icon]="'shield'" (click)="upgradeToAdmin('upgradeToGuild')"></app-button>
                     <app-button *ngIf="userId==1 && !displayUser.staffFlg" [name]="'Upgrade to Staff'" [icon]="'suitcase'" (click)="upgradeToAdmin('upgradeToStaff')"></app-button>    
+                    <app-button *ngIf="userId==1 && !displayUser.boardFlg" [name]="'Confirm Guild'" [icon]="'shield'" (click)="upgradeToAdmin('confirmGuild')"></app-button>    
                 </div>
 
                 <table class="drTable" *ngIf="userRoles && userId==1">

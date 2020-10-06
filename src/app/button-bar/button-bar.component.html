@@ -35,12 +35,18 @@
             [ngClass]="ngClassSegment(buttonIdx,5)">
             <i class="fa fa-ticket"></i> 
             <div class="menu-title">Tickets</div>
-        </button>
+        </button> 
         <button *ngIf="user.guildMemberFlg" [routerLink]="['/guild']" type="button"
             class="btn-default roundButton segmentButton"
             [ngClass]="ngClassSegment(buttonIdx,6)">
             <i class="fa fa-shield"></i> 
             <div class="menu-title">Guild</div>
+        </button> 
+        <button *ngIf="user.staffFlg" [routerLink]="['/staff-page']" type="button"
+            class="btn-default roundButton segmentButton"
+            [ngClass]="ngClassSegment(buttonIdx,7)">
+            <i class="fa fa-briefcase"></i> 
+            <div class="menu-title">Staff</div>
         </button>
     </div>
 </div>

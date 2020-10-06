@@ -5,16 +5,32 @@
     <app-button-bar [buttonIdx]="1"></app-button-bar>
 
     <div class="blackBox">
-        <div style="font-size: 24px; font-weight: 700;"><i class="fa fa-film"></i> -Films-
-            <app-button style="float: right;" (click)="plusButtonClicked('add')" [name]="'Add Your Film'" [icon]="'plus'" [class]="'narrow'">
+        <div style="font-size: 24px; font-weight: 700;"><i class="fa fa-film"></i> -Festival Films-
+            <app-button style="float: right;" (click)="plusButtonClicked('add')" [name]="'Add Your Film'"
+                [icon]="'plus'" [class]="'narrow'">
             </app-button>
         </div>
-        <div>
+        <div *ngIf="0">
             Browse through our database of local films. Feel free to "Like", comment and review these films, or
             add your own!
         </div>
+
+        <div>
+            <div class="btn-group">
+                <button (click)="changeOption(2021, 0)" type="button" class="btn-default roundButton segmentButton"
+                    [ngClass]="ngClassSegment(festivalIdx,0)">2021 Festival
+                </button>
+                <button (click)="changeOption(0, 1)" type="button" class="btn-default roundButton segmentButton"
+                    [ngClass]="ngClassSegment(festivalIdx,1)">Older Films
+                </button>
+            </div>
+        </div>
+        <div *ngIf="selectedYear>0">The following films have been submitted to Snohomish Film Festival {{selectedYear}}. Winning entries will be announced July 1st!</div>
+        <div *ngIf="selectedYear==0">The following films are currently available to watch. Feel free to rate and leave a review!</div>
+
+
         <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
-        <app-film-snapshot *ngFor="let film of films" [film]="film"></app-film-snapshot>
+        <app-film-snapshot *ngFor="let film of displayFilms" [film]="film"></app-film-snapshot>
 
     </div>
 

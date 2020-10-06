@@ -46,6 +46,7 @@ import { GuildComponent } from './guild/guild.component';
 import { ContactComponent } from './contact/contact.component';
 import { HelpWantedComponent } from './help-wanted/help-wanted.component';
 import { AboutComponent } from './about/about.component';
+import { StaffPageComponent } from './staff-page/staff-page.component';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { AboutComponent } from './about/about.component';
     GuildComponent,
     ContactComponent,
     HelpWantedComponent,
-    AboutComponent
+    AboutComponent,
+    StaffPageComponent
   ],
   imports: [
     BrowserModule,

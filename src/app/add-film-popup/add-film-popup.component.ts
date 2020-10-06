@@ -42,7 +42,6 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
     this.directorObj,
     this.producerObj,
     this.lengthObj,
-    this.urlObj,
     this.trailorObj,
     this.behindScenesObj,
     this.posterObj,
@@ -69,6 +68,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
       $('#addFilmPopup').modal();
   }
   submitButtonClicked(str: string) {
+    var festivalYear = '2021';
     var dt = new Date(this.releaseObj.value);
     var releaseDateText = dt.toLocaleDateString();
     this.loadingFlg = true;
@@ -90,6 +90,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
       desc: this.descObj.value,
       cast: this.castObj.value,
       crew: this.crewObj.value,
+      festivalYear: festivalYear,
       releaseDate: this.releaseObj.value,
       releaseDateText: releaseDateText,
     };

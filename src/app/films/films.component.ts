@@ -11,11 +11,14 @@ import { AddFilmPopupComponent } from '../add-film-popup/add-film-popup.componen
 export class FilmsComponent extends BaseHttpComponent implements OnInit {
   @ViewChild(AddFilmPopupComponent) addFilmPopupComponent: AddFilmPopupComponent;
   public films: any;
+  public displayFilms: any;
+  public festivalIdx = 0;
+  public selectedYear = 2021;
 
   constructor() { super(); }
 
   ngOnInit(): void {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     this.user = this.getUserObject();
     this.userId = this.user.id;
     this.getData();
@@ -39,7 +42,21 @@ export class FilmsComponent extends BaseHttpComponent implements OnInit {
         films.push(film);
     });
     this.films = films;
+    this.filterFilms();
     console.log('postSuccessApi', this.films);
+  }
+  changeOption(year: number, idx: number) {
+    this.selectedYear = year;
+    this.festivalIdx = idx;
+    this.filterFilms();
+  }
+  filterFilms() {
+    var displayFilms = [];
+    this.films.forEach(film => {
+      if (this.selectedYear ==  film.festivalYear)
+        displayFilms.push(film);
+    });
+    this.displayFilms = displayFilms;
   }
   flmAdded(str: string) {
     this.getData();

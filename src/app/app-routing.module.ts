@@ -16,6 +16,7 @@ import { GuildComponent } from './guild/guild.component';
 import { ContactComponent } from './contact/contact.component';
 import { HelpWantedComponent } from './help-wanted/help-wanted.component';
 import { AboutComponent } from './about/about.component';
+import { StaffPageComponent } from './staff-page/staff-page.component';
 
 const routes: Routes = [
   { path: '', component: MainMenuComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'help-wanted', component: HelpWantedComponent },
   { path: 'about', component: AboutComponent },
+  { path: 'staff-page', component: StaffPageComponent },
 ];
 
 @NgModule({

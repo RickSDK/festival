@@ -46,7 +46,7 @@
                     (click)="editEmbedClicked()" [icon]="'angle-double-right'"></app-button>
 
 
-                <a target="_blank" href="{{film.url}}">
+                <a target="_blank" href="{{film.url}}" *ngIf="film.url">
                     <button class="btn btn-secondary roundButton">
                         <i class="fa fa-play" *ngIf="film.videoCode==0"></i>
                         <img *ngIf="film.videoCode==1" src="assets/graphics/youTube.png" height="25">
@@ -114,7 +114,7 @@
     <app-form-wrapper *ngIf="starCount>0" [loadingFlg]="loadingFlg" [formFields]="reviewFields"
         (messageEvent)="submitReviewButtonClicked($event)"></app-form-wrapper>
 
-    <div *ngIf="!writeReviewFlg">
+    <div *ngIf="film && film.url && !writeReviewFlg">
         <app-review-bar [film]="film" [wideFlg]="true"></app-review-bar>
         <div *ngIf="!writeReviewFlg" [ngStyle]="ngStyleButton(3)"
             style="font-size: 20px; font-weight: 800; height: 44px;">

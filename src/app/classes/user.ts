@@ -68,10 +68,10 @@ export class User {
             this.reviewCount = Number(components[x++]);
             this.username = components[x++];
             this.lastUpd = components[x++];
+            this.email = components[x++];
 
             // full film
             var filmLine = components[x++] || '';
-            this.email = components[x++];
             var badges = components[x++];
             this.badges = [];
             if (badges)

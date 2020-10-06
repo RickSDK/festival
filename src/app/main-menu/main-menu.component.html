@@ -4,8 +4,8 @@
     <img src="assets/graphics/film1.jpg" class="image">
     <app-button-bar [buttonIdx]="0"></app-button-bar>
     <div class="blackBox">
-        <img src="assets/graphics/logo.png" style="width: 100%; max-width: 600px;" title="Snohomish Film Festival">
-        <div style="font-weight: 700; font-size: 16px;">Featuring Short Films</div>
+        <img src="assets/graphics/logoSmall2.png" style="width: 100%; max-width: 600px;"
+            title="Snohomish Film Festival">
         <div style="font-size: 32px;">September 18, 2021</div>
     </div>
 
@@ -15,6 +15,14 @@
             <div class="row">
                 <div class="col-sm-6">
 
+                    <div class="borderClass">
+                        <div class="titleCLass">Submit Your Projects!</div>
+                        We are now accepting short films and scripts for next year's festival.
+                        <div style="font-size: 32px; text-align: center;"></div>
+                        <div style="text-align: center; padding: 10px;">
+                            <app-button [routerLink]="['/submit']" [name]="'More Info'"></app-button>
+                        </div>
+                    </div>
 
                     <div class="borderClass">
                         <div class="titleCLass">Your help wanted!</div>
@@ -25,31 +33,12 @@
                         </div>
                     </div>
 
-                    <div class="borderClass">
-                        <div class="titleCLass">Submit Your Projects!</div>
-                        We start accepting short films and scripts on October 1, 2020. 
-                        <!--Early bird special just $15 to
-                        submit your project. Guaranteed feedback from multiple industry insiders for all submitted
-                        films, whether your project is featured or not.-->
-                        <div style="font-size: 32px; text-align: center;"></div>
-                        <div style="text-align: center; padding: 10px;">
-
-                           <!-- <a href="https://filmfreeway.com/festivals/56426?utm_campaign=Snohomish+Film+Festival&utm_medium=External&utm_source=Submission+Button"
-                                target="_blank" title="Click to submit on FilmFreeway"><img
-                                    src="https://storage.googleapis.com/filmfreeway-assets/submission_buttons/v2/sm_submission_btn@2x-sky-gradient.png"
-                                    title="Click to submit on FilmFreeway" width="263" height="49"></a>
-
-                            <hr>-->
-                            <app-button [routerLink]="['/submit']" [name]="'More Info'"></app-button>
-                        </div>
-                    </div>
-
-
                 </div>
                 <div class="col-sm-6">
                     <div class="borderClass">
                         <div class="titleCLass">Event Details</div>
-                        <div style="text-align: center; border: 1px solid gray; margin: 10px; padding: 10px;">
+                        <div
+                            style="text-align: center; border: 1px solid gray; margin: 10px; padding: 10px; background-color: #cef;">
                             <div>September 18, 2021</div>
                             <div>3pm-8pm</div>
                             <div>Everett Performing Arts Center</div>

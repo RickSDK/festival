@@ -1,0 +1,69 @@
+<app-page-shell [userId]="userId" [navTitle]="'Tickets'" [icon]="'fa-ticket'">
+
+    <img src="assets/graphics/film8.jpg" class="image">
+    <app-button-bar [buttonIdx]="7"></app-button-bar>
+
+    <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
+
+    <div class="blackBox" *ngIf="user.staffFlg">
+        <div>
+            <div class="borderClass">
+                <div class="titleCLass">Management</div>
+                <table class="drTable">
+                    <tr *ngFor="let user of managers">
+                        <td width="25">
+                            <app-user-image [routerLink]="['/user']" [queryParams]="{id: user.id}" [user]="user" [size]="30"></app-user-image>
+                        </td>
+                        <td><b>{{user.username}}</b></td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div>
+            <div class="borderClass">
+                <div class="titleCLass">Advisors</div>
+                <table class="drTable">
+                    <tr *ngFor="let user of advisors">
+                        <td width="25">
+                            <app-user-image [routerLink]="['/user']" [queryParams]="{id: user.id}" [user]="user" [size]="30"></app-user-image>
+                        </td>
+                        <td><b>{{user.username}}</b></td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="borderClass">
+            <div class="titleCLass">Confirmed Guild Members</div>
+            <table class="drTable">
+                <tr *ngFor="let user of guildMembers">
+                    <td width="25">
+                        <app-user-image [routerLink]="['/user']" [queryParams]="{id: user.id}" [user]="user" [size]="30"></app-user-image>
+                    </td>
+                    <td><b>{{user.username}}</b></td>
+                    <td>{{user.email}}</td>
+                </tr>
+            </table>
+        </div>
+        <div>
+
+            <div class="borderClass">
+                <div class="titleCLass">Potential Guild Members</div>
+                <table class="drTable">
+                    <tr *ngFor="let user of potentials">
+                        <td width="25">
+                            <app-user-image [routerLink]="['/user']" [queryParams]="{id: user.id}" [user]="user" [size]="30"></app-user-image>
+                        </td>
+                        <td><b>{{user.username}}</b></td>
+                        <td>{{user.email}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+
+    </div>
+
+</app-page-shell>

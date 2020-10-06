@@ -10,7 +10,6 @@
             <div class="modal-body">
 
                 <div *ngIf="filmType==0">
-                    <p style="text-align: center;">Two ways to submit your film:</p>
                     <table width="100%">
                         <tr>
                             <td align="center" valign="top" width="50%">
@@ -28,21 +27,15 @@
                                     [ngStyle]="ngStyleSegment(buttonIdx,1)">
                                     <i class="fa fa-arrow-right"></i> Database
                                 </button>
-                                <div style="font-size: 12px; padding: 10px;">Add an older film to our database, which
-                                    will be immediately viewable to the public.</div>
+                                <div style="font-size: 12px; padding: 10px;">If you have already submitted a film to our festival, 
+                                    you can add it to our database to help promote yourself and your film.</div>
                             </td>
                         </tr>
                     </table>
                 </div>
                 <div *ngIf="filmType==1 || filmType==2">
-                    <p *ngIf="filmType==1">Use this form to add an existing project of yours to our active database.
-                        This
-                        will allow users and film critics to leave comments and write reviews.</p>
-                    <p *ngIf="filmType==1">Note: Your film must be publically viewable on a site like youtube or amazon.
-                    </p>
-                    <p *ngIf="filmType==2">Submitting your film costs $40. You will be notified by August 1st if your
-                        film
-                        has been selected for showing at the film festival.</p>
+                    <p *ngIf="filmType==1">Use this form to help generate publicity and excitement about your project. Your promo poster, trailer and general info about the film will be available to the general public.</p>
+
                     <app-form-wrapper *ngIf="filmType==1" [loadingFlg]="loadingFlg" [formFields]="formFields"
                         (messageEvent)="submitButtonClicked($event)"></app-form-wrapper>
                     <div *ngIf="filmType==2" style="color: yellow;">Submissions start Jan 1, 2021!</div>
