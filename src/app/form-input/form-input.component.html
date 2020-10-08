@@ -8,7 +8,7 @@
             (click)="showHintFlg = !showHintFlg"></i>
     </div>
     <div *ngIf="showHintFlg" class="hintClass">{{inputFieldObj.hint}}</div>
-    <input id="id" *ngIf="inputFieldObj.type == 'text' || inputFieldObj.type == 'number' || inputFieldObj.type == 'date' || inputFieldObj.type == 'email'" id="{{inputFieldObj.id}}" 
+    <input id="id" *ngIf="inputFieldObj.type == 'text' || inputFieldObj.type == 'number' || inputFieldObj.type == 'date' || inputFieldObj.type == 'email' || inputFieldObj.type == 'tel'" id="{{inputFieldObj.id}}" 
         [disabled]="disabledFlg || inputFieldObj.disabledFlg"
         [attr.type]="inputFieldObj.type" [value]="inputFieldObj.value" (input)="checkStringLength($event.target)"
         [ngStyle]="ngStyleField()" [attr.maxlength]="inputFieldObj.max" [attr.placeholder]="inputFieldObj.placeholder"

@@ -5,6 +5,10 @@
 
     <div class="blackBox">
 
+        <div class="borderClass" style="background-color: #ffffc0;">Note: Due to Covid, plus the fact that this is our first year, we are accepting all short films/scripts regarless of what year it was completed.
+            Feel free to submit your older films for a chance to win one of our awards.
+        </div>
+    
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
@@ -48,9 +52,14 @@
                         </tr>
                     </table>
                     <hr>
-                    <app-button *ngIf="user.id" (click)="addFilmPopup.show(true)" [name]="'Submit!'" [class]="'large'"
+                    <a href="https://filmfreeway.com/festivals/56426?utm_campaign=Snohomish+Film+Festival&utm_medium=External&utm_source=Submission+Button"
+                    target="_blank" title="Click to submit on FilmFreeway"><img
+                        src="https://storage.googleapis.com/filmfreeway-assets/submission_buttons/v2/sm_submission_btn@2x-sky-gradient.png"
+                        title="Click to submit on FilmFreeway" width="263" height="49"></a>
+
+                    <app-button *ngIf="0 && user.id" (click)="addFilmPopup.show(true)" [name]="'Submit!'" [class]="'large'"
                         [icon]="'upload'"></app-button>
-                    <app-button *ngIf="!user.id" (click)="infoPopup.show('Log in to submit!')" [name]="'Submit!'"
+                    <app-button *ngIf="0 && !user.id" (click)="infoPopup.show('Log in to submit!')" [name]="'Submit!'"
                         [class]="'large'" [icon]="'upload'"></app-button>
 
                 </div>

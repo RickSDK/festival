@@ -11,6 +11,8 @@ function ngClassGenre(genre) {
     return 'fa fa-bolt';
   if (genre == 'Music Video' || genre == 'Musical')
     return 'fa fa-music';
+  if (genre == 'Action')
+    return 'fa fa-heartbeat';
   if (genre == 'Other')
     return 'fa fa-question-circle';
 

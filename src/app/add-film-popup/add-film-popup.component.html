@@ -20,28 +20,55 @@
 
                                 <div style="font-size: 12px; padding: 10px;">Submit your film to the 2021 Snohomish Film
                                     Festival.</div>
-                                <div style="color: yellow;" *ngIf="showStartDateFlg">Submissions begin Oct 1, 2020</div>
                             </td>
                             <td align="center" valign="top" width="50%">
                                 <button (click)="filmType=1" type="button" class="btn-default roundButton large"
                                     [ngStyle]="ngStyleSegment(buttonIdx,1)">
                                     <i class="fa fa-arrow-right"></i> Database
                                 </button>
-                                <div style="font-size: 12px; padding: 10px;">If you have already submitted a film to our festival, 
-                                    you can add it to our database to help promote yourself and your film.</div>
+                                <div style="font-size: 12px; padding: 10px;">Add your film to our database to help
+                                    promote yourself and your film.</div>
                             </td>
                         </tr>
                     </table>
                 </div>
-                <div *ngIf="filmType==1 || filmType==2">
-                    <p *ngIf="filmType==1">Use this form to help generate publicity and excitement about your project. Your promo poster, trailer and general info about the film will be available to the general public.</p>
+                <div *ngIf="filmType==1">
+                    <table width="100%">
+                        <tr>
+                            <td align="center">
+                                <button (click)="selectFilmType(2)" type="button" class="btn-default roundButton large"
+                                    [ngStyle]="ngStyleSegment(buttonIdx,1)">
+                                    2021 Film Festival
+                                </button>
+                                <div style="font-size: 12px; padding: 10px;">You have already submitted your film to the
+                                    Snohomish Film Festival and would like to feature a promo poster of it on our page.
+                                </div>
+                            </td>
+                            <td align="center">
+                                <button (click)="selectFilmType(3)" type="button" class="btn-default roundButton large"
+                                    [ngStyle]="ngStyleSegment(buttonIdx,1)">
+                                    Older Film
+                                </button>
+                                <div style="font-size: 12px; padding: 10px;">Add an older project that is currently
+                                    available on youTube or other video service. The public will be able to watch your
+                                    film and write reviews for it right away!</div>
+                            </td>
+                        </tr>
+                    </table>
 
-                    <app-form-wrapper *ngIf="filmType==1" [loadingFlg]="loadingFlg" [formFields]="formFields"
+
+                </div>
+                <div *ngIf="filmType==2 || filmType==3">
+                    <p *ngIf="filmType==2">Use this form to help generate publicity and excitement about your project.
+                        Your promo poster, trailer and general info about the film will be available to the general
+                        public.</p>
+                    <p *ngIf="filmType==3">Note your film must be available on youTube or other publically available video service. The general public will be able to watch your film immediately and write reviews.</p>
+
+                    <app-form-wrapper [loadingFlg]="loadingFlg" [formFields]="formFields"
                         (messageEvent)="submitButtonClicked($event)"></app-form-wrapper>
-                    <div *ngIf="filmType==2" style="color: yellow;">Submissions start Jan 1, 2021!</div>
                 </div>
 
-                <div *ngIf="filmType==3" style="text-align: center;">
+                <div *ngIf="filmType==4" style="text-align: center;">
                     <div>Film Submitted Successfully!</div>
                     <app-button (click)="okButtonPressed()" [name]="'Ok'" [class]="'large'"></app-button>
                 </div>

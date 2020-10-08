@@ -12,6 +12,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
   public showStartDateFlg: boolean = false;
   public genres = [
+    'Action',
     'Comedy',
     'Documentary',
     'Sci-Fi',
@@ -19,7 +20,8 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
     'Horror',
     'Music Video',
     'Other'];
-  public ratings = ['G', 'PG', 'PG-13', 'R', 'NC-17', 'X', 'N/A']
+  public ratings = ['G', 'PG', 'PG-13', 'R', 'NC-17', 'X', 'N/A'];
+  public festivalYear = '';
 
   public nameObj = { name: 'Film Name', type: 'text', value: '', max: 50, requiredFlg: true, disabledFlg: false };
   public directorObj = { name: 'Director', type: 'text', value: '', max: 50, requiredFlg: true, disabledFlg: false };
@@ -30,7 +32,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
   public behindScenesObj = { name: 'Benhind Scenes URL', type: 'text', value: '', placeholder: 'http', max: 200, disabledFlg: false, hint: 'Link to an behind-the-scenes video in youTube or other publically viewable site.' };
   public posterObj = { name: 'Poster /  Screen Shot', type: 'picture', value: '', requiredFlg: true, disabledFlg: false, hint: 'An image that you would like to represent this film.' };
   public genreObj = { name: 'Genre', type: 'dropdown', value: '', options: this.genres, requiredFlg: true, disabledFlg: false };
-  public ratingObj = { name: 'Rating', type: 'dropdown', value: '', options: this.ratings, requiredFlg: true, disabledFlg: false };
+  public ratingObj = { name: 'Rating', type: 'dropdown', value: 'N/A', options: this.ratings, requiredFlg: true, disabledFlg: false };
   public taglineObj = { name: 'Tagline', type: 'text', value: '', max: 120, requiredFlg: true, disabledFlg: false };
   public descObj = { name: 'Synopsis', type: 'textarea', value: '', max: 1000, disabledFlg: false };
   public castObj = { name: 'Top Cast Members (limit to 7 or fewer)', type: 'text', value: '', max: 250, hint: 'A short list of top cast members. A full list can be added later.', disabledFlg: false };
@@ -67,8 +69,48 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
     if (this.user.id)
       $('#addFilmPopup').modal();
   }
+  selectFilmType(type: number) {
+    this.filmType = type;
+    if(type == 2) {
+      this.festivalYear = '2021';
+      this.formFields = [
+        this.nameObj,
+        this.directorObj,
+        this.producerObj,
+        this.lengthObj,
+        this.trailorObj,
+        this.behindScenesObj,
+        this.posterObj,
+        this.genreObj,
+        this.ratingObj,
+        this.taglineObj,
+        this.descObj,
+        this.castObj,
+        this.crewObj,
+        this.releaseObj
+      ];
+    } else {
+      this.festivalYear = '';
+      this.formFields = [
+        this.nameObj,
+        this.directorObj,
+        this.producerObj,
+        this.lengthObj,
+        this.urlObj,
+        this.trailorObj,
+        this.behindScenesObj,
+        this.posterObj,
+        this.genreObj,
+        this.ratingObj,
+        this.taglineObj,
+        this.descObj,
+        this.castObj,
+        this.crewObj,
+        this.releaseObj
+      ];
+    }
+  }
   submitButtonClicked(str: string) {
-    var festivalYear = '2021';
     var dt = new Date(this.releaseObj.value);
     var releaseDateText = dt.toLocaleDateString();
     this.loadingFlg = true;
@@ -90,7 +132,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
       desc: this.descObj.value,
       cast: this.castObj.value,
       crew: this.crewObj.value,
-      festivalYear: festivalYear,
+      festivalYear: this.festivalYear,
       releaseDate: this.releaseObj.value,
       releaseDateText: releaseDateText,
     };
@@ -101,7 +143,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
 
   postSuccessApi(file: string, data: string) {
     this.loadingFlg = false;
-    this.filmType = 3;
+    this.filmType = 4;
   }
 
   okButtonPressed() {

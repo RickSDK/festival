@@ -8,9 +8,10 @@ import { BaseHttpComponent } from '../base-http/base-http.component';
 })
 export class HelpWantedComponent extends BaseHttpComponent implements OnInit {
   public nameObj = { name: 'Your Name', type: 'text', value: '', max: 50, requiredFlg: true, disabledFlg: false };
-  public emailObj = { name: 'Your Email', type: 'text', value: '', max: 50, requiredFlg: true, disabledFlg: false };
+  public emailObj = { name: 'Your Email', type: 'email', value: '', max: 50, requiredFlg: true, disabledFlg: false };
+  public phoneObj = { name: 'Your Phone', type: 'tel', value: '', max: 20, requiredFlg: true, disabledFlg: false };
   public commentsObj = { name: 'Comments', type: 'textarea', value: 'I would like to become a guild member!', max: 500, requiredFlg: true, disabledFlg: false };
-  public formFields = [this.nameObj, this.emailObj, this.commentsObj];
+  public formFields = [this.nameObj, this.emailObj, this.phoneObj, this.commentsObj];
   public successFlg = false;
 
   constructor() { super(); }
@@ -25,6 +26,7 @@ export class HelpWantedComponent extends BaseHttpComponent implements OnInit {
     var params = {
       name: this.nameObj.value,
       email: this.emailObj.value,
+      phone: this.phoneObj.value,
       comments: this.commentsObj.value,
       action: 'postComment',
     };

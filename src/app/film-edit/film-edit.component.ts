@@ -14,6 +14,7 @@ export class FilmEditComponent extends BaseHttpComponent implements OnInit {
   @Output() messageEvent = new EventEmitter<string>();
 
   public genres = [
+    'Action',
     'Comedy',
     'Documentary',
     'Sci-Fi',
@@ -32,7 +33,7 @@ export class FilmEditComponent extends BaseHttpComponent implements OnInit {
   public behindScenesObj = { name: 'Benhind Scenes URL', type: 'text', value: '', placeholder: 'http', max: 200, disabledFlg: false, hint: 'Link to an behind-the-scenes video in youTube or other publically viewable site.' };
   public posterObj = { name: 'Poster /  Screen Shot', type: 'picture', value: '', requiredFlg: true, hint: 'An image that you would like to represent this film.' };
   public genreObj = { name: 'Genre', type: 'dropdown', value: '', options: this.genres, requiredFlg: true };
-  public ratingObj = { name: 'Rating', type: 'dropdown', value: '', options: this.ratings, requiredFlg: true };
+  public ratingObj = { name: 'Rating', type: 'dropdown', value: 'N/A', options: this.ratings, requiredFlg: true };
   public taglineObj = { name: 'Tagline', type: 'text', value: '', max: 120, requiredFlg: true, disabledFlg: false };
   public descObj = { name: 'Synopsis', type: 'textarea', value: '', max: 500 };
   public castObj = { name: 'Cast', type: 'text', value: '', max: 250, hint: 'A short list of top cast members' };
