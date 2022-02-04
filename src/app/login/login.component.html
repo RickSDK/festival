@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg" role="document" style="max-width: 320px;">
         <div class="modal-content" [ngStyle]="ngStyleButton(2)">
             <div class="modal-header">
-                <b><i class="fa fa-sign-in"></i> Version 1.11</b>
+                <b><i class="fa fa-sign-in"></i> Version 1.13</b>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -22,7 +22,14 @@
                         <app-button (click)="okButtonPressed()" [name]="'OK'" class="large" [butStyle]="1">
                         </app-button>
                     </div>
-                    <div *ngIf="!apiExecutedFlg && !createAccountFlg && !showCreateAccountFlg">
+                    <div *ngIf="showForgotPasswordFlg">
+                        <input type="text" id="emailField2" placeholder="Email" (click)="$event.target.value=''">
+                        <app-button (click)="sendResetPressed()" [name]="'Reset'" class="large" 
+                            [butStyle]="1">
+                        </app-button>
+                    </div>
+                    <div
+                        *ngIf="!showForgotPasswordFlg && !apiExecutedFlg && !createAccountFlg && !showCreateAccountFlg">
                         <div *ngIf="showLoginFlg">
                             <input type="text" id="emailField" placeholder="Email" (click)="$event.target.value=''">
                             <input type="password" id="passwordField" placeholder="Password"
@@ -43,6 +50,9 @@
                         <hr>
 
                         <app-button (click)="createAccountPressed()" name="Create Account" icon="plus" [butStyle]="3">
+                        </app-button>
+                        <hr>
+                        <app-button (click)="showForgotPasswordFlg = true" name="Forgot Password" [butStyle]="3">
                         </app-button>
                     </div>
                     <div *ngIf="showCreateAccountFlg">

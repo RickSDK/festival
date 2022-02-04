@@ -13,6 +13,7 @@ export class User {
     public actorFlg: boolean;
     public criticFlg: boolean;
     public staffFlg: boolean;
+    public officialGuildFlg: boolean;
     public adminLevel: number;
     public created: string;
     public icon: string;
@@ -57,7 +58,7 @@ export class User {
             this.staffFlg = (components[x++] == 'Y');
             this.avatarFlg = (components[x++] == 'Y');
             this.ownerFlg = (components[x++] == 'Y');
-            this.boardFlg = (components[x++] == 'Y');
+            this.officialGuildFlg = (components[x++] == 'Y');
             this.adminFlg = (components[x++] == 'Y');
             this.superAdminFlg = (components[x++] == 'Y');
             this.veteranFlg = (components[x++] == 'Y');

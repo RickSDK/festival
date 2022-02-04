@@ -10,12 +10,12 @@
                 <i class="fa fa-film"></i>
                 <div style="font-size: 12px;">Film Makers</div>
             </button>
-            <button (click)="segmentClicked(1)" type="button" class="btn-default roundButton segmentButton"
+            <button *ngIf="0" (click)="segmentClicked(1)" type="button" class="btn-default roundButton segmentButton"
                 [ngStyle]="ngStyleSegment(buttonIdx,1)">
                 <i class="fa fa-truck"></i>
                 <div style="font-size: 12px;">Crew</div>
             </button>
-            <button (click)="segmentClicked(2)" type="button" class="btn-default roundButton segmentButton"
+            <button *ngIf="0" (click)="segmentClicked(2)" type="button" class="btn-default roundButton segmentButton"
                 [ngStyle]="ngStyleSegment(buttonIdx,2)">
                 <i class="fa fa-star-o"></i>
                 <div style="font-size: 12px;">Actors</div>
@@ -45,10 +45,10 @@
     <div class="blackBox">
         <div style="font-size: 24px; font-weight: 700;"><i class="fa fa-{{roles[buttonIdx].icon}}"></i>
             {{roles[buttonIdx].name}}</div>
-        <div>
+        <div style="font-size: 18px; font-weight: 700;">
             {{roles[buttonIdx].desc}}
         </div>
-
+        <div style="font-size: 12px;">{{roles[buttonIdx].desc2}}</div>
         <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
         <span *ngFor="let user of users">
             <app-user-snapshot *ngIf="personMatchesType(user, buttonIdx)" [user]="user"></app-user-snapshot>

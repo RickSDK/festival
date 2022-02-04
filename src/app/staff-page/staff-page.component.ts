@@ -36,7 +36,7 @@ export class StaffPageComponent extends BaseHttpComponent implements OnInit {
           managers.push(user);
         else if (user.staffFlg)
           advisors.push(user);
-        else if (user.boardFlg)
+        else if (user.officialGuildFlg)
           guildMembers.push(user);
         else if (user.guildMemberFlg)
           potentials.push(user);

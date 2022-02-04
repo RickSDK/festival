@@ -47,6 +47,7 @@ import { ContactComponent } from './contact/contact.component';
 import { HelpWantedComponent } from './help-wanted/help-wanted.component';
 import { AboutComponent } from './about/about.component';
 import { StaffPageComponent } from './staff-page/staff-page.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { StaffPageComponent } from './staff-page/staff-page.component';
     ContactComponent,
     HelpWantedComponent,
     AboutComponent,
-    StaffPageComponent
+    StaffPageComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

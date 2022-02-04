@@ -59,6 +59,7 @@ export class UserDetailComponent extends BaseHttpComponent implements OnInit {
     this.getData();
   }
   getData() {
+
     this.showRefreshButton = false;
     this.showRefreshMessage = false;
     var params = {
@@ -78,7 +79,7 @@ export class UserDetailComponent extends BaseHttpComponent implements OnInit {
     this.executeApi('festApi.php', params, true);
   }
   postSuccessApi(file: string, data: string) {
-    console.log(file, data);
+    console.log('postSuccessApi', file, data);
 
     var lines = data.split('<b>');
     lines.forEach(line => {
@@ -87,6 +88,8 @@ export class UserDetailComponent extends BaseHttpComponent implements OnInit {
       if (user.id)
         this.displayUser = user;
     });
+    if(!this.displayUser)
+    this.displayUser = new User('');
 
     this.userIsEditableFlg = (this.uId == this.userId);
     this.userRoles[0].checkFlg = this.displayUser.ownerFlg;

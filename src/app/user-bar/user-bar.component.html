@@ -3,9 +3,7 @@
         <app-button (click)="completeLogin()" [name]="'Click Here to complete login'"></app-button>
     </div>
     <div id="clickHereDiv2" [ngStyle]="ngStyleButton(4)" style="padding: 3px; display: block;">
-        <app-button [routerLink]="['/join']" *ngIf="!userId && icon=='fa-user'" [name]="'Add Your Profile!'"
-            [icon]="'plus'"></app-button>
-        <span *ngIf="user && userId">
+        <span *ngIf="user && userId && user.username">
             <app-button [routerLink]="['/user']" [queryParams]="{id: userId}" [name]="user.username" [icon]="user.icon">
             </app-button>
             &nbsp;<span class="wordLink" title="Reputation Points: {{user.points}}"><i class="fa fa-star"></i>
@@ -17,10 +15,10 @@
             &nbsp;<span class="wordLink" title="Messages" style="color: #077;"><i class="fa fa-envelope"></i>
                 {{user.emailCount}}</span>
         </span>
-        <span (click)="loginModal.show()" *ngIf="!userId" class="wordLink">
+        <span (click)="loginModal.show()" *ngIf="!userId || !user.username" class="wordLink">
             Log in
         </span>
-        <app-button *ngIf="!userId" [routerLink]="['/join']" [name]="'Tour'" [class]="'narrow'" [icon]="'search'"></app-button>
+        <app-button *ngIf="!userId || !user.username" [routerLink]="['/join']" [name]="'Sign up!'" [class]="'narrow'"></app-button>
     </div>
 </div>
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { BaseHttpComponent } from '../base-http/base-http.component';
 import { LoginComponent } from '../login/login.component';
+import { Film } from '../classes/film';
 
 declare var numberVal: any;
 declare var FB: any;
@@ -17,6 +18,8 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   public sortbyCol = 'Points';
   public sortByAscending = false;
   public league: any;
+  public films: any;
+  public displayFilms: any;
 
   constructor() { super(); }
 
@@ -24,7 +27,7 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
     window.scrollTo(0,0);
     this.user = this.getUserObject();
     this.userId = this.user.id;
-    console.log('userId', this.user);
+    console.log('xxx user', this.user);
     if (document.images) {
       var img1 = new Image();
       img1.src = "assets/graphics/film1.jpg";
@@ -53,6 +56,8 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
     setTimeout(() => {
       this.checkFBStatus();
     }, 2000);
+
+    this.getData();
     
 /*
     FB.getLoginStatus(function (response) {
@@ -67,6 +72,38 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
       }
     });*/
 
+  }
+
+  
+  getData() {
+    this.loadingFlg = true;
+    var params = {
+      userId: this.user.id,
+      code: this.user.code,
+      action: 'getFilms'
+    };
+    this.executeApi('festApi.php', params, true);
+  }
+  postSuccessApi(file: string, data: string) {
+    //console.log(data);
+    var lines = data.split('<b>');
+    var films = [];
+    lines.forEach(line => {
+      var film = new Film(line);
+      if (film.id)
+        films.push(film);
+    });
+    this.films = films;
+    this.filterFilms();
+    console.log('postSuccessApi', this.films);
+  }
+  filterFilms() {
+    var displayFilms = [];
+    this.films.forEach(film => {
+      if (2021 ==  film.festivalYear)
+        displayFilms.push(film);
+    });
+    this.displayFilms = displayFilms;
   }
 
   checkFBStatus() {

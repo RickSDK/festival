@@ -31,6 +31,8 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
   public actorFlg = false;
   public showLoginFlg = false;
   public criticFlg = false;
+  public showForgotPasswordFlg = false;
+  public checkNewPasswordFlg = false;
 
   constructor() {
     super();
@@ -44,6 +46,8 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
     this.apiMessage = '';
     this.showLoginFlg = false;
     this.loadingFlg = false;
+    this.checkNewPasswordFlg = false;
+    this.showForgotPasswordFlg = false;
     this.apiExecutedFlg = false;
     this.createAccountFlg = false;
     this.emailSentFlg = false;
@@ -51,20 +55,35 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
     this.errorMessage = '';
     this.user = this.getUserObject();
     this.userId = this.user.id;
-    console.log('xxx', this.user);
     $('#loginPopup').modal();
     setTimeout(() => {
       this.checkFbLogin();
     }, 1000);
   }
   checkFbLogin() {
-    FB.getLoginStatus(function(response) {
+    FB.getLoginStatus(function (response) {
       console.log('getLoginStatus', response);
     });
   }
   facebookPressed() {
     this.closeModal('#loginPopup');
     showPopup('fbLoginPopup');
+  }
+  sendResetPressed() {
+    var email = getTextFieldValue('emailField2');
+    if (!email)
+      return;
+
+    var code = Math.floor((Math.random() * 10000) + 1000);
+    this.showForgotPasswordFlg = false;
+    this.checkNewPasswordFlg = true;
+    var params = {
+      email: email,
+      code: code,
+      action: 'resetPassword'
+    };
+    console.log(params);
+    this.executeApi('festApi.php', params, true);
   }
   loginPressed() {
     var email = getTextFieldValue('emailField');
@@ -87,6 +106,12 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
     this.executeApi('festLogin.php', params, true);
   }
   postSuccessApi(api: string, data: string) {
+    if(this.checkNewPasswordFlg) {
+      this.checkNewPasswordFlg = false;
+      console.log(data);
+      this.apiMessage = 'Reset password link has been sent to your email.';
+      return;
+    }
     var c = data.split('<b>');
     var user: User = new User(c[1], localStorage.code);
     if (user.id > 0) {
@@ -100,10 +125,14 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
       localStorage.userObj = JSON.stringify(user);
       this.closeModal('#loginPopup');
       this.messageEvent.emit('success');
-    } else
+    } else {
+      console.log('postSuccessApi', data);
       this.apiMessage = data;
+    }
+      
   }
   postErrorApi(file: string, error: string) {
+    console.log('postErrorApi', error);
     this.apiMessage = error;
     localStorage.email = '';
     localStorage.userId = '';
@@ -201,7 +230,7 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
 
 function checkLoginState() {
   console.log('checkLoginState!!!!');
-  FB.getLoginStatus(function(response) {
+  FB.getLoginStatus(function (response) {
     console.log('XXX getLoginStatus!!', response);
     statusChangeCallback(response);
   });
@@ -215,7 +244,7 @@ FB.login(function(response) {
   if (response.status === 'connected') {
     // Logged into your webpage and Facebook.
   } else {
-    // The person is not logged into your webpage or we are unable to tell. 
+    // The person is not logged into your webpage or we are unable to tell.
   }
 }, {scope: 'public_profile,email'});
 
