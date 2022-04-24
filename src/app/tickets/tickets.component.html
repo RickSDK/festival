@@ -1,13 +1,10 @@
 <app-page-shell [userId]="userId" [navTitle]="'Tickets'" [icon]="'fa-ticket'">
 
     <img src="assets/graphics/tickets2.jpg" class="image">
-    <app-button-bar [buttonIdx]="5"></app-button-bar>
+ 
 
 
-
-    <div class="blackBox">
-        <img src="assets/graphics/logo.png" style="width: 100%; max-width: 600px;" title="Snohomish Film Festival">
-
+ 
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
@@ -17,19 +14,17 @@
                     <div class="borderClass">
                         <div class="titleCLass">Location Details</div>
                         <div class="listClass">
-                             <li> Saturday September 18, 2021</li>
-                            <li> Everett Performing Arts Center</li>
+                             <li> Saturday September 17, 2022</li>
+                            <li> Lynnwood Convention Center</li>
                             <li> Time: 3pm - 8pm</li>
                             <li> Cost: $20</li>
                             <li> # Films: 30</li>
                         </div>
                     </div>
-                    <app-button [name]="'Buy Tickets'" [icon]="'ticket'"></app-button>
                     <app-button [routerLink]="['/program']" [name]="'Program'" [icon]="'file-text'"></app-button>
 
                 </div>
             </div>
         </div>
-    </div>
 
 </app-page-shell>

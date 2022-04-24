@@ -1,6 +1,7 @@
 import { Component, OnInit, Injectable, Output, EventEmitter } from '@angular/core';
 import { BaseHttpComponent } from '../base-http/base-http.component';
 import { User } from '../classes/user';
+import { ActivatedRoute, Router } from '@angular/router';
 
 declare var $: any;
 declare var getTextFieldValue: any;
@@ -34,13 +35,13 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
   public showForgotPasswordFlg = false;
   public checkNewPasswordFlg = false;
 
-  constructor() {
+  constructor(private router: Router) {
     super();
   }
 
   ngOnInit(): void {
-    this.user = this.getUserObject();
-    this.userId = this.user.id;
+    //this.user = this.getUserObject();
+    //this.userId = this.user.id;
   }
   show() {
     this.apiMessage = '';
@@ -53,8 +54,11 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
     this.emailSentFlg = false;
     this.showCreateAccountFlg = false;
     this.errorMessage = '';
+    this.userId = localStorage.userId;
     this.user = this.getUserObject();
-    this.userId = this.user.id;
+    console.log('hey userId!!!', this.userId)
+    console.log('hey user!!!', this.user)
+
     $('#loginPopup').modal();
     setTimeout(() => {
       this.checkFbLogin();
@@ -106,7 +110,7 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
     this.executeApi('festLogin.php', params, true);
   }
   postSuccessApi(api: string, data: string) {
-    if(this.checkNewPasswordFlg) {
+    if (this.checkNewPasswordFlg) {
       this.checkNewPasswordFlg = false;
       console.log(data);
       this.apiMessage = 'Reset password link has been sent to your email.';
@@ -125,11 +129,12 @@ export class LoginComponent extends BaseHttpComponent implements OnInit {
       localStorage.userObj = JSON.stringify(user);
       this.closeModal('#loginPopup');
       this.messageEvent.emit('success');
+      console.log('made it right here!!');
     } else {
       console.log('postSuccessApi', data);
       this.apiMessage = data;
     }
-      
+
   }
   postErrorApi(file: string, error: string) {
     console.log('postErrorApi', error);

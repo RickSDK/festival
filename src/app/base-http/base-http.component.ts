@@ -27,6 +27,7 @@ export class BaseHttpComponent extends BaseComponent implements OnInit {
   public apiExecutedFlg: boolean = false;
   public errorMessage: string = '';
   public changesMadeFlg = false;
+  public displayYear = new Date().getFullYear();
 
   constructor() { super(); }
 

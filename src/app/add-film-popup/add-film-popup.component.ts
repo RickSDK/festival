@@ -59,6 +59,24 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
   constructor() { super(); }
 
   ngOnInit(): void {
+    this.filmType = 2;
+    this.festivalYear = this.displayYear.toString();
+    this.formFields = [
+      this.nameObj,
+      this.directorObj,
+      this.producerObj,
+      this.lengthObj,
+      this.trailorObj,
+      this.behindScenesObj,
+      this.posterObj,
+      this.genreObj,
+      this.ratingObj,
+      this.taglineObj,
+      this.descObj,
+      this.castObj,
+      this.crewObj,
+      this.releaseObj
+    ];
   }
   show() {
     this.filmType = 0;
@@ -72,7 +90,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
   selectFilmType(type: number) {
     this.filmType = type;
     if(type == 2) {
-      this.festivalYear = '2021';
+      this.festivalYear = this.displayYear.toString();
       this.formFields = [
         this.nameObj,
         this.directorObj,

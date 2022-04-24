@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { BaseHttpComponent } from '../base-http/base-http.component';
 import { LoginComponent } from '../login/login.component';
 import { Film } from '../classes/film';
+import { getSyntheticPropertyName } from '@angular/compiler/src/render3/util';
 
 declare var numberVal: any;
 declare var FB: any;
@@ -80,6 +81,7 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
     var params = {
       userId: this.user.id,
       code: this.user.code,
+      festivalYear: this.displayYear,
       action: 'getFilms'
     };
     this.executeApi('festApi.php', params, true);
@@ -100,10 +102,16 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   filterFilms() {
     var displayFilms = [];
     this.films.forEach(film => {
-      if (2021 ==  film.festivalYear)
+      if (this.displayYear ==  film.festivalYear)
         displayFilms.push(film);
     });
     this.displayFilms = displayFilms;
+  }
+
+  refreshUser(str:string) {
+    this.user = this.getUserObject();
+    this.userId = this.user.id;
+    console.log('refreshUserXXX', this.userId, str);
   }
 
   checkFBStatus() {
@@ -115,6 +123,7 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
 
 
   buttonClicked(str: string) {
+    console.log('buttonClicked', str);
     this.loginComponent.show();
   }
 

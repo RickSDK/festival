@@ -1,10 +1,8 @@
-<app-page-shell [userId]="userId" [navTitle]="'Submit Film'" [icon]="'fa-upload'">
+<app-page-shell [userId]="userId" [navTitle]="'Submit'" [icon]="'fa-upload'">
 
     <img src="assets/graphics/film8.jpg" class="image">
-    <app-button-bar [buttonIdx]="4"></app-button-bar>
 
-    <div class="blackBox">
-
+ 
   
         <div class="container-fluid">
             <div class="row">
@@ -18,6 +16,7 @@
                             <li>Shorts only. Film must be between 4 and 30 minutes.</li>
                             <li>Anyone is eligible to submit.</li>
                             <li>Any type of film can be submitted.</li>
+                            <li>Click the Flim Freeway button below to submit</li>
                             <li>Guaranteed feedback from multiple industry insiders.</li>
                             <li>Festival lineup announced July 15.</li>
                         </div>
@@ -34,26 +33,27 @@
                         </tr>
                         <tr>
                             <td>Early Bird</td>
-                            <td>Jan 31, 2022</td>
+                            <td>Jan 31st</td>
                             <td>$15</td>
                         </tr>
                         <tr>
                             <td>Regular</td>
-                            <td>June 1, 2022</td>
+                            <td>June 1st</td>
                             <td>$30</td>
                         </tr>
                         <tr>
                             <td>Late</td>
-                            <td>June 30, 2022</td>
+                            <td>June 30th</td>
                             <td>$45</td>
                         </tr>
                     </table>
-                    <hr>
+                    <div>Click button below to submit</div>
+                    
                     <a href="https://filmfreeway.com/festivals/56426?utm_campaign=Snohomish+Film+Festival&utm_medium=External&utm_source=Submission+Button"
                     target="_blank" title="Click to submit on FilmFreeway"><img
                         src="https://storage.googleapis.com/filmfreeway-assets/submission_buttons/v2/sm_submission_btn@2x-sky-gradient.png"
-                        title="Click to submit on FilmFreeway" width="263" height="49"></a>
-
+                        title="Click to submit on FilmFreeway" width="263" height="49" style="margin: 10px;"></a>
+                        
                     <app-button *ngIf="0 && user.id" (click)="addFilmPopup.show(true)" [name]="'Submit!'" [class]="'large'"
                         [icon]="'upload'"></app-button>
                     <app-button *ngIf="0 && !user.id" (click)="infoPopup.show('Log in to submit!')" [name]="'Submit!'"
@@ -62,7 +62,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 </app-page-shell>
 

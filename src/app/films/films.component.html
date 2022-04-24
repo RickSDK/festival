@@ -17,16 +17,16 @@
 
         <div>
             <div class="btn-group">
-                <button (click)="changeOption(2021, 0)" type="button" class="btn-default roundButton segmentButton"
-                    [ngClass]="ngClassSegment(festivalIdx,0)">2021 Festival
+                <button *ngFor="let year of years" (click)="changeOption(year, 0)" type="button" class="btn-default roundButton segmentButton"
+                    [ngClass]="ngClassSegment(selectedYear,year)">
+                    <span *ngIf="year==0">Older Films</span>
+                    <span *ngIf="year>0">{{year}} Festival</span>
                 </button>
-                <button (click)="changeOption(0, 1)" type="button" class="btn-default roundButton segmentButton"
-                    [ngClass]="ngClassSegment(festivalIdx,1)">Older Films
-                </button>
-            </div>
+             </div>
         </div>
-        <div *ngIf="selectedYear>0">The following films have been submitted to Snohomish Film Festival {{selectedYear}}. Winning entries will be announced July 15th!</div>
-        <div *ngIf="selectedYear==0">The following films are currently available to watch. Feel free to rate and leave a review!</div>
+        <div *ngIf="selectedYear==displayYear">The following films have been submitted to Snohomish Film Festival {{selectedYear}}.
+            Winning entries will be announced July 15th!</div>
+
 
 
         <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>

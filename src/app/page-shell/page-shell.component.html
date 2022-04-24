@@ -1,28 +1,44 @@
-<div class="page-outer">
-    <div class="page-middle" [ngStyle]="ngStyleButton(2)">
-        <div class="navigation-bar" [ngStyle]="ngStyleButton(3)">
-            <i *ngIf="!lButton" class="fa fa-arrow-left icon-left" [ngStyle]="ngStyleIcon(1)"
-                (click)="backButtonClicked()"></i>
-            <i *ngIf="lButton=='info2'" (click)="leftButtonPressed()" class="fa fa-info-circle icon-left"
-                [ngStyle]="ngStyleIcon(1)"></i>
-            <span class="navTitleBar">
-                <div class="mainTitle"><i class="fa fa-diamond" style="color: #00ff00;"></i> Snohomish Film Festival</div>
-                <div class="navTitle"><i *ngIf="icon" class="fa {{icon}}"></i> {{navTitle}}</div>
-            </span>
-            <i *ngIf="rButton=='plus'" (click)="rightButtonPressed()" class="fa fa-plus icon-right"
-                [ngStyle]="ngStyleIcon(1)"></i>
-                <i *ngIf="rButton=='home'" [routerLink]="['/']" class="fa fa-home"
-                style="font-size: 28px; float: right; cursor: pointer;" [ngStyle]="ngStyleIcon(1)"></i>
-                <i *ngIf="rButton==''" [routerLink]="['/']" class="fa fa-home"
-                style="font-size: 28px; float: right; cursor: pointer;" [ngStyle]="ngStyleIcon(1)"></i>
-            <a routerLink="/options" *ngIf="navTitle == 'Main Menu'"><i class="fa fa-paint-brush"
-                    style="font-size: 28px; float: right;" [ngStyle]="ngStyleIcon(1)"></i></a>
-        </div>
-        <app-user-bar [icon]="icon" [userId]="userId"></app-user-bar>
-        <div class="page-inner" [ngStyle]="ngStyleButton(2)">
-            <ng-content></ng-content>
-        
-        </div>
-        <app-bottom-bar></app-bottom-bar>
+<div class="top-bar" style="background-color: white; color: black; width: 100%; text-align: center; height: 56px;">
+    <div class="inner-bar" style="width: 100%; max-width: 1000px; display: inline-block; height: 56px;">
+        <table width="100%" border="0" style="height: 56px;">
+            <tr>
+                <td align="center" valign="middle" width="260">
+                    <div routerLink="" style="cursor: pointer; font-size: 20px; font-weight: 700;"><i class="fa fa-film"
+                            style="color: #00aeff;"></i> Snohomish Film Festival</div>
+                            <div style="font-size: 12px;">September 17, 2022</div>
+                </td>
+                <td align="right" valign="middle">
+                    <span *ngFor="let link of links" class="main-link" [ngClass]="ngClassLink(link.name)"
+                        routerLink="{{link.route}}">
+                        {{link.name}}
+                    </span>
+                </td>
+                <td align="right" valign="middle">
+                    <span *ngIf="!userId" (click)="loginModal.show()" class="login-link">
+                        Login
+                    </span>
+                    <img [title]="user.username" *ngIf="userId>0" class="profile-pic" (mousedown)="showProfileFlg = !showProfileFlg"
+                        [src]="profilePic" height="50" style="cursor: pointer;">
+ 
+                    
+                </td>
+            </tr>
+        </table>
     </div>
 </div>
+
+<div *ngIf="showProfileFlg" class="profile-popup">
+    <div class="profile-link" [routerLink]="['/user']" [queryParams]="{id: userId}">Show Profile</div>
+    <div class="profile-link" (mousedown)="userLogout()">Logout</div>
+    <div (mousedown)="showProfileFlg = !showProfileFlg" class="profile-link">Close</div>
+</div>
+
+<div class="page-outer">
+    <div class="page-inner">
+        <ng-content></ng-content>
+        <app-bottom-bar></app-bottom-bar>
+    </div>
+    
+</div>
+
+<app-login #loginModal (messageEvent)="refreshThisUser($event)"></app-login>

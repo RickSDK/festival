@@ -45,7 +45,7 @@ export class BaseComponent extends BaseColorsComponent implements OnInit {
   refreshUser(str:string) {
     this.user = getUserObject();
     this.userId = this.user.id;
-    console.log('refreshUser', this.userId);
+    console.log('refreshUser', this.userId, str);
   }
   packageForLargeText(text:string) {
     text = text.replace(/\|/g, '');

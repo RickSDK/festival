@@ -13,7 +13,8 @@ export class FilmsComponent extends BaseHttpComponent implements OnInit {
   public films: any;
   public displayFilms: any;
   public festivalIdx = 0;
-  public selectedYear = 2021;
+  public selectedYear = new Date().getFullYear();
+  public years = [0, 2021, 2022];
 
   constructor() { super(); }
 
@@ -22,6 +23,10 @@ export class FilmsComponent extends BaseHttpComponent implements OnInit {
     this.user = this.getUserObject();
     this.userId = this.user.id;
     this.getData();
+    if (this.selectedYear >= 2023)
+      this.years.push(2023);
+    if (this.selectedYear >= 2024)
+      this.years.push(2024);
   }
   getData() {
     this.loadingFlg = true;
@@ -53,7 +58,7 @@ export class FilmsComponent extends BaseHttpComponent implements OnInit {
   filterFilms() {
     var displayFilms = [];
     this.films.forEach(film => {
-      if (this.selectedYear ==  film.festivalYear)
+      if (this.selectedYear == film.festivalYear)
         displayFilms.push(film);
     });
     this.displayFilms = displayFilms;

@@ -1,17 +1,10 @@
 <app-page-shell [userId]="userId" [lButton]="'info'" [rButton]="'brush'" [navTitle]="'Main Menu'" [icon]="'fa-bars'"
     (messageEvent)="buttonClicked ($event)">
 
-    <img src="assets/graphics/film1.jpg" class="image">
-    <app-button-bar [buttonIdx]="0"></app-button-bar>
-    <div class="blackBox">
-        <img src="assets/graphics/logoSmall2.png" style="width: 100%; max-width: 600px;"
-            title="Snohomish Film Festival">
-        <div style="font-size: 32px;">September 17, 2022</div>
-    </div>
-    <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/1-UK5cQItBY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-    </iframe>-->
+    <img src="assets/graphics/logoSmall2.png" style="width: 100%; max-width: 600px;" title="Snohomish Film Festival">
 
-    <div class="blackBox" *ngIf="1">
+
+    <div *ngIf="1">
         <div class="container-fluid">
 
             <div class="row">
@@ -20,32 +13,48 @@
 
                     <div class="borderClass">
                         <div class="titleCLass">2022 Snohomish Film Festival</div>
-                        <p>Welcome to Snohomish FIlm Festival! Our goal is to promote local short films and all of the
-                            talented people who help make them possible.</p>
-                        <ul>
-                            <li>30 films selected</li>
-                            <li>17 Awards handed out</li>
-                            <li>Live festival & awards show</li>
-                            <li>written feedback given to all submitted films</li>
-                        </ul>
+                        <div class="box-inner">
+                            <p>Welcome to Snohomish FIlm Festival. Our goal is to promote local short films and all of
+                                the
+                                talented people who help make them possible.</p>
+                            <ul>
+                                <li>30 films selected</li>
+                                <li>17 Physical Trophys handed out</li>
+                                <li>Live festival & awards show</li>
+                                <li>Written feedback given to all submitted films!</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="borderClass">
+                        <div class="titleCLass">Requirements</div>
+                        <div class="box-inner">
+                            <ul>
+                                <li>Anyone can submit</li>
+                                <li>Any film genre welcome</li>
+                                <li>Any Creation date</li>
+                                <li>Films less than 25 minutes</li>
+                            </ul>
+                        </div>
                     </div>
 
                 </div>
                 <div class="col-sm-6">
 
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/1-UK5cQItBY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    </iframe>
 
-                    <div class="borderClass">
-                        <div class="titleCLass">Requirements</div>
-                        <li>Anyone can submit</li>
-                        <li>Any film genre welcome</li>
-                        <li>Film length must be between 4 minutes and 25 minutes</li>
-                    </div>
+
 
                     <div class="borderClass">
                         <div class="titleCLass">Dates</div>
-                        <li>Submissions begin Jan 1, 2022</li>
-                        <li>Deadline: June 30th, 2022</li>
-                        <li>Festival: September 17, 2022</li>
+                        <div class="box-inner">
+                            <ul>
+                                <li>Submissions begin Jan 1st</li>
+                                <li>Deadline: June 30th</li>
+                                <li>Festival: September 17th</li>
+                            </ul>
+                        </div>
                     </div>
 
 
@@ -262,8 +271,8 @@
         </div>
     </div>
 -->
-    <div class="borderClass" style="text-align: center;" *ngIf="0">
-        <div class="titleCLass">Snohomish Film Festival 2021</div>
+    <div class="borderClass" style="text-align: center;">
+        <div class="titleCLass">Snohomish Film Festival {{displayYear}}</div>
         <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
         <app-film-snapshot *ngFor="let film of displayFilms" [film]="film"></app-film-snapshot>
     </div>

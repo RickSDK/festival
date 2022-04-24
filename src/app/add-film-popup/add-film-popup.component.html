@@ -18,11 +18,11 @@
                                         src="https://storage.googleapis.com/filmfreeway-assets/submission_buttons/v2/sm_submission_btn@2x-sky-gradient.png"
                                         title="Click to submit on FilmFreeway" width="263" height="49"></a>
 
-                                <div style="font-size: 12px; padding: 10px;">Submit your film to the 2021 Snohomish Film
+                                <div style="font-size: 12px; padding: 10px;">Submit your film to the {{displayYear}} Snohomish Film
                                     Festival.</div>
                             </td>
                             <td align="center" valign="top" width="50%">
-                                <button (click)="filmType=1" type="button" class="btn-default roundButton large"
+                                <button (click)="filmType=2" type="button" class="btn-default roundButton large"
                                     [ngStyle]="ngStyleSegment(buttonIdx,1)">
                                     <i class="fa fa-arrow-right"></i> Database
                                 </button>
@@ -38,10 +38,9 @@
                             <td align="center">
                                 <button (click)="selectFilmType(2)" type="button" class="btn-default roundButton large"
                                     [ngStyle]="ngStyleSegment(buttonIdx,1)">
-                                    2021 Film Festival
+                                    {{displayYear}} Film Festival
                                 </button>
-                                <div style="font-size: 12px; padding: 10px;">You have already submitted your film to the
-                                    Snohomish Film Festival and would like to feature a promo poster of it on our page.
+                                <div style="font-size: 12px; padding: 10px;">Add your film to our database to feature it on our main page.
                                 </div>
                             </td>
                             <td align="center">
@@ -59,10 +58,6 @@
 
                 </div>
                 <div *ngIf="filmType==2 || filmType==3">
-                    <p *ngIf="filmType==2">Use this form to help generate publicity and excitement about your project.
-                        Your promo poster, trailer and general info about the film will be available to the general
-                        public.</p>
-                    <p *ngIf="filmType==3">Note your film must be available on youTube or other publically available video service. The general public will be able to watch your film immediately and write reviews.</p>
 
                     <app-form-wrapper [loadingFlg]="loadingFlg" [formFields]="formFields"
                         (messageEvent)="submitButtonClicked($event)"></app-form-wrapper>
