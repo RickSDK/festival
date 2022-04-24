@@ -38,12 +38,11 @@
                                 [butStyle]="1">
                             </app-button>
                         </div>
-                        <app-button *ngIf="!showLoginFlg" (click)="showLoginFlg=true" name="Existing Member" icon="user"
+                        <app-button *ngIf="!showLoginFlg" (click)="showLoginFlg=true" name="Login" icon="user"
                             [butStyle]="3">
                         </app-button>
-                        <hr>
 
-                        <app-button (click)="facebookPressed()" name="Login with Facebook" icon="facebook"
+                        <app-button *ngIf="0" (click)="facebookPressed()" name="Login with Facebook" icon="facebook"
                             [butStyle]="3">
                         </app-button>
 

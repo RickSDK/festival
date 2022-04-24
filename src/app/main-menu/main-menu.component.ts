@@ -115,9 +115,10 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   }
 
   checkFBStatus() {
-    FB.getLoginStatus(function (response) {
-      console.log('main menu FB.getLoginStatus', response);
-    });
+     // FB.getLoginStatus(function (response) {
+      //  console.log('main menu FB.getLoginStatus', response);
+      //});
+
   }
 
 

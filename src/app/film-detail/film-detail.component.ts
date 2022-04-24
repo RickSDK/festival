@@ -26,6 +26,7 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
   public showRefreshButton = false;
   public showRefreshMessage = false;
   public filmReviews = [];
+  public editModeFlg = false;
   public formFields = [{ name: 'Trailer Embeded Link', type: 'text', value: '', placeholder: 'https://www.youtube.com/embed/', max: 128, requiredFlg: true }];
   public reviewFields = [
     { name: 'Your Review', type: 'textarea', value: '', max: 1000, requiredFlg: true },
@@ -98,10 +99,6 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     tableObj.data.push({ title: 'Rating', value: this.film.rating })
     tableObj.data.push({ title: 'Length', value: this.film.lengthMinutes + ' minutes' })
     tableObj.data.push({ title: 'Release Date', value: this.film.localDate })
-    if (this.film.cast)
-      tableObj.data.push({ title: 'Cast', value: this.film.cast })
-    if (this.film.crew)
-      tableObj.data.push({ title: 'Crew', value: this.film.crew })
     this.tableObj = tableObj;
 
     this.editEmbededLinkFlg = false;

@@ -9,6 +9,7 @@ export class Film {
     public trailorUrl: string;
     public releaseDate: string;
     public synopsis: string;
+    public synopsisEdit: string;
     public genre: string;
     public rating: string;
     public director: string;
@@ -59,6 +60,11 @@ export class Film {
             this.posterFlg = (components[x++] == 'Y');
             this.trailorUrl = components[x++];
             this.synopsis = components[x++];
+            if(this.synopsis) {
+                this.synopsis = this.synopsis.replace(/\[nl\]/g, '<br>');
+                this.synopsisEdit = this.synopsis.replace(/<br>/g, '\n');
+            }
+            
             this.rating = components[x++];
             this.producer = components[x++];
             this.cast = components[x++];

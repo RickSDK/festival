@@ -6,26 +6,38 @@
             <div class="col-sm-6">
                 <img src="https://www.appdigity.com/fest/posters/poster{{film.id}}.jpg" class="imageCard"
                     style="width: 100%; max-width: 400px; max-height: 600px;">
-                <app-button *ngIf="filmIsEditableFlg" (click)="editFilm(film, true)" [name]="'Edit'" [class]="'narrow'"
+                <app-button *ngIf="editModeFlg" (click)="editFilm(film, true)" [name]="'Edit'" [class]="'narrow'"
                     [icon]="'pencil'"></app-button>
-                <app-button *ngIf="filmIsEditableFlg && showRefreshButton" (click)="refreshImagePressed()"
+                <app-button *ngIf="editModeFlg && showRefreshButton" (click)="refreshImagePressed()"
                     [name]="'Refresh'" [class]="'narrow'" [icon]="'refresh'"></app-button>
                 <div *ngIf="showRefreshMessage">You may need to refresh your browser to see the new image as it may be
                     cached in your browser's memory.</div>
             </div>
             <div class="col-sm-6">
                 <app-data-table [tableObj]="tableObj"></app-data-table>
+                <div *ngIf="film.cast && !castObj.data" class="detailCard">
+                    <div class="titleCLass">Cast</div>
+                    <div style="padding: 5px;">
+                        <div style="color: #777;" [innerHTML]="film.cast"></div>
+                    </div>
+                </div>
                 <app-data-table *ngIf="castObj.data" [tableObj]="castObj"></app-data-table>
+                <div *ngIf="film.crew && !crewObj.data" class="detailCard">
+                    <div class="titleCLass">Crew</div>
+                    <div style="padding: 5px;">
+                        <div style="color: #777;" [innerHTML]="film.crew"></div>
+                    </div>
+                </div>
                 <app-data-table *ngIf="crewObj.data" [tableObj]="crewObj"></app-data-table>
-                <div class="detailCard">
-                    <div class="titleCLass" [ngStyle]="ngStyleButton(3)">Synopsis</div>
+                <div  class="detailCard">
+                    <div class="titleCLass">Synopsis</div>
                     <div style="padding: 5px;">
                         <div><b>{{film.tagline}}</b></div>
-                        <div style="color: #777;">{{film.synopsis}}</div>
+                        <div style="color: #777;" [innerHTML]="film.synopsis"></div>
                     </div>
                 </div>
 
-                <div *ngIf="filmIsEditableFlg">
+                <div *ngIf="editModeFlg">
                     <app-button (click)="editFilm(film, false)" [name]="'Edit'" [class]="'narrow'" [icon]="'pencil'">
                     </app-button>
                     <app-button (click)="castCrewPopup.show(film)" [name]="'Add Cast/Crew'" [class]="'narrow'"
@@ -42,7 +54,7 @@
                         <img *ngIf="film.trailerCode==3" src="assets/graphics/amazon.png" height="25">
                         Watch Trailer</button>
                 </a>
-                <app-button *ngIf="0 && filmIsEditableFlg && film.trailorUrl && !film.trailerEmbed"
+                <app-button *ngIf="0 && editModeFlg && film.trailorUrl && !film.trailerEmbed"
                     (click)="editEmbedClicked()" [icon]="'angle-double-right'"></app-button>
 
 
@@ -67,7 +79,10 @@
             </div>
         </div>
     </div>
+    <app-button *ngIf="filmIsEditableFlg" [name]="'Edit Page'" (mousedown)="editModeFlg=!editModeFlg"
+        [icon]="'pencil'"></app-button>
     <hr>
+
     <iframe *ngIf="film && film.trailerEmbed" width="100%" height="400"
         [src]="sanitizer.bypassSecurityTrustResourceUrl(film.trailerEmbed)" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

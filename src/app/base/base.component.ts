@@ -49,7 +49,7 @@ export class BaseComponent extends BaseColorsComponent implements OnInit {
   }
   packageForLargeText(text:string) {
     text = text.replace(/\|/g, '');
-    return text.replace(/\n/g, '[nl]');;
+    return text.replace(/\n/g, '[nl]');
   }
 }
 function getUserObject() {

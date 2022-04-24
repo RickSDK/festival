@@ -46,7 +46,8 @@ export class PageShellComponent extends BaseComponent implements OnInit {
     this.messageEvent.emit('');
   }
   refreshThisUser(str:string) {
-    console.log('right here!!!', str);
+    this.user = this.getUserObject();
+    this.userId = this.user.id;
     this.router.navigate(['']);
   }
   userLogout() {

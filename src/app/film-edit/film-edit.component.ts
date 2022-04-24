@@ -28,14 +28,14 @@ export class FilmEditComponent extends BaseHttpComponent implements OnInit {
   public directorObj = { name: 'Director', type: 'text', value: '', max: 50, requiredFlg: true };
   public producerObj = { name: 'Producer', type: 'text', value: '', max: 50 };
   public lengthObj = { name: 'Film Length (In minutes)', type: 'number', value: '0', requiredFlg: true, disabledFlg: false, hint: 'How many minutes long is your film, including credits?' };
-  public urlObj = { name: 'Film URL', type: 'text', value: '', placeholder: 'http', requiredFlg: true, max: 200, hint: 'Link to your project in youTube or other publically viewable site.' };
+  public urlObj = { name: 'Film URL', type: 'text', value: '', placeholder: 'http', requiredFlg: false, max: 200, hint: 'Link to your project in youTube or other publically viewable site.' };
   public trailorObj = { name: 'Trailor URL', type: 'text', value: '', placeholder: 'http', max: 200, hint: 'Link to your official trailor in youTube or other publically viewable site.' };
   public behindScenesObj = { name: 'Benhind Scenes URL', type: 'text', value: '', placeholder: 'http', max: 200, disabledFlg: false, hint: 'Link to an behind-the-scenes video in youTube or other publically viewable site.' };
   public posterObj = { name: 'Poster /  Screen Shot', type: 'picture', value: '', requiredFlg: true, hint: 'An image that you would like to represent this film.' };
   public genreObj = { name: 'Genre', type: 'dropdown', value: '', options: this.genres, requiredFlg: true };
   public ratingObj = { name: 'Rating', type: 'dropdown', value: 'N/A', options: this.ratings, requiredFlg: true };
   public taglineObj = { name: 'Tagline', type: 'text', value: '', max: 120, requiredFlg: true, disabledFlg: false };
-  public descObj = { name: 'Synopsis', type: 'textarea', value: '', max: 500 };
+  public descObj = { name: 'Synopsis', type: 'textarea', value: '', max: 1000 };
   public castObj = { name: 'Cast', type: 'text', value: '', max: 250, hint: 'A short list of top cast members' };
   public crewObj = { name: 'Crew', type: 'text', value: '', max: 250, hint: 'A short list of top crew members' };
   public releaseObj = { name: 'Release Date', type: 'date', value: '', requiredFlg: true };
@@ -90,7 +90,7 @@ export class FilmEditComponent extends BaseHttpComponent implements OnInit {
     this.genreObj.value = film.genre;
     this.ratingObj.value = film.rating;
     this.taglineObj.value = film.tagline;
-    this.descObj.value = film.synopsis;
+    this.descObj.value = film.synopsisEdit;
     this.castObj.value = film.cast;
     this.crewObj.value = film.crew;
     this.releaseObj.value = film.releaseDate; //'2020-06-15'; //
