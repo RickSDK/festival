@@ -25,9 +25,15 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
   public myReview: Review;
   public showRefreshButton = false;
   public showRefreshMessage = false;
+  public editOutsideLinksFlg = false;
   public filmReviews = [];
   public editModeFlg = false;
-  public formFields = [{ name: 'Trailer Embeded Link', type: 'text', value: '', placeholder: 'https://www.youtube.com/embed/', max: 128, requiredFlg: true }];
+  public formFields = [
+    { name: 'Trailer Embeded Link', type: 'text', value: '', placeholder: 'https://www.youtube.com/embed/', max: 128, requiredFlg: false },
+    { name: 'Facebook Page', type: 'text', value: '', placeholder: 'http', max: 128, requiredFlg: false },
+    { name: 'IMDB Page', type: 'text', value: '', placeholder: 'http', max: 128, requiredFlg: false },
+    { name: 'Website', type: 'text', value: '', placeholder: 'http', max: 128, requiredFlg: false }
+  ];
   public reviewFields = [
     { name: 'Your Review', type: 'textarea', value: '', max: 1000, requiredFlg: true },
   ];
@@ -58,12 +64,13 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     this.executeApi('festApi.php', params, true);
   }
   postSuccessApi(file: string, data: string) {
-    //console.log('xxx', file, data);
+    console.log('xxx', file, data);
     if (file === 'festReviews.php') {
       this.showAlertPopup('Success');
       this.getData();
       return;
     }
+    this.editModeFlg = false;
     var lines = data.split('<b>');
     if (lines.length > 2) {
       this.film = new Film(lines[1]);
@@ -72,6 +79,10 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
         filmReviewHash[record.review_id] = record.likeFlg;
       });
       console.log('film', this.film);
+      this.formFields[0].value = this.film.trailerEmbed;
+      this.formFields[1].value = this.film.facebookURL;
+      this.formFields[2].value = this.film.imdbURL;
+      this.formFields[3].value = this.film.websiteURL;
       var filmReviews = lines[2].split('<r>');
       this.filmReviews = [];
       filmReviews.forEach(line => {
@@ -95,8 +106,9 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     tableObj.data.push({ title: 'Director', value: this.film.director });
     if (this.film.producer)
       tableObj.data.push({ title: 'Producer', value: this.film.producer })
-    tableObj.data.push({ title: 'Genre', value: this.film.genre })
-    tableObj.data.push({ title: 'Rating', value: this.film.rating })
+    tableObj.data.push({ title: 'Genre', value: this.film.genre });
+    if(this.film.rating != 'N/A')
+      tableObj.data.push({ title: 'Rating', value: this.film.rating })
     tableObj.data.push({ title: 'Length', value: this.film.lengthMinutes + ' minutes' })
     tableObj.data.push({ title: 'Release Date', value: this.film.localDate })
     this.tableObj = tableObj;
@@ -118,7 +130,6 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     this.refreshImage();
   }
   reviewButtonClicked() {
-    console.log('hey! reviewButtonClicked');
     if (!this.user.id) {
       this.showAlertPopup('Log in, it\'s free!');
       return;
@@ -151,6 +162,9 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     var params = {
       row_id: this.filmId,
       trailerEmbed: this.formFields[0].value,
+      facebookURL: this.formFields[1].value,
+      imdbURL: this.formFields[2].value,
+      websiteURL: this.formFields[3].value,
       action: 'updateTrailerEmbed'
     };
     console.log(params);

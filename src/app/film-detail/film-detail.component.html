@@ -5,13 +5,31 @@
         <div class="row">
             <div class="col-sm-6">
                 <img src="https://www.appdigity.com/fest/posters/poster{{film.id}}.jpg" class="imageCard"
-                    style="width: 100%; max-width: 400px; max-height: 600px;">
-                <app-button *ngIf="editModeFlg" (click)="editFilm(film, true)" [name]="'Edit'" [class]="'narrow'"
-                    [icon]="'pencil'"></app-button>
-                <app-button *ngIf="editModeFlg && showRefreshButton" (click)="refreshImagePressed()"
-                    [name]="'Refresh'" [class]="'narrow'" [icon]="'refresh'"></app-button>
+                    style="width: 100%; max-width: 400px; max-height: 600px;margin-bottom: 10px;">
+                <app-button *ngIf="editModeFlg" (click)="editFilm(film, true)" [name]="'Change Poster'"
+                    [class]="'narrow'" [icon]="'pencil'"></app-button>
+                <app-button *ngIf="editModeFlg && showRefreshButton" (click)="refreshImagePressed()" [name]="'Refresh'"
+                    [class]="'narrow'" [icon]="'refresh'"></app-button>
                 <div *ngIf="showRefreshMessage">You may need to refresh your browser to see the new image as it may be
                     cached in your browser's memory.</div>
+
+                <iframe *ngIf="film && film.trailerEmbed" width="100%" height="220"
+                    [src]="sanitizer.bypassSecurityTrustResourceUrl(film.trailerEmbed)" frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+
+                <a *ngIf="film.trailorUrl && !film.trailerEmbed" target="_blank" href="{{film.trailorUrl}}">
+                    <button class="btn btn-secondary roundButton">
+                        <i class="fa fa-play" *ngIf="film.trailerCode==0"></i>
+                        <img *ngIf="film.trailerCode==1" src="assets/graphics/youTube.png" height="25">
+                        <img *ngIf="film.trailerCode==2" src="assets/graphics/vimeo.png" height="25">
+                        <img *ngIf="film.trailerCode==3" src="assets/graphics/amazon.png" height="25">
+                        Watch Trailer</button>
+                </a>
+                <app-button *ngIf="editModeFlg && film.trailorUrl" (click)="editOutsideLinksFlg=!editOutsideLinksFlg"
+                    [icon]="'angle-double-right'" [name]="'Embed'"></app-button>
+
+
             </div>
             <div class="col-sm-6">
                 <app-data-table [tableObj]="tableObj"></app-data-table>
@@ -29,7 +47,8 @@
                     </div>
                 </div>
                 <app-data-table *ngIf="crewObj.data" [tableObj]="crewObj"></app-data-table>
-                <div  class="detailCard">
+
+                <div class="detailCard" style="margin-bottom: 10px;">
                     <div class="titleCLass">Synopsis</div>
                     <div style="padding: 5px;">
                         <div><b>{{film.tagline}}</b></div>
@@ -45,18 +64,31 @@
                     <app-button [name]="'Upload Script'" [class]="'narrow'" [icon]="'file-pdf-o'"></app-button>
                 </div>
 
+                <div style="background-color: white; padding: 5px;" *ngIf="film.facebookURL || film.imdbURL || film.websiteURL || editModeFlg">
+                    <a *ngIf="film.facebookURL || editModeFlg" target="_blank" href="{{film.facebookURL}}">
+                        <app-button 
+                            [disabled]="!film.facebookURL" [name]="'Facebook'" [icon]="'facebook'">
+                        </app-button>
+                    </a>
+                    <a *ngIf="film.imdbURL || editModeFlg" target="_blank" href="{{film.imdbURL}}">
+                        <app-button 
+                            [disabled]="!film.imdbURL" [name]="'IMDb'" [icon]="'imdb'">
+                        </app-button>
+                    </a>
+                    <a *ngIf="film.websiteURL || editModeFlg" target="_blank" href="{{film.websiteURL}}">
+                        <app-button 
+                            [disabled]="!film.websiteURL" [name]="'Website'" [icon]="'globe'">
+                        </app-button>
+                    </a>
+                    <div *ngIf="editModeFlg">
+                        <app-button (click)="editOutsideLinksFlg=!editOutsideLinksFlg" [name]="'Edit'"
+                            [class]="'narrow'" [icon]="'pencil'">
+                        </app-button>
+                    </div>
+                    <app-form-wrapper *ngIf="editModeFlg && editOutsideLinksFlg" [loadingFlg]="loadingFlg"
+                        [formFields]="formFields" (messageEvent)="submitEmbedButtonClicked($event)"></app-form-wrapper>
 
-                <a *ngIf="film.trailorUrl" target="_blank" href="{{film.trailorUrl}}">
-                    <button class="btn btn-secondary roundButton">
-                        <i class="fa fa-play" *ngIf="film.trailerCode==0"></i>
-                        <img *ngIf="film.trailerCode==1" src="assets/graphics/youTube.png" height="25">
-                        <img *ngIf="film.trailerCode==2" src="assets/graphics/vimeo.png" height="25">
-                        <img *ngIf="film.trailerCode==3" src="assets/graphics/amazon.png" height="25">
-                        Watch Trailer</button>
-                </a>
-                <app-button *ngIf="0 && editModeFlg && film.trailorUrl && !film.trailerEmbed"
-                    (click)="editEmbedClicked()" [icon]="'angle-double-right'"></app-button>
-
+                </div>
 
                 <a target="_blank" href="{{film.url}}" *ngIf="film.url">
                     <button class="btn btn-secondary roundButton">
@@ -79,13 +111,9 @@
             </div>
         </div>
     </div>
-    <app-button *ngIf="filmIsEditableFlg" [name]="'Edit Page'" (mousedown)="editModeFlg=!editModeFlg"
-        [icon]="'pencil'"></app-button>
+    <app-button *ngIf="filmIsEditableFlg" [name]="'Edit Page'" (mousedown)="editModeFlg=!editModeFlg" [icon]="'pencil'">
+    </app-button>
     <hr>
-
-    <iframe *ngIf="film && film.trailerEmbed" width="100%" height="400"
-        [src]="sanitizer.bypassSecurityTrustResourceUrl(film.trailerEmbed)" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     <iframe *ngIf="film && film.urlEmbed" width="100%" height="400"
         [src]="sanitizer.bypassSecurityTrustResourceUrl(film.urlEmbed)" frameborder="0"

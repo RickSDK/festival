@@ -1,30 +1,39 @@
 <app-page-shell [userId]="userId" [navTitle]="'Tickets'" [icon]="'fa-ticket'">
 
     <img src="assets/graphics/tickets2.jpg" class="image">
- 
 
 
- 
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
-                    <img src="assets/graphics/theater.jpg" class="image">
-                </div>
-                <div class="col-sm-6">
-                    <div class="borderClass">
-                        <div class="titleCLass">Location Details</div>
-                        <div class="listClass">
-                             <li> Saturday September 17, 2022</li>
-                            <li> Lynnwood Convention Center</li>
-                            <li> Time: 3pm - 8pm</li>
-                            <li> Cost: $20</li>
-                            <li> # Films: 30</li>
-                        </div>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="assets/graphics/theater.jpg" class="image">
+            </div>
+            <div class="col-sm-6">
+                <div class="borderClass">
+                    <div class="titleCLass">Location Details</div>
+                    <div class="listClass">
+                        <li> Saturday September 17, 2022</li>
+                        <li> Lynnwood Convention Center</li>
+                        <li> Time: 3pm - 8pm</li>
+                        <li> Cost: $12</li>
+                        <li> # Films: 30</li>
                     </div>
-                    <app-button [routerLink]="['/program']" [name]="'Program'" [icon]="'file-text'"></app-button>
+                    <div style="text-align: center;">
 
+                        <div>Lynnwood Convention Center</div>
+                        <div>3711 196th St SW</div>
+                        <div>Lynnwood, WA 98036 </div>
+                    </div>
                 </div>
+
+                <app-button [routerLink]="['/program']" [name]="'Program'" [icon]="'file-text'"></app-button>
+                <a href="https://filmfreeway.com/SnohomishFilmFestival/tickets">
+                    <app-button [name]="'Tickets'"></app-button>
+                </a>
             </div>
         </div>
+    </div>
 
 </app-page-shell>

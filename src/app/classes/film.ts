@@ -38,6 +38,9 @@ export class Film {
     public behindScenes: string;
     public urlEmbed: string;
     public festivalYear: number;
+    public facebookURL: string;
+    public imdbURL: string;
+    public websiteURL: string;
 
     constructor(line: string) {
         var components = line.split("|");
@@ -77,6 +80,11 @@ export class Film {
             this.likeString = components[x++];
             this.releaseDateText = components[x++];
             this.behindScenes = components[x++];
+            this.facebookURL = components[x++];
+            this.imdbURL = components[x++];
+            this.websiteURL = components[x++];
+
+            //---------------------------------------------
 
             var likeList = [];
             if (this.likeString && this.likeString.length > 0) {

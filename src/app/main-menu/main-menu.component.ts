@@ -21,6 +21,11 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   public league: any;
   public films: any;
   public displayFilms: any;
+  public festicalStatus = 2;
+  public currentMonth = new Date().getMonth() + 1;
+  // 0 = not submitting yet
+  // 1 = accepting projects
+  // 2 = closed
 
   constructor() { super(); }
 

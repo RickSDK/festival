@@ -19,14 +19,13 @@
                                 talented people who help make them possible.</p>
                             <ul>
                                 <li>30 films selected</li>
-                                <li>17 Physical Trophys handed out</li>
+                                <li>17 Physical Trophys</li>
                                 <li>Live festival & awards show</li>
                                 <li>Written feedback given to all submitted films!</li>
                             </ul>
                         </div>
                     </div>
-
-                    <div class="borderClass">
+                    <div class="borderClass" *ngIf="currentMonth <= 6">
                         <div class="titleCLass">Requirements</div>
                         <div class="box-inner">
                             <ul>
@@ -37,16 +36,34 @@
                             </ul>
                         </div>
                     </div>
+                    <div class="borderClass" *ngIf="currentMonth >= 7">
+                        <div class="titleCLass">Submissions Closed!</div>
+                        <div class="box-inner">
+                            <p>
+                                Thank you to everyone who submitted a project! We ended up getting almost 60 projects
+                                submitted and made some very tough choices to select our 30 picks for the 2022 festival.
+                                All submitters should have been notified by now.
+                            </p>
+                            <p>
+                                We are now choosing winners for each of the awards. You will be notified soon about
+                                these, as well as the full schedule for our festival this year. We look forward to
+                                meeting everyone in September.
+                            </p>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="col-sm-6">
 
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/1-UK5cQItBY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/1-UK5cQItBY"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
                     </iframe>
 
 
 
-                    <div class="borderClass">
+                    <div class="borderClass" *ngIf="currentMonth <= 6">
                         <div class="titleCLass">Dates</div>
                         <div class="box-inner">
                             <ul>
@@ -54,6 +71,27 @@
                                 <li>Deadline: June 30th</li>
                                 <li>Festival: September 17th</li>
                             </ul>
+                        </div>
+                    </div>
+
+                    <div class="borderClass" *ngIf="currentMonth >= 7">
+                        <div class="titleCLass">Snohomish Film Festival</div>
+                        <div class="box-inner">
+                            <ul>
+                                <li>Saturday September 17th</li>
+                                <li>3pm - 8pm</li>
+                                <li>Film Schedule coming soon.</li>
+                            </ul>
+                            <p>Support Snohomish film by attending this exciting event. 30 films included, plus meet &
+                                greets with the film makers and a live awards show! Tickets only $12!</p>
+                            <div style="text-align: center;">
+                                <a href="https://filmfreeway.com/SnohomishFilmFestival/tickets">
+                                    <app-button [name]="'Tickets'"></app-button>
+                                </a>
+                                <div>Lynnwood Convention Center</div>
+                                <div>3711 196th St SW</div>
+                                <div>Lynnwood, WA 98036 </div>
+                            </div>
                         </div>
                     </div>
 
@@ -272,7 +310,8 @@
     </div>
 -->
     <div class="borderClass" style="text-align: center;">
-        <div class="titleCLass">Snohomish Film Festival {{displayYear}}</div>
+        <div class="titleCLass">Snohomish Film Festival {{displayYear}} (Submitted Projects)</div>
+        <div class="titleCLass">Actual lineup and final selections coming soon</div>
         <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
         <app-film-snapshot *ngFor="let film of displayFilms" [film]="film"></app-film-snapshot>
     </div>
