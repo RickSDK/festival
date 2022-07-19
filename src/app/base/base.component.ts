@@ -12,7 +12,7 @@ export class BaseComponent extends BaseColorsComponent implements OnInit {
   public title = 'title';
   public buttonIdx = 0;
   public user: any;
-  public userId:number = 0;
+  public userId: number = 0;
 
   constructor() { super(); }
 
@@ -42,29 +42,31 @@ export class BaseComponent extends BaseColorsComponent implements OnInit {
   getUserObject() {
     return getUserObject();
   }
-  refreshUser(str:string) {
+  refreshUser(str: string) {
     this.user = getUserObject();
     this.userId = this.user.id;
     console.log('refreshUser', this.userId, str);
   }
-  packageForLargeText(text:string) {
-    text = text.replace(/\|/g, '');
-    return text.replace(/\n/g, '[nl]');
+  packageForLargeText(text: string) {
+    if (text) {
+      text = text.replace(/\|/g, '');
+      return text.replace(/\n/g, '[nl]');
+    } else return '';
   }
 }
 function getUserObject() {
-  
-  if(localStorage.userObj) {
+
+  if (localStorage.userObj) {
     var obj = JSON.parse(localStorage.userObj);
-    if(obj && obj.id)
+    if (obj && obj.id)
       return obj;
   }
 
 
-  return { 
-    id: localStorage.userId, 
-    username: localStorage.username, 
-    code: localStorage.code, 
+  return {
+    id: localStorage.userId,
+    username: localStorage.username,
+    code: localStorage.code,
     email: localStorage.email,
     firstName: localStorage.firstName,
     lastName: localStorage.lastName,

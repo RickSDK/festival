@@ -19,7 +19,7 @@
                                 talented people who help make them possible.</p>
                             <ul>
                                 <li>30 films selected</li>
-                                <li>17 Physical Trophys</li>
+                                <li>14 Physical Trophys</li>
                                 <li>Live festival & awards show</li>
                                 <li>Written feedback given to all submitted films!</li>
                             </ul>
@@ -44,10 +44,13 @@
                                 submitted and made some very tough choices to select our 30 picks for the 2022 festival.
                                 All submitters should have been notified by now.
                             </p>
-                            <p>
+                            <p *ngIf="0">
                                 We are now choosing winners for each of the awards. You will be notified soon about
                                 these, as well as the full schedule for our festival this year. We look forward to
                                 meeting everyone in September.
+                            </p>
+                            <p>
+                                Nominations are listed below for the 2022 Snohomish Film Festival!
                             </p>
                         </div>
                     </div>
@@ -86,8 +89,10 @@
                                 greets with the film makers and a live awards show! Tickets only $12!</p>
                             <div style="text-align: center;">
                                 <a href="https://filmfreeway.com/SnohomishFilmFestival/tickets">
-                                    <app-button [name]="'Tickets'"></app-button>
+                                    <app-button [name]="'Tickets'" [icon]="'ticket'"></app-button>
                                 </a>
+                                <app-button [routerLink]="['/program']" [name]="'Program'" [icon]="'file-text'">
+                                </app-button>
                                 <div>Lynnwood Convention Center</div>
                                 <div>3711 196th St SW</div>
                                 <div>Lynnwood, WA 98036 </div>
@@ -116,6 +121,16 @@
         </div>
     </div>
 
+    <div class="borderClass" *ngIf="currentMonth >= 7">
+        <div class="titleCLass">2022 Snohomish Film Festival Nominations</div>
+    </div>
+    <div class="award-box" *ngFor="let award of awards">
+        <b><i class="fa fa-trophy"></i> {{award.name}}</b>
+        <ul style="text-align: left;">
+            <li *ngFor="let film of award.films">{{film}}</li>
+        </ul>
+
+    </div>
     <!--
     <div class="blackBox pictureBG" style="background-image: url('assets/graphics/film2.jpg');">
         <div class="container-fluid">
@@ -311,8 +326,7 @@
 -->
     <div class="borderClass" style="text-align: center;">
         <div class="titleCLass">Snohomish Film Festival {{displayYear}} (Submitted Projects)</div>
-        <div class="titleCLass">Actual lineup and final selections coming soon</div>
-        <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
+         <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
         <app-film-snapshot *ngFor="let film of displayFilms" [film]="film"></app-film-snapshot>
     </div>
 

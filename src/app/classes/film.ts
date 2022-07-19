@@ -41,6 +41,7 @@ export class Film {
     public facebookURL: string;
     public imdbURL: string;
     public websiteURL: string;
+    public allowReviewsFlg: boolean;
 
     constructor(line: string) {
         var components = line.split("|");
@@ -83,6 +84,7 @@ export class Film {
             this.facebookURL = components[x++];
             this.imdbURL = components[x++];
             this.websiteURL = components[x++];
+            this.allowReviewsFlg = (components[x++] == 'Y');
 
             //---------------------------------------------
 

@@ -100,7 +100,7 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     this.castObj.data = this.film.castList;
     this.crewObj.data = this.film.crewList;
     console.log('this.myReview', this.myReview);
-    this.filmIsEditableFlg = this.film.user_id == this.userId;
+    this.filmIsEditableFlg = this.film.user_id == this.userId || this.userId == 1;
 
     var tableObj = { name: this.film.name, data: [] };
     tableObj.data.push({ title: 'Director', value: this.film.director });
@@ -149,7 +149,7 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     this.getData();
   }
   editFilm(film: Film, imageFlg: boolean) {
-    if (this.user.id == film.user_id)
+   // if (this.user.id == film.user_id)
       this.filmEditComponent.show(film, imageFlg);
   }
   changeStarCount(num: number) {

@@ -23,6 +23,23 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   public displayFilms: any;
   public festicalStatus = 2;
   public currentMonth = new Date().getMonth() + 1;
+  public awards = [
+    { name: 'Drama', films: ['Kitsune', 'Moving On', 'My Happy Place', 'Neshamah', 'Stay'] },
+    { name: 'Comedy', films: ['Manly Men of the Mountains', 'Mike Sizzer | a Chair Wrestling Documentary', 'Milk Dreams', 'Mother\'s Day', 'The Opener'] },
+    { name: 'Music Video', films: ['Cuz You\'re My Girl', 'Feel it to Heal it', 'Marble - Red Room'] },
+    { name: 'Horror', films: ['Balloon', 'The House', 'Kurt', 'Nowhere to Escape', 'Something Behind the Walls'] },
+    { name: 'Documentary', films: ['The Ghosts They Carry', 'My Happy Place'] },
+    { name: 'Sci-fi/Fantasy', films: ['Amisdst the Stars', 'The Artifact', 'Kitsune'] },
+    { name: 'Best Script', films: ['Assembly By Boredom', 'High Tea', 'Perfect Teeth', 'Thingamajigs'] },
+    { name: 'Best Picture', films: ['The Ghosts They Carry', 'Kitsune', 'Manly Men of the Mountains', 'Neshamah', 'Stay'] },
+    { name: 'Best Director', films: ['Angela DiMarco (STAY) ', 'Joshua Woodcock - Kitsune', 'Kit Wilson - Something behind the walls', 'Tony Doupe - NESHAMAH', 'Zyuan Wang - Nowhere To Escape'] },
+    { name: 'Best Actor', films: ['David Over - Mike Sizzer | a Chair Wrestling Documentary', 'J.S. Tate for Kitsune', 'Richard Snyder for Neshamah', 'Tom Walton AMIDST THE STARS'] },
+    { name: 'Best Actress', films: ['Angela DiMarco for NESHAMAH', 'Kara Puerschner STAY', 'Trin Miller ROOM 13'] },
+    { name: 'Child Actor', films: ['Adelaide St John KITSUNE', 'Lucas Oktay STAY'] },
+    { name: 'Sound/Music', films: ['KITSUNE', 'Neshamah', 'Stay'] },
+    { name: 'Editing', films: ['COLOR OF THE SKY', 'Cuz You My Girl', 'My Happy Place', 'Something Behind The Walls'] },
+  ];
+
   // 0 = not submitting yet
   // 1 = accepting projects
   // 2 = closed
@@ -30,7 +47,7 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   constructor() { super(); }
 
   ngOnInit(): void {
-    window.scrollTo(0,0);
+    window.scrollTo(0, 0);
     this.user = this.getUserObject();
     this.userId = this.user.id;
     console.log('xxx user', this.user);
@@ -64,11 +81,11 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
     }, 2000);
 
     this.getData();
-    
-/*
-    FB.getLoginStatus(function (response) {
-      statusChangeCallback(response);
-    });*/
+
+    /*
+        FB.getLoginStatus(function (response) {
+          statusChangeCallback(response);
+        });*/
 
     /*FB.login(function(response) {
       if (response.status === 'connected') {
@@ -80,7 +97,7 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
 
   }
 
-  
+
   getData() {
     this.loadingFlg = true;
     var params = {
@@ -107,22 +124,22 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   filterFilms() {
     var displayFilms = [];
     this.films.forEach(film => {
-      if (this.displayYear ==  film.festivalYear)
+      if (this.displayYear == film.festivalYear)
         displayFilms.push(film);
     });
     this.displayFilms = displayFilms;
   }
 
-  refreshUser(str:string) {
+  refreshUser(str: string) {
     this.user = this.getUserObject();
     this.userId = this.user.id;
     console.log('refreshUserXXX', this.userId, str);
   }
 
   checkFBStatus() {
-     // FB.getLoginStatus(function (response) {
-      //  console.log('main menu FB.getLoginStatus', response);
-      //});
+    // FB.getLoginStatus(function (response) {
+    //  console.log('main menu FB.getLoginStatus', response);
+    //});
 
   }
 

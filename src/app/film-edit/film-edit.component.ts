@@ -34,12 +34,13 @@ export class FilmEditComponent extends BaseHttpComponent implements OnInit {
   public posterObj = { name: 'Poster /  Screen Shot', type: 'picture', value: '', requiredFlg: true, hint: 'An image that you would like to represent this film.' };
   public genreObj = { name: 'Genre', type: 'dropdown', value: '', options: this.genres, requiredFlg: true };
   public ratingObj = { name: 'Rating', type: 'dropdown', value: 'N/A', options: this.ratings, requiredFlg: true };
-  public taglineObj = { name: 'Tagline', type: 'text', value: '', max: 120, requiredFlg: true, disabledFlg: false };
+  public taglineObj = { name: 'Tagline', type: 'text', value: '', max: 120, requiredFlg: true, disabledFlg: false, hint: 'One sentence summary or teaser for the film.' };
   public descObj = { name: 'Synopsis', type: 'textarea', value: '', max: 1000 };
   public castObj = { name: 'Cast', type: 'text', value: '', max: 250, hint: 'A short list of top cast members' };
   public crewObj = { name: 'Crew', type: 'text', value: '', max: 250, hint: 'A short list of top crew members' };
   public releaseObj = { name: 'Release Date', type: 'date', value: '', requiredFlg: true };
   public releaseTextObj = { name: 'Release Date Text', type: 'text', value: '', requiredFlg: true };
+  public allowReviewsObj = { name: 'Allow reviews', type: 'boolean', value: '', requiredFlg: false, hint: 'Allow people to watch and write reviews for your film.' };
   public filmType: number = 0;
   public deleteFlg = false;
   public errorMessage: string = '';
@@ -61,7 +62,7 @@ export class FilmEditComponent extends BaseHttpComponent implements OnInit {
     this.castObj,
     this.crewObj,
     this.releaseObj,
-    this.releaseTextObj
+    this.allowReviewsObj
   ]
   public imageFlg: boolean = false;
   public film: Film;
@@ -95,6 +96,7 @@ export class FilmEditComponent extends BaseHttpComponent implements OnInit {
     this.crewObj.value = film.crew;
     this.releaseObj.value = film.releaseDate; //'2020-06-15'; //
     this.releaseTextObj.value = film.releaseDateText;
+    this.allowReviewsObj.value = film.allowReviewsFlg?'Y':'';
     $('#filmEditPopup').modal();
   }
   updateImageButtonClicked(msg: string) {
@@ -128,8 +130,8 @@ export class FilmEditComponent extends BaseHttpComponent implements OnInit {
       releaseDate: this.releaseObj.value,
       releaseDateText: this.releaseTextObj.value,
       behindScenes: this.behindScenesObj.value,
+      allowReviewsFlg: this.allowReviewsObj.value?'Y':'',
     };
-    console.log(params);
     this.executeApi('festApi.php', params, true);
   }
   postSuccessApi(file: string, data: string) {
