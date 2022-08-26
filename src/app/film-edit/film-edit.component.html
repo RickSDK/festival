@@ -18,7 +18,7 @@
                     <!--edit basics-->
                     <app-form-wrapper [loadingFlg]="loadingFlg" [errorMessage]="errorMessage" [formFields]="formFields2" (messageEvent)="updateDetailsButtonClicked($event)"></app-form-wrapper>
                     <hr>
-                    <app-button *ngIf="!deleteFlg" (click)="deleteFlg=true" [name]="'Delete Film'" [icon]="'trash'"
+                    <app-button *ngIf="user && user.id>0 && !deleteFlg" (click)="deleteFlg=true" [name]="'Delete Film'" [icon]="'trash'"
                         [butStyle]="5">
                     </app-button>
                     <div class="borderClass" style="background-color: yellow; text-align: center;"
@@ -28,7 +28,7 @@
 
                             <div>Do you wish to permanently delete this film from the database? This move cannot be undone.</div>
                             <app-button (click)="deleteFlg=false" [name]="'Cancel'" [icon]="'times'" [butStyle]="1">
-                            </app-button>
+                            </app-button> 
                             <app-button (click)="deleteFilm()" [name]="'Yes!'" [icon]="'check'" [butStyle]="5">
                             </app-button>
                         </div>

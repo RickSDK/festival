@@ -47,7 +47,8 @@
                             <td>$40</td>
                         </tr>
                     </table>
-                    <div>Click button below to submit</div>
+                    <div *ngIf="currentMonth <= 6" class="blueTitle">Click button below to submit</div>
+                    <div *ngIf="currentMonth > 6" class="blueTitle">Submissions closed for this year.</div>
                     
                     <a href="https://filmfreeway.com/festivals/56426?utm_campaign=Snohomish+Film+Festival&utm_medium=External&utm_source=Submission+Button"
                     target="_blank" title="Click to submit on FilmFreeway"><img

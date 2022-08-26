@@ -111,7 +111,9 @@
             </div>
         </div>
     </div>
-    <app-button *ngIf="filmIsEditableFlg" [name]="'Edit Page'" (mousedown)="editModeFlg=!editModeFlg" [icon]="'pencil'">
+    <app-button *ngIf="filmIsEditableFlg && !editModeFlg" [name]="'Edit Page'" (mousedown)="editModeFlg=!editModeFlg" [icon]="'pencil'">
+    </app-button>
+    <app-button *ngIf="filmIsEditableFlg && editModeFlg" [name]="'Cancel Edit'" (mousedown)="editModeFlg=!editModeFlg" [icon]="'times'">
     </app-button>
     <hr>
 

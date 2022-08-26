@@ -5,5 +5,6 @@
         <app-loading-bar (click)="loadingFlg=false" *ngIf="loadingFlg" [errorMessage]="errorMessage"></app-loading-bar>
         <app-button *ngIf="!loadingFlg" [disabled]="!changesMadeFlg" (click)="verifyForm()" [name]="'Submit'"
             class="large"></app-button>
+        <div *ngIf="errorMessage" style="color: #900; background-color: yellow; font-size: 18px;">{{errorMessage}}</div> 
     </div>
 </div>

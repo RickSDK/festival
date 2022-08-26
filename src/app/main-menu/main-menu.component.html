@@ -23,6 +23,14 @@
                                 <li>Live festival & awards show</li>
                                 <li>Written feedback given to all submitted films!</li>
                             </ul>
+                            <div style="text-align: center;">
+                                <app-button [routerLink]="['/program']" [name]="'2022 Festival Lineup'"
+                                    [icon]="'file-text'">
+                                </app-button>&nbsp;
+                                <app-button [routerLink]="['/help-wanted']" [name]="'Volunteer'"
+                                    [icon]="'user'">
+                                </app-button>
+                            </div>
                         </div>
                     </div>
                     <div class="borderClass" *ngIf="currentMonth <= 6">
@@ -37,7 +45,7 @@
                         </div>
                     </div>
                     <div class="borderClass" *ngIf="currentMonth >= 7">
-                        <div class="titleCLass">Submissions Closed!</div>
+                        <div class="titleCLass">Films Selected!</div>
                         <div class="box-inner">
                             <p>
                                 Thank you to everyone who submitted a project! We ended up getting almost 60 projects
@@ -50,8 +58,11 @@
                                 meeting everyone in September.
                             </p>
                             <p>
-                                Nominations are listed below for the 2022 Snohomish Film Festival!
+                                Award nominations are listed below for the 2022 Snohomish Film Festival!
                             </p>
+                            <div>Film makers: Visit <a href="https://filmfreeway.com/" target="_blank">Film Freeway</a>
+                                to generate your
+                                laurels.</div>
                         </div>
                     </div>
 
@@ -80,19 +91,16 @@
                     <div class="borderClass" *ngIf="currentMonth >= 7">
                         <div class="titleCLass">Snohomish Film Festival</div>
                         <div class="box-inner">
-                            <ul>
-                                <li>Saturday September 17th</li>
-                                <li>3pm - 8pm</li>
-                                <li>Film Schedule coming soon.</li>
-                            </ul>
-                            <p>Support Snohomish film by attending this exciting event. 30 films included, plus meet &
+                             <p>Support Snohomish film by attending this exciting event. 30 films included, plus meet &
                                 greets with the film makers and a live awards show! Tickets only $12!</p>
                             <div style="text-align: center;">
-                                <a href="https://filmfreeway.com/SnohomishFilmFestival/tickets">
+                                <a href="https://filmfreeway.com/SnohomishFilmFestival/tickets" target="_blank">
                                     <app-button [name]="'Tickets'" [icon]="'ticket'"></app-button>
-                                </a>
-                                <app-button [routerLink]="['/program']" [name]="'Program'" [icon]="'file-text'">
+                                </a>&nbsp;
+                                <app-button [routerLink]="['/program']" [name]="'Festival Lineup'" [icon]="'file-text'">
                                 </app-button>
+                                <div style="font-size: 22px; font-weight: 700;">Saturday September 17th</div>
+                                <div>3pm - 8pm</div>
                                 <div>Lynnwood Convention Center</div>
                                 <div>3711 196th St SW</div>
                                 <div>Lynnwood, WA 98036 </div>
@@ -109,14 +117,16 @@
     </div>
 
 
-    <div class="blackBox" *ngIf="0">
+    <div class="blackBox" *ngIf="1">
         <div class="container-fluid">
             <div style="font-size: 24px; background-color: white;">
-                <p>Snohomish Film Festival 2021 Feedback</p>
-                <p style="font-size: 12px;">Note to film makers: We tried to be fair and honest with our feedback. If
-                    you would like your feedback deleted from our site, contact us.</p>
+                <p>Snohomish Film Festival {{displayYear}} Feedback</p>
+                <p style="font-size: 12px;">Note to film makers: We tried to be fair and honest with our feedback. Our
+                    goal is to help everyone become better film makers.</p>
 
-                <a href="https://www.appdigity.com/fest/sffFeedback.htm">Snohomish Film Festival Feedback</a>
+                <a href="https://www.appdigity.com/fest/sffFeedback_files/2022/filmfreeway-ratings2022.htm"
+                    target="_blank">2022 Feedback File</a>
+                <a *ngIf="0" href="https://www.appdigity.com/fest/sffFeedback.htm">Snohomish Film Festival Feedback</a>
             </div>
         </div>
     </div>
@@ -129,204 +139,13 @@
         <ul style="text-align: left;">
             <li *ngFor="let film of award.films">{{film}}</li>
         </ul>
-
     </div>
-    <!--
-    <div class="blackBox pictureBG" style="background-image: url('assets/graphics/film2.jpg');">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-sm-6">
+    <div>Film makers: Visit <a href="https://filmfreeway.com/" target="_blank">Film Freeway</a> to generate your
+        laurels.</div>
 
-
-
-                    <div class="borderClass">
-                        <div class="titleCLass">Event Details</div>
-                        <div
-                            style="text-align: center; border: 1px solid gray; margin: 10px; padding: 10px; background-color: #cef;">
-                            <div>September 18, 2021</div>
-                            <div>3pm-8pm</div>
-                            <div>Festival Online</div>
-                            <div>Free to attend!</div>
-                        </div>
-                    </div>
-
-                    <div class="borderClass">
-                        <div class="titleCLass">Selected Films</div>
-                        <p>
-                            The following films have been selected as part of the 2021 Snohomish Film Festival! Thank
-                            you to everyone who submitted a project. Written feedback will be sent to all film makers.
-                        </p>
-                        <ul>
-                            <li><b> TABLXS </b> by Juanita Ingram </li>
-                            <li><b> BXAUTIFUL NIGHTMARX </b> by Juanita Ingram </li>
-                            <li><b> The Rise of Whore Betsy </b> by Simon King </li>
-                            <li><b> Black & White </b> by Edgar Garcia Chavez </li>
-                            <li><b> Spokane Tribal Water Quality Standards on the Spokane River </b> by Jeff Ferguson
-                            </li>
-                            <li><b> The Kaleidoscope Guy at the Market </b> by Russell Brown </li>
-                            <li><b> Lazarus Motel </b> by Ben Wade </li>
-                            <li><b> Layla's Rain </b> by Kit Wilson </li>
-                            <li><b> The Khe Sanh Peace Garden </b> by Tinh Mahoney </li>
-                            <li><b> Silent Threads </b> by Elena Stecca </li>
-                            <li><b> Zombie Walk </b> by Rollyn Stafford </li>
-                            <li><b> Extraneous Matter </b> by Kenichi Ugana </li>
-                            <li><b> We Never Met You </b> by Patrick Gonzalez </li>
-                            <li><b> ...And Then the Darkness </b> by Andrew Huggins </li>
-                            <li><b> Anagnorisis </b> by Arturo DueÃ±as Herrero </li>
-                            <li><b> The Prize </b> by William Ebert </li>
-                            <li><b> Meet Me in My Dreams </b> by Errol Teichert </li>
-                            <li><b> Erebus </b> by Will Ammann </li>
-                            <li><b> Ten Facts </b> by Schuyler Schwafel </li>
-                            <li><b> Sunbeam </b> by Michael Bell </li>
-                            <li><b> The Autumn Waltz </b> by David Golden </li>
-                            <li><b> It Gets In Your Blood </b> by Ed Hartman </li>
-                            <li><b> Thou Shall Not Tailgate </b> by Tailgate Films </li>
-                            <li><b> Our Troll </b> by D.j. Walker </li>
-                            <li><b> Sundown Trail </b> by Luke Guidici </li>
-                            <li><b> Ignorant Creatures </b> by Zoe Omega </li>
-                            <li><b> Memories Never Die </b> by Dave Shecter </li>
-                            <li><b> The Black Stonefly </b> by Cody Lewis </li>
-                            <li><b> Pest, Present & Future </b> by Jordan Wilson </li>
-                            <li><b> Welcome To Mike Country </b> by Michael Wentz </li>
-                            <li><b> Analog Is Not Dead </b> by Dave Krygier </li>
-                            <li><b> Switch </b> by D'Vonte Robinson </li>
-                        </ul>
-                    </div>
-
-
-
-                    <div class="borderClass">
-                        <div class="titleCLass">Selected Scripts</div>
-                        <p>
-                            The following Scripts have been selected as part of the 2021 Snohomish Film Festival! Thank
-                            you to everyone who submitted a project. Written feedback will be sent to all script writers.
-                        </p>
-                        <ul>
-                            <li><b> BXAUTIFUL NIGHTMARX Script </b> by Juanita Ingram </li>
-                            <li><b> Come Along, Harry Higgins </b> by Kevin Machate </li>
-                            <li><b> Perimeter </b> by Simon King </li>
-                            <li><b> Relentless </b> by Jeremy Minard </li>
-                            <li><b> Thank You </b> by Jan Tilley </li>
-                            <li><b> The Suspicious Couple </b> by Seth Nolan </li>
-                            <li><b> Tethered </b> by Blake Simpson </li>
-                            <li><b> Kamren's Haven </b> by Derek Bailey </li>
-
-                        </ul>
-                    </div>
-                    
-
-
-
-                    
-
-                </div>
-                <div class="col-sm-6">
-
-                    <div class="borderClass">
-                        <div class="titleCLass">Award Nominees</div>
-                        <div style="padding: 20px;">
-
-
-                            <div><b><u> Best Picture </u></b></div>
-                            <li> The Black Stonefly </li>
-                            <li> It Gets In Your Blood </li>
-                            <li> Lazarus Hotel </li>
-                            <li> The Autumn Waltz </li>
-                            <li> Anagnorisis </li>
-
-                            <div><b><u> Best Drama </u></b></div>
-                            <li> Anagnorisis </li>
-                            <li> Erebus </li>
-                            <li> Black & White </li>
-
-                            <div><b><u> Best Documentary </u></b></div>
-                            <li> The Black Stonefly  </li>
-                            <li> The Khe Sanh Peace Garden </li>
-                            <li> We Never Met You </li>
-
-                            <div><b><u> Best SciFi/Fantasy </u></b></div>
-                            <li> Our Troll </li>
-                            <li> Extraneous Matter </li>
-                            <li> Sundown Trail </li>
-
-                            <div><b><u> Best Comedy </u></b></div>
-                            <li> Welcome to Mike Country </li>
-                            <li> Pest, Present & Future </li>
-                            <li> Zombie Walk </li>
-
-                            <div><b><u> Best Horror </u></b></div>
-                            <li> Extraneous Matter </li>
-                            <li> Zombie Walk </li>
-                            <li> ...And then the Darkness </li>
-
-                            <div><b><u> Best Script </u></b></div>
-                            <div>All 8 selected scripts are eligable to win this award.</div>
-                            <hr>
-                            <div style="color: blue;">-Individual Awards-</div>
-                            <div><b><u> Best Director </u></b></div>
-                            <li> Erebus - Will Ammann </li>
-                            <li> TABLXS - Brittny Williams, Juanita Ingram </li>
-                            <li> Ignorant Creatures - Ji Iadevaia </li>
-
-                            <div><b><u> Best Screenplay </u></b></div>
-                            <li> The Autumn Waltz- Kira Sipler </li>
-                            <li> Sundown Trail- Luke Guidici </li>
-                            <li> Meet Me in My Dreams- Errol Teichert </li>
-
-                            <div><b><u> Best Sound </u></b></div>
-                            <li> Erebus - Griffin Fisher   </li>
-                            <li> Sundown Trail- Luke Guidici </li>
-                            <li> Our Troll - DJ Walker</li>
- 
-                            <div><b><u> Best cinematography </u></b></div>
-                            <li> Anagnorisis - Nicolas De La Rosa </li>
-                            <li> Erebus - Jackson Mach </li>
-                            <li> Our Troll - Tylor Jones</li>
-
-                            <div><b><u> Best Actor/Actress </u></b></div>
-                            <li> Beautiful Nightmare Juanita Ingram </li>
-                            <li> Anagnorisis - Carlos Pineda </li>
-                            <li> Lazarus Motel - Ben Wade </li>
-                            <li> The Autumn Waltz - Walter Dalton </li>
-                            <li> Erebus - Anna Christensen </li>
-                            <li> Ignorant Creatures - Ji Iadevaia </li>
-                            <li> Sunbeam - Michael Bell </li>
-
-                            <div><b><u> Best Music Score </u></b></div>
-                            <li> Welcome to Mike Country - Michael Waltz </li>
-                            <li> Bxautiful Nightmarx - Brittny Williams </li>
-                            <li> Meet Me in My Dreams - Jacob Meaker </li>
-
-                            <div><b><u> Best Supporting Performance </u></b></div>
-                            <li> The Autumn Waltz - Tee Dennard </li>
-                            <li> TABLXS - Juanita Ingram </li>
-                            <li> Our Troll - Obadiah Freeman </li>
-                            <li>Rise of Whore Betsy - Sally-Anne Hunt</li>
-
-                            <div><b><u> Best Child Actor </u></b></div>
-                            <li> Sundown Trail - Joshua Loren </li>
-                            <li> TABLXS - Kinsley Ingram </li>
-                            <li> The Rise of Whore Betsy </li>
-
-                            <div><b><u> Best Editing </u></b></div>
-                            <li> Erebus - Michael Shusterman </li>
-                            <li> We Never Met You - Patrick Gonzalez </li>
-                            <li> Welcome to Mike Country - Michael Watz </li>
-
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-            </div>
-        </div>
-    </div>
--->
     <div class="borderClass" style="text-align: center;">
         <div class="titleCLass">Snohomish Film Festival {{displayYear}} (Submitted Projects)</div>
-         <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
+        <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
         <app-film-snapshot *ngFor="let film of displayFilms" [film]="film"></app-film-snapshot>
     </div>
 

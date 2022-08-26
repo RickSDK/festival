@@ -62,7 +62,7 @@
                     <app-form-wrapper [loadingFlg]="loadingFlg" [formFields]="formFields"
                         (messageEvent)="submitButtonClicked($event)"></app-form-wrapper>
                 </div>
-
+                <div *ngIf="errorMessage">{{errorMessage}}</div>
                 <div *ngIf="filmType==4" style="text-align: center;">
                     <div>Film Submitted Successfully!</div>
                     <app-button (click)="okButtonPressed()" [name]="'Ok'" [class]="'large'"></app-button>

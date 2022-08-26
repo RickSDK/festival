@@ -28,7 +28,7 @@ export class FormWrapperComponent implements OnInit {
         input.warningFlg = true;
       } 
     });
-    this.errorMessage = (failedFlg) ? 'Fix required fields!' : '';
+    this.errorMessage = (failedFlg) ? 'Fix required fields, then press Submit again.' : '';
     if (!failedFlg) {
       this.loadingFlg = true;
       this.messageEvent.emit('done');

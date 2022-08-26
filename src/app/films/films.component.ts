@@ -72,7 +72,7 @@ export class FilmsComponent extends BaseHttpComponent implements OnInit {
   plusButtonClicked(str: string) {
     this.user = this.getUserObject();
     this.userId = this.user.id;
-    if (this.userId > 0)
+    if (1 || this.userId > 0)
       this.addFilmPopupComponent.show();
     else
       this.showAlertPopup('Press the "Log in" button to add your film.');

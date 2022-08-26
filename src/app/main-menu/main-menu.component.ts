@@ -34,7 +34,7 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
     { name: 'Best Picture', films: ['The Ghosts They Carry', 'Kitsune', 'Manly Men of the Mountains', 'Neshamah', 'Stay'] },
     { name: 'Best Director', films: ['Angela DiMarco (STAY) ', 'Joshua Woodcock - Kitsune', 'Kit Wilson - Something behind the walls', 'Tony Doupe - NESHAMAH', 'Zyuan Wang - Nowhere To Escape'] },
     { name: 'Best Actor', films: ['David Over - Mike Sizzer | a Chair Wrestling Documentary', 'J.S. Tate for Kitsune', 'Richard Snyder for Neshamah', 'Tom Walton AMIDST THE STARS'] },
-    { name: 'Best Actress', films: ['Angela DiMarco for NESHAMAH', 'Kara Puerschner STAY', 'Trin Miller ROOM 13'] },
+    { name: 'Best Actress', films: ['Angela DiMarco for NESHAMAH', 'Angela DiMarco for Something Behind the Walls', 'Kara Puerschner STAY', 'Trin Miller ROOM 13'] },
     { name: 'Child Actor', films: ['Adelaide St John KITSUNE', 'Lucas Oktay STAY'] },
     { name: 'Sound/Music', films: ['KITSUNE', 'Neshamah', 'Stay'] },
     { name: 'Editing', films: ['COLOR OF THE SKY', 'Cuz You My Girl', 'My Happy Place', 'Something Behind The Walls'] },

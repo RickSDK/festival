@@ -32,8 +32,8 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
   public behindScenesObj = { name: 'Benhind Scenes URL', type: 'text', value: '', placeholder: 'http', max: 200, disabledFlg: false, hint: 'Link to an behind-the-scenes video in youTube or other publically viewable site.' };
   public posterObj = { name: 'Poster /  Screen Shot', type: 'picture', value: '', requiredFlg: true, disabledFlg: false, hint: 'An image that you would like to represent this film.' };
   public genreObj = { name: 'Genre', type: 'dropdown', value: '', options: this.genres, requiredFlg: true, disabledFlg: false };
-  public ratingObj = { name: 'Rating', type: 'dropdown', value: 'N/A', options: this.ratings, requiredFlg: true, disabledFlg: false };
-  public taglineObj = { name: 'Tagline', type: 'text', value: '', max: 120, requiredFlg: true, disabledFlg: false };
+  public ratingObj = { name: 'Rating', type: 'dropdown', value: 'N/A', options: this.ratings, requiredFlg: false, disabledFlg: false };
+  public taglineObj = { name: 'Tagline', type: 'text', value: '', max: 120, requiredFlg: true, disabledFlg: false, hint: 'Single sentence summary of the film.' };
   public descObj = { name: 'Synopsis', type: 'textarea', value: '', max: 1000, disabledFlg: false };
   public castObj = { name: 'Top Cast Members (limit to 7 or fewer)', type: 'text', value: '', max: 250, hint: 'A short list of top cast members. A full list can be added later.', disabledFlg: false };
   public crewObj = { name: 'Top Crew Members (limit to 7 or fewer)', type: 'text', value: '', max: 250, hint: 'A short list of top crew members. A full list can be added later', disabledFlg: false };
@@ -84,8 +84,7 @@ export class AddFilmPopupComponent extends BaseHttpComponent implements OnInit {
     this.formFields.forEach(field => {
       field.disabledFlg = false;
     });
-    if (this.user.id)
-      $('#addFilmPopup').modal();
+    $('#addFilmPopup').modal();
   }
   selectFilmType(type: number) {
     this.filmType = type;

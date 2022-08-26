@@ -63,6 +63,8 @@ export class BaseColorsComponent implements OnInit {
       return { 'background-color': 'black', 'color': 'white' };
     if (hover)
       return { 'background-color': 'white', 'color': 'black' };
+
+    return { 'background-color': '#00c', 'color': 'white' };
     if (num == 1) // light colored
       return { 'background-color': this.geLightColor(), 'color': 'black' };
     if (num == 2) // dark colored

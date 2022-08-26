@@ -1,6 +1,5 @@
 <app-page-shell [userId]="userId" [navTitle]="'Tickets'" [icon]="'fa-ticket'">
 
-    <img src="assets/graphics/tickets2.jpg" class="image">
  
 
 
@@ -9,7 +8,31 @@
 
         <table class="drTable" border="0">
             <tr>
-                <td colspan="4" style="background-color: #000060; color: white;">Festival Program</td>
+                <td>
+                    3pm - Room A1
+                </td>
+                <td>
+                    Meet & Greet
+                </td>
+                <td>
+                    Sign in, get your program, meet & greet, refreshments
+               </td>
+            </tr>
+            <tr>
+                <td>
+                    4pm - Room A1
+                </td>
+                <td>
+                    Script Reading
+                </td>
+                <td>
+                    <app-film-link [filmId]="56" [name]="'Thingamajigs'" [userFlg]="true" [director]="'A. S. Templeton'"  [tagline]="'Beware of picture books given you by strangers'"></app-film-link>
+                </td>
+            </tr>
+        </table>
+        <table class="drTable" border="0">
+            <tr>
+                <td colspan="4" style="background-color: #000060; color: white;">Film Program</td>
             </tr>
             <tr>
                 <th>Time</th>
@@ -17,103 +40,175 @@
                 <th>Screen 2</th>
                 <th>Screen 3</th>
             </tr>
-            <tr>
+           <tr>
                 <td>3pm<br>&nbsp;<br></td>
                 <td colspan="3" style="background-color: #ccffcc;">Doors Open / Meet & Greet / Refreshments</td>
             </tr>
             <tr>
-                <td colspan="4" style="background-color: #ccccff;">4pm hour</td>
+                <td class="blue-bar"></td>
+                <td class="blue-bar">Drama</td>
+                <td class="blue-bar">Comedy</td>
+                <td class="blue-bar">Horror</td>
             </tr>
            <tr>
                 <td>4pm</td>
-                <td>The Conversion</td>
-                <td>Mother's Day</td>
-                <td>A Dinner Party From Hell</td>
+                <td>
+                    <app-film-link [filmId]="52" [name]="'The Conversion'" [userFlg]="true" [director]="'Mathew DaLuz'" [tagline]="'Left to his own devices, a man wrought with anger and sadness must come to terms with a decision that will change two lives forever. '"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="98" [name]="'Tess Tetley-Girl Brand Manager'" [userFlg]="true" [director]="'Andrea Hays'" [tagline]="'Can our girl, Tess Tetley, get to the lab before villainous foes like Big Adhesive get to her first? Tune in and SEE!'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="78" [name]="'A Dinner Party From Hell'" [userFlg]="false" [director]="'Derek Schneider'"  [tagline]="'The eggs aren\'t the only thing deviled at this party.'"></app-film-link>
+                </td>
             </tr>
             <tr>
                 <td>4:15</td>
-                <td>You're Beautiful </td>
-                <td>The Opener</td>
-                <td>Maybe it's the Apocalypse</td>
+                <td>
+                    <app-film-link [filmId]="77" [name]="'You\'re Beautiful '" [userFlg]="true" [director]="'Amber Dalby'"  [tagline]="'A teenager named Cora is not in the best place. She is struggling and surrounded by tons of negativity and problems, which overwhelm and bring her down.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="63" [name]="'The Opener'" [userFlg]="true" [director]="' David Yama'"  [tagline]="'Ben, a liquor store clerk on the opening shift, is bamboozled by a series of lively encounters'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="62" [name]="'Maybe it\'s the Apocalypse'" [userFlg]="true" [director]="'Diana Lanham'"  [tagline]="'As the pandemic drags on, a mother begins to suspect her daughter is losing her grip on reality.'"></app-film-link>
+                </td>
             </tr>
             <tr>
                 <td>4:30</td>
-                <td>Tarzan's Escape</td>
-                <td>Milk Dreams</td>
-                <td>Gary</td>
+                <td>
+                    <app-film-link [filmId]="83" [name]="'Tarzan\'s Escape'" [userFlg]="true" [director]="'Linda Yordy'"  [tagline]="'Verna Keller was sent to prison in 1947 at the age of 17. She escaped. Just to prove she could do it.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="64" [name]="'Milk Dreams'" [userFlg]="true" [director]="'David Over'"  [tagline]="'Socially anxious Mack operates a craft milk bar out of his garage. His world unravels when the city\'s health department drops by for an inspection.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="57" [name]="'Gary'" [userFlg]="true" [director]="'Michael Rognlie'"  [tagline]="'A man contends with his new smart home and the horrors of its past.'"></app-film-link>
+                </td>
             </tr>
             <tr>
                 <td>4:45</td>
-                <td>Color of Sky</td>
-                <td>Mike Sizzer</td>
-                <td>The House</td>
+                <td>
+                    <app-film-link [filmId]="87" [name]="'Color of Sky'" [userFlg]="true" [director]="'Dominick Cura'"  [tagline]="'In a world where no one sees color, new glasses are created that grant the ability to see color.'"></app-film-link>
+                </td>
+                 <td>
+                    <app-film-link [filmId]="65" [name]="'Mike Sizzer'" [userFlg]="true" [director]="'David Over'"  [tagline]="'Meet Mike. He wrestles chairs. And yeah, he\'s pretty dang good at it.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="88" [name]="'The House'" [userFlg]="true" [director]="'Rosie Grypma, Wayne Lai'"  [tagline]="'On a cold day in 1957 a house was built on the closest point to Hell on Earth.'"></app-film-link>
+                </td>
             </tr>
 
             <tr>
-                <td colspan="4" style="background-color: #ccccff;">5pm hour</td>
+                <td class="blue-bar"></td>
+                <td class="blue-bar">Drama</td>
+                <td class="blue-bar">Music Videos</td>
+                <td class="blue-bar">Horror</td>
             </tr>
             <tr>
                 <td>5pm</td>
-                <td>Embers</td>
-                <td>Feel it to Heal it</td>
-                <td>Kurt</td>
+                <td>
+                    <app-film-link [filmId]="89" [name]="'Embers'" [userFlg]="false" [director]="'Benjamin Ross Johnson'"  [tagline]="'On a camping trip, two sisters deal with the death of their mother.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="67" [name]="'finding us // again'" [userFlg]="true" [director]="'Ieva Bračiulytė, David Comeaux'"  [tagline]="'This dance film explores themes of childhood friendships, growing up, and finding each other again.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="71" [name]="'Kurt'" [userFlg]="false" [director]="'Rimone Brandom'"  [tagline]="'When Dan is confronted by his mother and therapist in an intervention, he must depend on his imaginary friend, Kurt, to guide him through the situation.'"></app-film-link>
+                </td>
             </tr>
             <tr>
                 <td>5:20</td>
-                <td>Room 13</td>
-                <td>MARBLE - red room</td>
-                <td>Balloon</td>
+                <td>
+                    <app-film-link [filmId]="91" [name]="'Room 13'" [userFlg]="true" [director]="'Ross Hotchkiss'"  [tagline]="'A vice stake out in a suburban motel has unforeseen consequences.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="85" [name]="'MARBLE - red room'" [userFlg]="false" [director]="'Kevin Bailey'"  [tagline]="'A music video exploring depression leading to self destruction.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="82" [name]="'Balloon'" [userFlg]="true" [director]="'Richard Martin'"  [tagline]="'The film the balloon industry doesn’t want you to see!'"></app-film-link>
+                </td>
             </tr>
             <tr>
                 <td>5:40</td>
-                <td>Moving On</td>
-                <td>Cuz You're My Girl</td>
-                <td>Nowhere to Escape</td>
+                <td>
+                    <app-film-link [filmId]="92" [name]="'Moving On'" [userFlg]="true" [director]="'Kevin Leung'"  [tagline]="'A human story about overcoming loss set in an Asian American backdrop.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="79" [name]="'Cuz You\'re My Girl'" [userFlg]="true" [director]="'Rob Barnett'"  [tagline]="'A fun and funny look at a WWE love story parody with a surprise twist!'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="93" [name]="'Nowhere to Escape'" [userFlg]="false" [director]="'ZiYuan Wang'"  [tagline]="'A girl who studies psychology begins to have symptoms of mental disorder due to her overload research work.'"></app-film-link>
+                </td>
             </tr>
             <tr>
-                <td colspan="4" style="background-color: #ccccff;">6pm hour</td>
+                <td class="blue-bar"></td>
+                <td class="blue-bar">Drama</td>
+                <td class="blue-bar">Sci-fi</td>
+                <td class="blue-bar">Horror/Documentary</td>
             </tr>
             <tr>
                 <td>6pm</td>
-                <td>STAY</td>
-                <td>The Artifact</td>
-                <td>The Ghosts They Carry</td>
+                <td>
+                    <app-film-link [filmId]="81" [name]="'STAY'" [userFlg]="true" [director]="'Angela DiMarco'"  [tagline]="'When life forces Caroline and Anthony apart, will their love last?'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="68" [name]="'The Artifact'" [userFlg]="true" [director]="'Scott G. Linson'"  [tagline]="'A veteran learns that his alien-abduction dreams are true and is reunited with a cube that can give powers.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="94" [name]="'The Ghosts They Carry'" [userFlg]="false" [director]="'Pat McAbery'"  [tagline]="'First responders experience the very worst in what life can bring. They all carry scars of their service, but some can\'t overcome.'"></app-film-link>
+                </td>
             </tr>
             <tr>
                 <td>6:15</td>
-                <td>Kitsune</td>
-                <td>Amidst the Stars</td>
-                <td>Something Behind the Walls</td>
+                <td>
+                    <app-film-link [filmId]="95" [name]="'Kitsune'" [userFlg]="true" [director]="'Joshua Woodcock'"  [tagline]="'A young foster girl finds a mysterious bell that opens the door to imaginary figures around her. When one befriends her asking for help, she runs away to help return him to his family.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="96" [name]="'Amidst the Stars'" [userFlg]="false" [director]="'Dustin Morrow'"  [tagline]="'After discovering his spacecraft will be unable to return him to Earth, an astronaut deals with loneliness and isolation as he sends his final transmission home.'"></app-film-link>
+                </td>
+                <td>
+                    <app-film-link [filmId]="70" [name]="'Something Behind the Walls'" [userFlg]="true" [director]="'Kit Wilson'"  [tagline]="'In 1936, a Philadelphia reporter journeys to a deserted farm to research local myths, only to discover an unspeakable horror that threatens to destroy her and the entire family.'">
+                    </app-film-link>
+                </td>
             </tr>
             <tr>
                 <td>6:30</td>
                 <td></td>
                 <td></td>
-                <td>My Happy Place</td>
+                <td>
+                    <app-film-link [filmId]="97" [name]="'My Happy Place'" [userFlg]="true" [director]="'Devin Scott'"  [tagline]="'In 1965, 7 year old Anna Boreman sets off on a 6 week road trip across America with her estranged, traveling minister father in search of forgiveness and Autopia.'"></app-film-link>
+                </td>
             </tr>
             <tr>
-                <td colspan="4" style="background-color: #ccccff;">Main Event</td>
+                <td colspan="4" class="blue-bar">Main Event</td>
             </tr>
             <tr>
                 <td>6:45</td>
-                <td>Manly Men of the Mountains</td>
+                <td>
+                    <app-film-link [filmId]="86" [name]="'Manly Men of the Mountains'" [userFlg]="true" [director]="'David L. Anderson, Charles Cruz'"  [tagline]="'If life gives you trees, sharpen your saw.'"></app-film-link>
+                </td>
                 <td style="background-color: #777;"></td>
                 <td style="background-color: #777;"></td>
             </tr>
             <tr>
                 <td>7:05</td>
-                <td>Neshamah</td>
+                <td>
+                    <app-film-link [filmId]="80" [name]="'Neshamah'" [userFlg]="true" [director]="'Tony Doupe'"  [tagline]="'An estranged brother and sister\'s love is tested when they learn of their ailing father\'s wish for assisted suicide.'"></app-film-link>
+                </td>
                 <td style="background-color: #777;"></td>
                 <td style="background-color: #777;"></td>
-            </tr>           <tr>
+            </tr>
+            <tr>
                 <td>7:30<br>&nbsp;<br></td>
                 <td style="background-color: #ffcccc;">Awards Ceremony</td>
                 <td style="background-color: #777;"></td>
                 <td style="background-color: #777;"></td>
             </tr>
 
-       </table>
-       <app-button [routerLink]="['/tickets']" [name]="'Venue'" [icon]="'ticket'"></app-button>
+        </table>
+        <div><i class="fa fa-user"></i> - Filmmaker attending in person and available for Q&A</div>
+        <app-button [routerLink]="['/tickets']" [name]="'Venue'" [icon]="'ticket'"></app-button>
 
 
     </div>

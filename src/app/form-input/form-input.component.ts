@@ -67,8 +67,8 @@ export class FormInputComponent extends BaseComponent implements OnChanges {
     this.inputFieldObj.value = src;
     this.validateField(this.inputFieldObj);
     console.log('bytes: ', src.length);
-    if (src.length > 1000000) {
-      this.inputFieldObj.errorMessage = 'file too large. please shrink it down (under 1MB) and then upload it again.';
+    if (src.length > 2000000) {
+      this.inputFieldObj.errorMessage = 'file too large. please shrink it down (under 2MB) and then upload it again.';
     }
   }
 

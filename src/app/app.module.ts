@@ -48,6 +48,7 @@ import { HelpWantedComponent } from './help-wanted/help-wanted.component';
 import { AboutComponent } from './about/about.component';
 import { StaffPageComponent } from './staff-page/staff-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { FilmLinkComponent } from './film-link/film-link.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     HelpWantedComponent,
     AboutComponent,
     StaffPageComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    FilmLinkComponent
   ],
   imports: [
     BrowserModule,

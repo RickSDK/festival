@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./submit-film.component.scss']
 })
 export class SubmitFilmComponent extends BaseComponent implements OnInit {
+  public currentMonth = new Date().getMonth() + 1;
 
   constructor(private router: Router) { super(); }
 

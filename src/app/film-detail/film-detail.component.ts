@@ -100,7 +100,7 @@ export class FilmDetailComponent extends BaseHttpComponent implements OnInit {
     this.castObj.data = this.film.castList;
     this.crewObj.data = this.film.crewList;
     console.log('this.myReview', this.myReview);
-    this.filmIsEditableFlg = this.film.user_id == this.userId || this.userId == 1;
+    this.filmIsEditableFlg = this.film.user_id == this.userId || this.userId == 1 || this.film.user_id == 0;
 
     var tableObj = { name: this.film.name, data: [] };
     tableObj.data.push({ title: 'Director', value: this.film.director });
