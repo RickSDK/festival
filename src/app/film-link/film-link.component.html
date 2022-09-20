@@ -1,13 +1,19 @@
 <div style="display: inline-block; width: 100%; max-width: 300px;">
 
-            <img *ngIf="filmId>0" align="left" src="https://www.appdigity.com/fest/posters/poster{{filmId}}.jpg" alt="{{name}}" class="posterImg">
+    <img *ngIf="filmObj && filmObj.id>0" align="left" src="https://www.appdigity.com/fest/posters/poster{{filmObj.id}}.jpg" alt="{{filmObj.name}}" class="posterImg">
     <div>
-        <a *ngIf="filmId>0" style="font-size: 18px; font-weight: 700;" [routerLink]="['/film']" [queryParams]="{id: filmId}">{{name}}</a>
-        <span *ngIf="filmId==0">{{name}}</span>
-        
+        <a *ngIf="filmObj && filmObj.id>0" style="font-size: 18px; font-weight: 700;" [routerLink]="['/film']" [queryParams]="{id: filmObj.id}">{{filmObj.name}}</a>
     </div>
-    <div style="font-size: 12px; font-weight: 800;">{{director}} <i *ngIf="userFlg" class="fa fa-user"></i></div>
-    <div style="font-size: 12px; color: gray; text-align: left;">{{tagline}}</div>
+    <div *ngIf="filmObj" style="font-size: 12px; font-weight: 800;">{{filmObj.director}} <i *ngIf="filmObj.userFlg" class="fa fa-user"></i></div>
+    <div *ngIf="filmObj" style="font-size: 12px; color: gray; text-align: left;">{{filmObj.tagline}}</div>
+    <div *ngIf="isAdmin && filmObj.url" style="border: 1px solid gray; background-color: #ffffc0; display: inline-block; padding: 10px; border-radius: 5px; box-shadow: 3px 3px 5px black;">
+        <div><a [href]="filmObj.url" target="_blank"><i class="fa fa-play"></i> Play Video</a></div>
+        <div *ngIf="filmObj.password">Password: {{filmObj.password}}</div>    
+    </div>
+    <div *ngIf="isAdmin && filmObj.id==56" style="border: 1px solid gray; background-color: #ffffc0; display: inline-block; padding: 10px; border-radius: 5px; box-shadow: 3px 3px 5px black;">
+        <div><a [href]="'http://www.appdigity.com/fest/Thingamajigs.pdf'" target="_blank"><i class="fa fa-file"></i> Script</a></div>
+        <div *ngIf="filmObj.password">Password: {{filmObj.password}}</div>    
+    </div>
 
 </div>
 

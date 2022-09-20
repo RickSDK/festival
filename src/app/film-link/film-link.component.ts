@@ -7,15 +7,15 @@ import { Film } from '../classes/film';
   styleUrls: ['./film-link.component.scss']
 })
 export class FilmLinkComponent implements OnInit {
-  @Input('filmId') filmId: number = 0;
-  @Input('name') name: String = '';
-  @Input('director') director: String = '';
-  @Input('tagline') tagline: String = '';
-  @Input('userFlg') userFlg: boolean = false;
-  
+  @Input('filmObj') filmObj: any;
+  @Input('userId') userId: number = 0;
+  public user: any;
+  public isAdmin = false;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.isAdmin = (this.userId == 1 || this.userId == 124);
   }
 
 }

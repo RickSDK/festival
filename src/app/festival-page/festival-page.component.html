@@ -1,0 +1,126 @@
+<app-page-shell [userId]="userId" [navTitle]="'Festival Page'" [icon]="'fa-ticket'">
+
+    <app-button [routerLink]="['/festival-page']" [queryParams]="{filmYear: 2021}" [name]="'2021 Festival'"
+        [icon]="'film'">
+    </app-button>
+    <app-button [routerLink]="['/festival-page']" [queryParams]="{filmYear: 2022}" [name]="'2022 Festival'"
+        [icon]="'film'">
+    </app-button>
+    <a *ngIf="mainImgSrc" href="https://filmfreeway.com/SnohomishFilmFestival/photos"><img [src]="mainImgSrc" alt="Main Image" width="100%"></a>
+    <div *ngIf="userId==1">
+        <div>Top Image</div>
+        <img id="myImg" src="{{imgSrc}}" style="max-width: 300px; max-height: 300px;">
+        <input type="file" accept="image/*" id="file" (change)="handleFileInput($event.target.files)">
+        <input *ngIf="showSubmitButtonFlg" type="submit" (mousedown)="updateImageButtonClicked()">
+    </div>
+
+
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-sm-6">
+
+
+                <div class="borderClass">
+                    <div class="titleCLass">{{filmYear}} Snohomish Film Festival</div>
+                    <div class="box-inner" style="text-align: center;">
+                        <div *ngIf="filmYear==2021">
+                            <div style="font-size: 22px; font-weight: 700;">Saturday September 18th</div>
+                            <div>Festival Online Only</div>
+                        </div>
+                        <div *ngIf="filmYear!=2021">
+                            <div style="font-size: 22px; font-weight: 700;">Saturday September 17th</div>
+                            <div>3pm - 8pm</div>
+                            <div>Lynnwood Convention Center</div>
+                            <div>3711 196th St SW</div>
+                            <div>Lynnwood, WA 98036 </div>
+                        </div>
+
+                        <div style="text-align: center;">
+                            <app-button *ngIf="filmYear==2022" [routerLink]="['/program']"
+                                [name]="'2022 Festival Lineup'" [icon]="'file-text'">
+                            </app-button>&nbsp;
+
+                            <a href="https://filmfreeway.com/SnohomishFilmFestival/photos">
+                                <app-button 
+                                [name]="'Photos'" [icon]="'picture-o'">
+                            </app-button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <iframe *ngIf="filmYear==2021" width="100%" height="280" src="https://www.youtube.com/embed/1-UK5cQItBY"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+                <iframe *ngIf="filmYear==2022" width="100%" height="280" src="https://www.youtube.com/embed/St4wbagIMuI"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="blackBox">
+        <div class="container-fluid">
+            <div style="background-color: white; padding: 5px;">
+                <div style="font-size: 24px; ">Snohomish Film Festival {{filmYear}} Feedback</div>
+                <p style="font-size: 12px;">Note to film makers: We tried to be fair and honest with our feedback. Our
+                    goal is to help everyone become better film makers.</p>
+
+                <a *ngIf="filmYear==2021" href="https://www.appdigity.com/fest/sffFeedback.htm" target="_blank">
+                    <app-button [name]="'2021 feedback File'" [icon]="'file-text'">
+                    </app-button>
+                </a>
+
+                <a *ngIf="filmYear==2022"
+                    href="https://www.appdigity.com/fest/sffFeedback_files/2022/filmfreeway-ratings2022.htm"
+                    target="_blank">
+                    <app-button [name]="'2022 feedback File'" [icon]="'file-text'">
+                    </app-button>
+                </a>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="borderClass" style="text-align: center;" *ngIf="winners">
+        <div class="titleCLass">Snohomish Film Festival {{filmYear}} Winners</div>
+        <div *ngFor="let winner of winners" class="winner-card">
+            <div class="title-banner">{{winner.name}}</div>
+            <img src="assets/graphics/trophy.png" height="100">
+            <img [routerLink]="['/film']" [queryParams]="{id: winner.film.id}" *ngIf="winner.film" src="https://www.appdigity.com/fest/posters/poster{{winner.film.id}}.jpg" class="imageCard"
+                style="width: 100px; height: 150px; cursor: pointer;">
+            <div *ngIf="!winner.winnerName" class="director">{{winner.film.director}}</div>
+            <div *ngIf="winner.winnerName" class="director">{{winner.winnerName}}</div>
+            <div class="title-banner">{{winner.film.name}}</div>
+        </div>
+    </div>
+
+    <div>Film makers: Visit <a href="https://filmfreeway.com/" target="_blank">Film Freeway</a>
+        to generate your
+        laurels.</div>
+
+    <div class="borderClass" style="text-align: center;">
+        <div class="titleCLass">Snohomish Film Festival {{filmYear}} (Submitted Projects)</div>
+        <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
+        <app-film-snapshot *ngFor="let film of displayFilms" [film]="film"></app-film-snapshot>
+    </div>
+
+
+
+
+
+</app-page-shell>

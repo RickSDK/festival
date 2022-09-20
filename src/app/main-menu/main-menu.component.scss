@@ -12,7 +12,12 @@
 	margin: 10px; 
 	padding: 5px;
 }
-
+.specialMessage {
+	text-align: center;
+	font-size: 24px;
+	color: green;
+	font-weight: 800;
+}
 @media screen and (max-width: 776px) {
 	//narrow
 	.right-col {

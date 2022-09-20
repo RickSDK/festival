@@ -49,6 +49,7 @@ import { AboutComponent } from './about/about.component';
 import { StaffPageComponent } from './staff-page/staff-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { FilmLinkComponent } from './film-link/film-link.component';
+import { FestivalPageComponent } from './festival-page/festival-page.component';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { FilmLinkComponent } from './film-link/film-link.component';
     AboutComponent,
     StaffPageComponent,
     ResetPasswordComponent,
-    FilmLinkComponent
+    FilmLinkComponent,
+    FestivalPageComponent
   ],
   imports: [
     BrowserModule,

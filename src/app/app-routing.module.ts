@@ -18,6 +18,7 @@ import { HelpWantedComponent } from './help-wanted/help-wanted.component';
 import { AboutComponent } from './about/about.component';
 import { StaffPageComponent } from './staff-page/staff-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { FestivalPageComponent } from './festival-page/festival-page.component';
 
 const routes: Routes = [
   { path: '', component: MainMenuComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'about', component: AboutComponent },
   { path: 'staff-page', component: StaffPageComponent },
   { path: 'reset-password', component: ResetPasswordComponent },
+  { path: 'festival-page', component: FestivalPageComponent },
 ];
 
 @NgModule({

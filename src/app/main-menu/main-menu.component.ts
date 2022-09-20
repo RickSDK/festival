@@ -22,7 +22,12 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   public films: any;
   public displayFilms: any;
   public festicalStatus = 2;
+  public festivalDay = 17;
   public currentMonth = new Date().getMonth() + 1;
+  public currentDay = new Date().getDate();
+  public specialMessage = '';
+  public festivalHasEnded = false;
+
   public awards = [
     { name: 'Drama', films: ['Kitsune', 'Moving On', 'My Happy Place', 'Neshamah', 'Stay'] },
     { name: 'Comedy', films: ['Manly Men of the Mountains', 'Mike Sizzer | a Chair Wrestling Documentary', 'Milk Dreams', 'Mother\'s Day', 'The Opener'] },
@@ -47,6 +52,18 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   constructor() { super(); }
 
   ngOnInit(): void {
+    if (this.currentMonth > 9 || (this.currentMonth == 9 && this.currentDay > this.festivalDay))
+      this.festivalHasEnded = true;
+    this.specialMessage = '';
+    if (this.currentMonth == 9 && this.currentDay <= this.festivalDay) {
+      this.specialMessage = 'This Month!';
+      if (this.currentDay + 7 > this.festivalDay)
+        this.specialMessage = 'This Saturday!';
+      if (this.currentDay + 1 == this.festivalDay)
+        this.specialMessage = 'Tomorrow!';
+      if (this.currentDay == this.festivalDay)
+        this.specialMessage = 'Today!';
+    }
     window.scrollTo(0, 0);
     this.user = this.getUserObject();
     this.userId = this.user.id;

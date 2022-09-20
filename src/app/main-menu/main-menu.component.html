@@ -3,8 +3,45 @@
 
     <img src="assets/graphics/logoSmall2.png" style="width: 100%; max-width: 600px;" title="Snohomish Film Festival">
 
+    <div *ngIf="festivalHasEnded">
+        <div class="container-fluid">
 
-    <div *ngIf="1">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="borderClass">
+                        <div class="titleCLass">Snohomish Film Festival</div>
+                        <div class="box-inner">
+                            <p>Welcome to Snohomish FIlm Festival. Our goal is to promote local short films and all of
+                                the
+                                talented people who help make them possible.</p>
+                            <ul>
+                                <li>30 films selected</li>
+                                <li>14 Physical Trophys</li>
+                                <li>Live festival & awards show</li>
+                                <li>Written feedback given to all submitted films!</li>
+                            </ul>
+                            <p>We begin taking submissions for next year's event on January 1st.</p>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="borderClass">
+                        <div class="titleCLass">2022 Snohomish Film Festival</div>
+                        <div class="box-inner" style="text-align: center;">
+                            <img src="http://www.appdigity.com/fest/mainImages/main2022.jpg" width="100%">
+                            <p>Thank you to everyone who attended this exciting event! Click below to see all the winners.</p>
+                            <app-button [routerLink]="['/festival-page']" [queryParams]="{filmYear: 2022}" [name]="'2022 Festival Winners!'" [icon]="'film'">
+                            </app-button>
+
+                        </div>
+                    </div>
+               </div>
+            </div>
+        </div>
+
+    </div>
+    <div *ngIf="!festivalHasEnded">
         <div class="container-fluid">
 
             <div class="row">
@@ -14,6 +51,7 @@
                     <div class="borderClass">
                         <div class="titleCLass">2022 Snohomish Film Festival</div>
                         <div class="box-inner">
+                            <div *ngIf="specialMessage" class="specialMessage">{{specialMessage}}</div>
                             <p>Welcome to Snohomish FIlm Festival. Our goal is to promote local short films and all of
                                 the
                                 talented people who help make them possible.</p>
@@ -27,8 +65,7 @@
                                 <app-button [routerLink]="['/program']" [name]="'2022 Festival Lineup'"
                                     [icon]="'file-text'">
                                 </app-button>&nbsp;
-                                <app-button [routerLink]="['/help-wanted']" [name]="'Volunteer'"
-                                    [icon]="'user'">
+                                <app-button [routerLink]="['/help-wanted']" [name]="'Volunteer'" [icon]="'user'">
                                 </app-button>
                             </div>
                         </div>
@@ -69,11 +106,12 @@
                 </div>
                 <div class="col-sm-6">
 
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/1-UK5cQItBY"
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/St4wbagIMuI"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
                     </iframe>
+                    <div><a href="https://www.youtube.com/embed/1-UK5cQItBY">2021 Promo Video</a></div>
 
 
 
@@ -91,8 +129,11 @@
                     <div class="borderClass" *ngIf="currentMonth >= 7">
                         <div class="titleCLass">Snohomish Film Festival</div>
                         <div class="box-inner">
-                             <p>Support Snohomish film by attending this exciting event. 30 films included, plus meet &
-                                greets with the film makers and a live awards show! Tickets only $12!</p>
+                            <div *ngIf="specialMessage" class="specialMessage">{{specialMessage}}</div>
+                            <p>Support Snohomish film by attending this exciting event. 30 films included, plus meet &
+                                greets with the film makers and a live awards show! Tickets only $12! ($15 at the door)
+                            </p>
+
                             <div style="text-align: center;">
                                 <a href="https://filmfreeway.com/SnohomishFilmFestival/tickets" target="_blank">
                                     <app-button [name]="'Tickets'" [icon]="'ticket'"></app-button>
@@ -104,6 +145,24 @@
                                 <div>Lynnwood Convention Center</div>
                                 <div>3711 196th St SW</div>
                                 <div>Lynnwood, WA 98036 </div>
+                                <hr>
+                                After-party at Pub-44 (just 4 blocks away) from 8pm-10pm.
+
+                                <div *ngIf="festivalDay == currentDay"
+                                    style="background-color: #ffffc0; display: inline-block; border: 1px solid gray; padding: 10px;">
+                                    <div><b>Snack-Pack</b></div>
+                                    <div>Popcorn, Candy Bar & Drink, $15</div>
+                                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                                        <input type="hidden" name="cmd" value="_s-xclick">
+                                        <input type="hidden" name="hosted_button_id" value="7JRSLVWY5FYJS">
+                                        <input type="image"
+                                            src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif"
+                                            border="0" name="submit"
+                                            alt="PayPal - The safer, easier way to pay online!">
+                                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"
+                                            width="1" height="1">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -117,7 +176,7 @@
     </div>
 
 
-    <div class="blackBox" *ngIf="1">
+    <div class="blackBox" *ngIf="!festivalHasEnded">
         <div class="container-fluid">
             <div style="font-size: 24px; background-color: white;">
                 <p>Snohomish Film Festival {{displayYear}} Feedback</p>
@@ -131,19 +190,22 @@
         </div>
     </div>
 
-    <div class="borderClass" *ngIf="currentMonth >= 7">
+    <div class="borderClass" *ngIf="currentMonth >= 7 && !festivalHasEnded">
         <div class="titleCLass">2022 Snohomish Film Festival Nominations</div>
     </div>
-    <div class="award-box" *ngFor="let award of awards">
-        <b><i class="fa fa-trophy"></i> {{award.name}}</b>
-        <ul style="text-align: left;">
-            <li *ngFor="let film of award.films">{{film}}</li>
-        </ul>
-    </div>
-    <div>Film makers: Visit <a href="https://filmfreeway.com/" target="_blank">Film Freeway</a> to generate your
-        laurels.</div>
+    <div *ngIf="!festivalHasEnded">
 
-    <div class="borderClass" style="text-align: center;">
+
+        <div class="award-box" *ngFor="let award of awards">
+            <b><i class="fa fa-trophy"></i> {{award.name}}</b>
+            <ul style="text-align: left;">
+                <li *ngFor="let film of award.films">{{film}}</li>
+            </ul>
+        </div>
+        <div>Film makers: Visit <a href="https://filmfreeway.com/" target="_blank">Film Freeway</a> to generate your
+            laurels.</div>
+    </div>
+    <div class="borderClass" style="text-align: center;" *ngIf="!festivalHasEnded">
         <div class="titleCLass">Snohomish Film Festival {{displayYear}} (Submitted Projects)</div>
         <app-loading-bar *ngIf="loadingFlg"></app-loading-bar>
         <app-film-snapshot *ngFor="let film of displayFilms" [film]="film"></app-film-snapshot>
