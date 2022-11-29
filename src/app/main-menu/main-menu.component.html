@@ -62,7 +62,7 @@
                                 <li>Written feedback given to all submitted films!</li>
                             </ul>
                             <div style="text-align: center;">
-                                <app-button [routerLink]="['/program']" [name]="'2022 Festival Lineup'"
+                                <app-button *ngIf="0" [routerLink]="['/program']" [name]="'2022 Festival Lineup'"
                                     [icon]="'file-text'">
                                 </app-button>&nbsp;
                                 <app-button [routerLink]="['/help-wanted']" [name]="'Volunteer'" [icon]="'user'">
@@ -70,18 +70,18 @@
                             </div>
                         </div>
                     </div>
-                    <div class="borderClass" *ngIf="currentMonth <= 6">
+                    <div class="borderClass" *ngIf="currentMonth <= 6 || currentMonth > 10">
                         <div class="titleCLass">Requirements</div>
                         <div class="box-inner">
                             <ul>
                                 <li>Anyone can submit</li>
                                 <li>Any film genre welcome</li>
                                 <li>Any Creation date</li>
-                                <li>Films less than 25 minutes</li>
+                                <li>Film length under 30 minutes</li>
                             </ul>
                         </div>
                     </div>
-                    <div class="borderClass" *ngIf="currentMonth >= 7">
+                    <div class="borderClass" *ngIf="currentMonth >= 7 && currentMonth < 11">
                         <div class="titleCLass">Films Selected!</div>
                         <div class="box-inner">
                             <p>
@@ -106,27 +106,28 @@
                 </div>
                 <div class="col-sm-6">
 
-                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/St4wbagIMuI"
+                    <iframe width="100%" height="280" src="https://www.youtube.com/embed/1-UK5cQItBY"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
                     </iframe>
-                    <div><a href="https://www.youtube.com/embed/1-UK5cQItBY">2021 Promo Video</a></div>
+                    <div><a href="https://www.youtube.com/embed/St4wbagIMuI">2022 Promo Video</a></div>
+                    <div *ngIf="0"><a href="https://www.youtube.com/embed/1-UK5cQItBY">2021 Promo Video</a></div>
 
 
 
-                    <div class="borderClass" *ngIf="currentMonth <= 6">
+                    <div class="borderClass" *ngIf="currentMonth <= 6 || currentMonth > 10">
                         <div class="titleCLass">Dates</div>
                         <div class="box-inner">
                             <ul>
                                 <li>Submissions begin Jan 1st</li>
                                 <li>Deadline: June 30th</li>
-                                <li>Festival: September 17th</li>
+                                <li>Festival: September {{festivalDay}}th</li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="borderClass" *ngIf="currentMonth >= 7">
+                    <div class="borderClass" *ngIf="currentMonth >= 7 && currentMonth < 11">
                         <div class="titleCLass">Snohomish Film Festival</div>
                         <div class="box-inner">
                             <div *ngIf="specialMessage" class="specialMessage">{{specialMessage}}</div>
@@ -176,7 +177,7 @@
     </div>
 
 
-    <div class="blackBox" *ngIf="!festivalHasEnded">
+    <div class="blackBox" *ngIf="0 && !festivalHasEnded">
         <div class="container-fluid">
             <div style="font-size: 24px; background-color: white;">
                 <p>Snohomish Film Festival {{displayYear}} Feedback</p>
@@ -190,10 +191,10 @@
         </div>
     </div>
 
-    <div class="borderClass" *ngIf="currentMonth >= 7 && !festivalHasEnded">
+    <div class="borderClass" *ngIf="0">
         <div class="titleCLass">2022 Snohomish Film Festival Nominations</div>
     </div>
-    <div *ngIf="!festivalHasEnded">
+    <div *ngIf="0">
 
 
         <div class="award-box" *ngFor="let award of awards">

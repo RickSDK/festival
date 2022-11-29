@@ -22,7 +22,7 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   public films: any;
   public displayFilms: any;
   public festicalStatus = 2;
-  public festivalDay = 17;
+  public festivalDay = 9;
   public currentMonth = new Date().getMonth() + 1;
   public currentDay = new Date().getDate();
   public specialMessage = '';
@@ -52,7 +52,7 @@ export class MainMenuComponent extends BaseHttpComponent implements OnInit {
   constructor() { super(); }
 
   ngOnInit(): void {
-    if (this.currentMonth > 9 || (this.currentMonth == 9 && this.currentDay > this.festivalDay))
+    if (this.currentMonth == 10 || (this.currentMonth == 9 && this.currentDay > this.festivalDay))
       this.festivalHasEnded = true;
     this.specialMessage = '';
     if (this.currentMonth == 9 && this.currentDay <= this.festivalDay) {
