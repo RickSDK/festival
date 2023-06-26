@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-sm-6">
                     <div class="borderClass">
-                        <div class="titleCLass">2022 Snohomish Film Festival</div>
+                        <div class="titleCLass">{{displayYear}} Snohomish Film Festival</div>
                         <div class="box-inner" style="text-align: center;">
                             <img src="http://www.appdigity.com/fest/mainImages/main2022.jpg" width="100%">
                             <p>Thank you to everyone who attended this exciting event! Click below to see all the winners.</p>
@@ -49,14 +49,14 @@
 
 
                     <div class="borderClass">
-                        <div class="titleCLass">2022 Snohomish Film Festival</div>
+                        <div class="titleCLass">{{displayYear}} Snohomish Film Festival</div>
                         <div class="box-inner">
                             <div *ngIf="specialMessage" class="specialMessage">{{specialMessage}}</div>
                             <p>Welcome to Snohomish FIlm Festival. Our goal is to promote local short films and all of
                                 the
                                 talented people who help make them possible.</p>
                             <ul>
-                                <li>30 films selected</li>
+                                <li>30 films screened</li>
                                 <li>14 Physical Trophys</li>
                                 <li>Live festival & awards show</li>
                                 <li>Written feedback given to all submitted films!</li>
@@ -141,13 +141,14 @@
                                 </a>&nbsp;
                                 <app-button [routerLink]="['/program']" [name]="'Festival Lineup'" [icon]="'file-text'">
                                 </app-button>
-                                <div style="font-size: 22px; font-weight: 700;">Saturday September 17th</div>
-                                <div>3pm - 8pm</div>
-                                <div>Lynnwood Convention Center</div>
-                                <div>3711 196th St SW</div>
-                                <div>Lynnwood, WA 98036 </div>
+                                <div style="font-size: 22px; font-weight: 700;">Saturday September 9th</div>
+                                <div>3pm - 10pm</div>
+                                <div>Shoreline Community College</div>
+                                <div>16101 Greenwood Ave N</div>
+                                <div>Shoreline, WA 98133 </div>
+                                <div>Theater Building 1600 Bldg</div>
                                 <hr>
-                                After-party at Pub-44 (just 4 blocks away) from 8pm-10pm.
+                                
 
                                 <div *ngIf="festivalDay == currentDay"
                                     style="background-color: #ffffc0; display: inline-block; border: 1px solid gray; padding: 10px;">
